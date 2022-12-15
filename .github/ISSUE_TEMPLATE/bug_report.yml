@@ -1,0 +1,48 @@
+name: "🐛 Bug Report"
+description: "Submit a bug report to help us improve"
+title: "🐛 Bug: "
+labels: ["bug"]
+assignees:
+  - eylonmiz
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We always want to do better.
+        Thanks for your time and efforts to submit this form. 🙏
+  - type: textarea
+    id: bug-description
+    validations:
+      required: true
+    attributes:
+      label: "📜 Description"
+      description: "A clear and concise description of what the bug is.\nWhat you expected and what actually happened?"
+      placeholder: "It doesn't work when..."
+  - type: textarea
+    id: reproduce
+    validations:
+      required: true
+    attributes:
+      label: "👟 Reproduction steps"
+      description: "How do you trigger this bug? Please walk us through it step by step with screenshots."
+      placeholder: "1. Go to...\n2. Click on...\n3. Scroll down to...\n4. See error"      
+  - type: textarea
+    id: environment
+    validations:
+      required: true
+    attributes:
+      label: "💻 What is your environment setup ?"
+      description: "Specify your operating system, ReactJS version, and any other context."
+      placeholder: "React release version..."
+  - type: dropdown
+    id: willing-to-submit-pr
+    validations:
+      required: true
+    attributes:
+      label: "👀 Are you willing to submit a PR?"
+      description: "Our team will to support you with this."
+      options:
+        - "Maybe next time"
+        - "Yes! 😻"
+        
+        
