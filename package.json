@@ -1,0 +1,26 @@
+{
+  "name": "@tutim/root",
+  "version": "0.1.0",
+  "description": "form infrastructure for web applications",
+  "author": "Tutim <eylon@tutim.io>",
+  "homepage": "https://tutim.io",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "yarn workspace @tutim/example dev",
+    "build": "yarn workspace @tutim/headless build && yarn workspace @tutim/fields build && yarn workspace @tutim/types build",
+    "storybook": "yarn workspace @tutim/fields storybook"
+  },
+  "private": true,
+  "keywords": [
+    "form",
+    "form-builder",
+    "form-infrastructure",
+    "tutim",
+    "headless-forms",
+    "hook-form",
+    "react"
+  ]
+}

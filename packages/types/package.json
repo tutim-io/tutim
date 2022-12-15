@@ -1,0 +1,22 @@
+{
+  "name": "@tutim/types",
+  "version": "0.1.0",
+  "description": "form infrastructure for web applications",
+  "author": "Tutim <eylon@tutim.io>",
+  "homepage": "https://tutim.io",
+  "license": "MIT",
+  "type": "module",
+  "module": "index.ts",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc && yarn post:build",
+    "post:build": "node post-build.js"
+  },
+  "dependencies": {
+    "react-hook-form": "^7.39.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7"
+  }
+}
