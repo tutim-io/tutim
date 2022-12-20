@@ -1,14 +1,14 @@
 # 🍓 README
 
-[![Tutim.io logo](https://res.cloudinary.com/tutim/image/upload/v1671445328/logo-png\_rjs63o.png)](https://tutim.io)
+[![Tutim.io logo](https://res.cloudinary.com/tutim/image/upload/v1671445328/logo-png_rjs63o.png)](https://tutim.io)
 
 ## **Form infrastructure for product teams**
 
 Headless forms module to create web-app powerful forms in minutes.
 
-[![MIT License](https://img.shields.io/github/license/tutim-io/tutim)](https://github.com/tutim-io/tutim/blob/main/LICENSE) [![Number of GitHub stars](https://img.shields.io/github/stars/tutim-io/tutim?logo=github)](https://github.com/tutim-io/tutim/stargazers) [![Discord is Live](https://img.shields.io/badge/Discord-Live-green?logo=discord\&logoColor=%23fff)](https://discord.tutim.io) [![Docs are updated](https://img.shields.io/badge/docs-updated-green?color=blue)](https://docs.tutim.io) [![Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launch%20soon-orange?logo=producthunt\&logoColor=%23fff)](https://www.producthunt.com/@leetwito)
+[![MIT License](https://img.shields.io/github/license/tutim-io/tutim)](https://github.com/tutim-io/tutim/blob/main/LICENSE) [![Number of GitHub stars](https://img.shields.io/github/stars/tutim-io/tutim?logo=github)](https://github.com/tutim-io/tutim/stargazers) [![Discord is Live](https://img.shields.io/badge/Discord-Live-green?logo=discord&logoColor=%23fff)](https://discord.tutim.io) [![Docs are updated](https://img.shields.io/badge/docs-updated-green?color=blue)](https://docs.tutim.io) [![Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launch%20soon-orange?logo=producthunt&logoColor=%23fff)](https://www.producthunt.com/@leetwito)
 
-***
+---
 
 ### 🍓 Why Tutim?
 
@@ -22,16 +22,18 @@ This repo is 100% free, and will always remain.
 
 ### ✨ Features
 
-* 🌈 **Headless:** Default design system that can be replaced with yours
-* 💅 **Rich form:** Save draft, wizard, conditional branching, and more are available out-of-the-box
-* 🚀 **Performant:** Best practices are implemented. Never worry about delays
-* 🛠️ **No-Code Builder:** Let PMs and designers create and change forms. Stick with React for styling and embedding
-* 👨‍💻 **Built-in Analytics:** Opening rate, drop-offs, conversions. privacy-first `(coming soon)`
-* 📦 **Templates:** Onboarding, personal details, feedback from our gallery`(coming soon)`
+- 🌈 **Headless:** Default design system that can be replaced with yours
+- 💅 **Rich form:** Save draft, wizard, conditional branching, and more are available out-of-the-box
+- 🚀 **Performant:** Best practices are implemented. Never worry about delays
+- 🛠️ **No-Code Builder:** Let PMs and designers create and change forms. Stick with React for styling and embedding
+- 👨‍💻 **Built-in Analytics:** Opening rate, drop-offs, conversions. privacy-first `(coming soon)`
+- 📦 **Templates:** Onboarding, personal details, feedback from our gallery`(coming soon)`
 
 ### 🚀 Getting Started
 
 [**Explore the docs »**](https://docs.tutim.io)
+
+[**Sandbox Example »**](https://codesandbox.io/s/patient-smoke-vw0400?file=/src/App.js)
 
 Create your first form in 2 minutes, by following these steps:
 
@@ -82,7 +84,7 @@ export default App;
 
 Play with Tutim and create a form in 2 minutes
 
-![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form\_zh0af4.png)
+![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
 
 Save this JSON file as 'signup-schema.json' (built by [Tutim form builder](https://builder.tutim.io/))
 
@@ -293,31 +295,31 @@ Tutim provides all forms solutions. Through code or drag & drop interface.
 
 **💌 Inputs**
 
-* [x] All basic (Text, Select, Checkbox, Date...)
-* [x] Array & Multi fields
-* [x] Nested and deep nested support
-* [ ] Rich input library (coming soon)
+- [x] All basic (Text, Select, Checkbox, Date...)
+- [x] Array & Multi fields
+- [x] Nested and deep nested support
+- [ ] Rich input library (coming soon)
 
 **📞 Design & Layout**
 
-* [x] Simple form layout (one pager)
-* [x] Layout and grouping control
-* [ ] Wizard multi steps (coming soon)
-* [ ] DnD rich builder
+- [x] Simple form layout (one pager)
+- [x] Layout and grouping control
+- [ ] Wizard multi steps (coming soon)
+- [ ] DnD rich builder
 
 **😊 Portal**
 
-* [x] Simple form builder
-* [ ] Drag & Drop form builder
-* [ ] Templates library
-* [ ] Conditional branching
+- [x] Simple form builder
+- [ ] Drag & Drop form builder
+- [ ] Templates library
+- [ ] Conditional branching
 
 **☁️ Cloud (**[**closed beta, request early access**](https://discord.tutim.io)**)**
 
-* [x] Manage and serve schemas
-* [x] Hosted forms
-* [ ] Backend support
-* [ ] 3rd Party integrations
+- [x] Manage and serve schemas
+- [x] Hosted forms
+- [ ] Backend support
+- [ ] 3rd Party integrations
 
 ### 🤵 Need Help?
 
@@ -329,13 +331,13 @@ If you are getting any errors, facing problems, or need a new feature while work
 
 ### 🔗 Links
 
-* [Home page](https://tutim.io)
-* [Builder](https://builder.tutim.io)
-* [Discord community](https://discord.tutim.io)
-* [Twitter](https://twitter.com/Tutim\_io)
-* [Contribution Guidelines](https://tutim.io/contribute)
-* [Docs](https://docs.tutim.io)
-* [Support on Product Hunt (follow, we're launching soon!)](https://www.producthunt.com/@leetwito)
+- [Home page](https://tutim.io)
+- [Builder](https://builder.tutim.io)
+- [Discord community](https://discord.tutim.io)
+- [Twitter](https://twitter.com/Tutim_io)
+- [Contribution Guidelines](https://tutim.io/contribute)
+- [Docs](https://docs.tutim.io)
+- [Support on Product Hunt (follow, we're launching soon!)](https://www.producthunt.com/@leetwito)
 
 ### 💪 By the community, for the community
 
