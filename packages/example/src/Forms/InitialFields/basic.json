@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "key": "firstName",
+      "label": "Name",
+      "isDisabled": false,
+      "inputType": "text",
+      "isRequired": true,
+      "defaultValue": "defaultName"
+    },
+    {
+      "key": "lastName",
+      "label": "Last Name",
+      "isDisabled": true,
+      "inputType": "text",
+      "isRequired": true
+    },
+    {
+      "key": "role",
+      "label": "Role",
+      "isDisabled": false,
+      "inputType": "select",
+      "options": [
+        { "value": "admin", "label": "Administrator" },
+        { "value": "viewer", "label": "Viewer" },
+        { "value": "editor", "label": "Editor" }
+      ],
+      "isRequired": true,
+      "defaultValue": "editor"
+    }
+  ]
+}

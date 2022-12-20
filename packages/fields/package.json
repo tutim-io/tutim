@@ -1,0 +1,71 @@
+{
+  "name": "@tutim/fields",
+  "version": "0.0.0",
+  "description": "form infrastructure for web applications",
+  "author": "Tutim <eylon@tutim.io>",
+  "homepage": "https://tutim.io",
+  "license": "MIT",
+  "repository": "https://github.com/tutim-io/tutim",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "yarn && yarn pre:build && tsc && vite build && yarn post:build",
+    "pre:build": "node pre-build.js",
+    "post:build": "node post-build.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "pre:pkg": "cp ../../README.md ./dist && cp ../../LICENSE ./dist && cp ../../.npmrc ./dist && cp ../../.gitignore ./dist",
+    "npm:pkg": "cd dist && npm publish --access public",
+    "pkg": "yarn build && yarn pre:pkg && yarn npm:pkg"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.13",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.39.1",
+    "react-json-view": "^1.21.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/react": "^6.5.13",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "@vitejs/plugin-react": "^3.0.0",
+    "babel-loader": "^8.3.0",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "typescript": "^4.8.4",
+    "vite": "^4.0.2",
+    "vite-plugin-dts": "^1.7.1"
+  },
+  "peerDependencies": {
+    "@tutim/headless": "*",
+    "@tutim/types": "*",
+    "react": "^16.8.0 || 17.x || 18.x",
+    "react-dom": "^16.8.0 || 17.x || 18.x"
+  },
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "keywords": [
+    "form",
+    "form-builder",
+    "form-infrastructure",
+    "tutim",
+    "headless-forms",
+    "hook-form",
+    "react"
+  ]
+}

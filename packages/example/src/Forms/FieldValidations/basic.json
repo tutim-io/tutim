@@ -1,0 +1,36 @@
+{
+  "fields": [
+    {
+      "key": "firstName",
+      "label": "Name",
+      "isDisabled": false,
+      "inputType": "text",
+      "isRequired": true,
+      "validations": {
+        "minLength": { "value": 5, "message": "Minimum 5 letters" },
+        "pattern": { "value": "^(john)", "message": "Has to start with john" }
+      }
+    },
+    {
+      "key": "lastName",
+      "label": "Last Name",
+      "isDisabled": false,
+      "inputType": "text",
+      "isRequired": true,
+      "validations": {
+        "maxLength": { "value": 1, "message": "Maximum 1 letter" }
+      }
+    },
+    {
+      "key": "role",
+      "label": "Role",
+      "isDisabled": false,
+      "inputType": "select",
+      "options": [
+        { "value": "admin", "label": "Administrator" },
+        { "value": "viewer", "label": "Viewer" },
+        { "value": "editor", "label": "Editor" }
+      ]
+    }
+  ]
+}

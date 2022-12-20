@@ -1,0 +1,50 @@
+name: 🚀 Feature request
+description: "Suggest an idea"
+title: "🚀 Feature: "
+labels: ["enhancement"]
+assignees:
+  - eylonmiz
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We always want to do better. 
+        Thanks for your time and efforts to submit this form. 🙏
+  - type: textarea
+    id: feature-description
+    validations:
+      required: true
+    attributes:
+      label: "📜 Description"
+      description: "A clear and concise description of what the feature is."
+      placeholder: "You should add..."
+  - type: textarea
+    id: why
+    validations:
+      required: true
+    attributes:
+      label: "🎤 Why is this feature needed ?"
+      description: "Please explain why this feature should be implemented and how it would be used. Add examples, if applicable."
+      placeholder: "In my use-case, ..."
+  - type: textarea
+    id: solution
+    attributes:
+      label: "✌️ How do you thought solving this?"
+      description: "A clear and concise description of what you want to happen."
+      placeholder: "I want this feature to, ..."
+  - type: textarea
+    id: context
+    attributes:
+      label: "🔄️ Additional Information"
+      description: "Add any other context or screenshots."
+      placeholder: "I tried..."
+  - type: dropdown
+    id: willing-to-submit-pr
+    validations:
+      required: true
+    attributes:
+      label: "👀 Are you willing to submit a PR?"
+      description: "Our team will to support you with this."
+      options:
+        - "Maybe next time"
+        - "Yes! 😻"

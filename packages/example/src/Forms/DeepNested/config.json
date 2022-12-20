@@ -1,0 +1,198 @@
+{
+  "fields": [
+    {
+      "key": "fields",
+      "label": "Fields",
+      "defaultValue": [],
+      "multi": {},
+      "inputType": "array",
+      "children": {
+        "fields": [
+          {
+            "key": "label",
+            "label": "Display Name",
+            "inputType": "text",
+            "isRequired": true
+          },
+          {
+            "key": "inputType",
+            "label": "Input Type",
+            "inputType": "select",
+            "options": [
+              {
+                "value": "text",
+                "label": "TEXT",
+                "disabled": false
+              },
+              {
+                "value": "select",
+                "label": "SELECT",
+                "disabled": false
+              },
+              {
+                "value": "radio",
+                "label": "RADIO",
+                "disabled": false
+              },
+              {
+                "value": "switch",
+                "label": "SWITCH",
+                "disabled": false
+              },
+              {
+                "value": "checkbox",
+                "label": "CHECKBOX",
+                "disabled": false
+              },
+              {
+                "value": "json",
+                "label": "JSON",
+                "disabled": false
+              },
+              {
+                "value": "multi-text",
+                "label": "MULTI-TEXT",
+                "disabled": false
+              },
+              {
+                "value": "nested",
+                "label": "NESTED",
+                "disabled": false
+              },
+              {
+                "value": "array",
+                "label": "ARRAY",
+                "disabled": false
+              },
+              {
+                "value": "custom",
+                "label": "CUSTOM",
+                "disabled": true
+              }
+            ],
+            "isRequired": true,
+            "defaultValue": "text"
+          },
+          {
+            "key": "key",
+            "label": "Field Key",
+            "inputType": "text",
+            "isRequired": true
+          },
+          {
+            "key": "options",
+            "label": "Options",
+            "inputType": "multi-text",
+            "isRequired": true,
+            "defaultValue": [],
+            "logic": {
+              "displayIf": {
+                "field": "$.inputType",
+                "operator": "in",
+                "value": ["select", "radio"]
+              }
+            }
+          },
+          {
+            "key": "defaultValue",
+            "label": "Default Value",
+            "inputType": "text"
+          },
+          {
+            "key": "isRequired",
+            "label": "Required",
+            "inputType": "checkbox"
+          },
+          {
+            "key": "children",
+            "label": "Children",
+            "inputType": "custom",
+            "logic": {
+              "displayIf": {
+                "field": "$.inputType",
+                "operator": "in",
+                "value": ["nested", "array"]
+              }
+            },
+            "isRequired": true
+          },
+          {
+            "key": "validations",
+            "label": "Validations",
+            "inputType": "nested",
+            "children": {
+              "fields": [
+                {
+                  "key": "minLength",
+                  "label": "Min Length",
+                  "inputType": "nested",
+                  "isRequired": true,
+                  "children": {
+                    "fields": [
+                      {
+                        "key": "value",
+                        "label": "Value",
+                        "inputType": "text",
+                        "isRequired": true
+                      },
+                      {
+                        "key": "message",
+                        "label": "Message",
+                        "inputType": "text",
+                        "isRequired": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "key": "maxLength",
+                  "label": "Max Length",
+                  "inputType": "nested",
+                  "isRequired": true,
+                  "children": {
+                    "fields": [
+                      {
+                        "key": "value",
+                        "label": "Value",
+                        "inputType": "text",
+                        "isRequired": true
+                      },
+                      {
+                        "key": "message",
+                        "label": "Message",
+                        "inputType": "text",
+                        "isRequired": true
+                      }
+                    ]
+                  }
+                },
+                {
+                  "key": "pattern",
+                  "label": "Patern",
+                  "inputType": "nested",
+                  "isRequired": true,
+                  "children": {
+                    "fields": [
+                      {
+                        "key": "value",
+                        "label": "Value",
+                        "inputType": "text",
+                        "isRequired": true
+                      },
+                      {
+                        "key": "message",
+                        "label": "Message",
+                        "inputType": "text",
+                        "isRequired": true
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

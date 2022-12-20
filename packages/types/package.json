@@ -1,0 +1,35 @@
+{
+  "name": "@tutim/types",
+  "version": "0.0.0",
+  "description": "form infrastructure for web applications",
+  "author": "Tutim <eylon@tutim.io>",
+  "homepage": "https://tutim.io",
+  "license": "MIT",
+  "repository": "https://github.com/tutim-io/tutim",
+  "type": "module",
+  "module": "index.ts",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "yarn && tsc && yarn post:build",
+    "post:build": "node post-build.js",
+    "pre:pkg": "cp ../../README.md ./dist && cp ../../LICENSE ./dist && cp ../../.npmrc ./dist && cp ../../.gitignore ./dist",
+    "npm:pkg": "cd dist && npm publish --access public",
+    "pkg": "yarn build && yarn pre:pkg && yarn npm:pkg"
+  },
+  "dependencies": {
+    "react-hook-form": "^7.39.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7"
+  },
+  "keywords": [
+    "form",
+    "form-builder",
+    "form-infrastructure",
+    "tutim",
+    "headless-forms",
+    "hook-form",
+    "react"
+  ]
+}
