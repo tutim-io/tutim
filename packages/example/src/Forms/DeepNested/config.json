@@ -4,7 +4,6 @@
       "key": "fields",
       "label": "Fields",
       "defaultValue": [],
-      "multi": {},
       "inputType": "array",
       "children": {
         "fields": [

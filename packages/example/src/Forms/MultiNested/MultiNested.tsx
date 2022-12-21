@@ -52,9 +52,6 @@ const config: FormConfig = {
       key: 'kids',
       label: 'Kids',
       inputType: 'array',
-      multi: {
-        editable: true,
-      },
       children: {
         fields: [
           {

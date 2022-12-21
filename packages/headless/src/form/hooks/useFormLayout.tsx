@@ -1,18 +1,27 @@
-import { FieldConfig, FormConfig, FormLayout, LayoutGroupConfigs, LayoutGroupConfigsGroup } from '@tutim/types';
+import {
+  FieldConfig,
+  FormConfig,
+  FormLayout,
+  InputType,
+  LayoutGroupConfigs,
+  LayoutGroupConfigsGroup,
+} from '@tutim/types';
 
-const isNested = (config: FieldConfig) => config?.children && !config?.multi;
+const isNestedField = (config: FieldConfig) => config.inputType === InputType.Nested;
 
 // Create a group configuration for a field.
 // If the field has children, the group will include
 // the children's keys in its `fieldKeys` array.
-const createGroupForField = ({ key, label, children, multi }: FieldConfig): LayoutGroupConfigsGroup => {
-  if (!children || multi) return { key, fieldKeys: [key] };
+const createGroupForField = ({ key, label, children, inputType }: FieldConfig): LayoutGroupConfigsGroup => {
+  if (!children || inputType === InputType.Array) return { key, fieldKeys: [key] };
 
   // Create a list of field keys for the children of the field.
   const fieldKeys = children.fields.map((child) => `${key}.${child.key}`);
 
   // Create a list of child configs for any children that have their own children.
-  const childConfigs = children.fields.filter(isNested).map((config) => ({ ...config, key: `${key}.${config.key}` }));
+  const childConfigs = children.fields
+    .filter(isNestedField)
+    .map((config) => ({ ...config, key: `${key}.${config.key}` }));
 
   // Recursively create groups for any children that have their own children.
   const subGroups = childConfigs.length ? { groups: childConfigs.map(createGroupForField) } : undefined;
@@ -51,7 +60,7 @@ const enrichNestedUngrouped = (fields: FieldConfig[]) => (group: LayoutGroupConf
   if (childConfigs.length === 1) {
     return createGroupForField(childConfigs[0]);
   } else if (childConfigs.length > 1) {
-    const groups = childConfigs.filter(isNested).map(createGroupForField);
+    const groups = childConfigs.filter(isNestedField).map(createGroupForField);
     const fieldKeys = childConfigs.map((f) => f.key);
     const subGroups = groups.length ? { groups } : undefined;
     const nestedGroup = { ...group, fieldKeys, subGroups };

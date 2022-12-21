@@ -8,7 +8,7 @@ import { computeRenderedConfigs } from './useRenderLogic';
 
 const configToFlatConfigs = (configs: FieldConfig[]): FieldConfig[] => {
   const aggConfigs = configs.reduce<FieldConfig[]>((prev, config) => {
-    if (config.children && !config.multi) {
+    if (config.inputType === InputType.Nested) {
       const childConfigs = getChildConfigs(config);
       const flatConfigs = configToFlatConfigs(childConfigs);
       prev.push(...flatConfigs);
@@ -41,7 +41,7 @@ export const useFormFields = (
   };
 
   const configToField = (config: FieldConfig) => {
-    if (config.multi) {
+    if (config.inputType === InputType.Array) {
       const UiFieldArray = fieldComponents[InputType.Array];
       const key = getFieldRelativeKeys(config.key).join('.');
       const layoutConfig = layout?.arrayConfigs?.[key];
