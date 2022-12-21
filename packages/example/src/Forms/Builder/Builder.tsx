@@ -5,7 +5,6 @@ const fields = [
   {
     key: 'test',
     label: 'Test',
-    multi: {},
     inputType: 'array',
     children: {
       fields: [
@@ -34,7 +33,6 @@ const fields = [
                 label: 'arrayNested',
                 inputType: 'array',
                 isRequired: true,
-                multi: {},
                 children: {
                   fields: [
                     {
@@ -69,7 +67,6 @@ const fields = [
         {
           key: 'nestedArray',
           label: 'Nested Array',
-          multi: {},
           inputType: 'array',
           defaultValue: [],
           children: {

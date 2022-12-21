@@ -74,12 +74,11 @@ export interface FieldConfig {
   logic?: FieldLogic;
   Field?: Field;
   children?: Pick<FormConfig, "fields">;
-  multi?: MultiConfig;
 }
 
 export interface InputProps {
   value: any;
-  onChange: any;
+  onChange: (newValue: InputProps["value"]) => void;
 }
 
 export interface InputState {

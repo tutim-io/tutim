@@ -113,8 +113,7 @@ const validationsConfig = {
     {
       key: 'validationFlat',
       label: 'Validations Flat',
-      inputType: 'nested',
-      multi: {},
+      inputType: 'array',
       children: {
         fields: [
           {

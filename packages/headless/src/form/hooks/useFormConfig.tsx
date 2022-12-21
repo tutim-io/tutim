@@ -47,10 +47,10 @@ export const getFieldConfigs = (prevConfig: PartialFieldConfig[], overrides: Par
 };
 
 export const getDefaults = (fieldConfigs: FieldConfig[]) => {
-  return fieldConfigs.reduce((prev: Record<string, any>, { key, defaultValue, children, multi }) => {
-    if (multi) {
+  return fieldConfigs.reduce((prev: Record<string, any>, { key, defaultValue, children, inputType }) => {
+    if (inputType === InputType.Array) {
       prev[key] = [];
-    } else if (children) {
+    } else if (inputType === InputType.Nested && children) {
       prev[key] = getDefaults(children.fields);
     } else {
       prev[key] = defaultValue;
