@@ -29,11 +29,15 @@ This repo is 100% free, and will always remain.
 - 👨‍💻 **Built-in Analytics:** Opening rate, drop-offs, conversions. privacy-first `(coming soon)`
 - 📦 **Templates:** Onboarding, personal details, feedback from our gallery`(coming soon)`
 
+---
+
 ### 🚀 Getting Started
 
 [**Explore the docs »**](https://docs.tutim.io)
 
-[**Sandbox Example »**](https://codesandbox.io/s/patient-smoke-vw0400?file=/src/App.js)
+[**Sandbox Example »**](https://codesandbox.io/s/tutim-examples-5ny73h?file=/src/App.tsx)
+
+[**Use Buider »**](https://builder.tutim.io/)
 
 Create your first form in 2 minutes, by following these steps:
 
