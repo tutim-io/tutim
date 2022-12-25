@@ -2612,6 +2612,18 @@
     mkdirp "^1.0.4"
     path-browserify "^1.0.1"
 
+"@tutim/headless@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@tutim/headless/-/headless-0.0.3.tgz#509e4cd2aaeb4aed0565bcba098841862eb4df51"
+  integrity sha512-6gA4bzhzu8b1j0WQWsmG49Znexx0NKCdRPa0PI/sUxd+ykchl/TOVBnuOdvB54ctTDuLEMqoXhKaFJnww9F18A==
+
+"@tutim/types@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@tutim/types/-/types-0.0.3.tgz#dbc2d338dbf4635e481af28a65d382431820225b"
+  integrity sha512-887SzRGLLG5ERCAN/0LsuK9xv7aBXgtyljSRSZRgFtgfp+GrExxuagp0aUydOE1NoP6V2ID+v5cctt230KqL+Q==
+  dependencies:
+    react-hook-form "^7.39.1"
+
 "@types/argparse@1.0.38":
   version "1.0.38"
   resolved "https://registry.yarnpkg.com/@types/argparse/-/argparse-1.0.38.tgz#a81fd8606d481f873a3800c6ebae4f1d768a56a9"
@@ -8962,7 +8974,7 @@ react-element-to-jsx-string@^14.3.4:
     is-plain-object "5.0.0"
     react-is "17.0.2"
 
-react-hook-form@^7.41.0:
+react-hook-form@^7.39.1, react-hook-form@^7.41.0:
   version "7.41.1"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.41.1.tgz#0e25e231550d477c5774b7f5a4ff800485281e6a"
   integrity sha512-IHUozfwuqE+P201KIJwotMd+UCKqzIprseR8UUjz1jRupkZeubg0xyeMLIaT192zHv7vBBu9bibpNV5cIB4E9g==
