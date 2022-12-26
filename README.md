@@ -85,6 +85,7 @@ export default App;
 ```
 
 4\. Output Example:
+
 ![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
 
 ### ⭐ Implementation Types
