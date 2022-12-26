@@ -84,57 +84,7 @@ const App = () => {
 export default App;
 ```
 
-### ⭐ Example
-
-Play with Tutim and create a form in 2 minutes
-
-Save this JSON file as 'signup-schema.json' (built by [Tutim form builder](https://builder.tutim.io/))
-
-```json
-{
-  "fields": [
-    {
-      "key": "email",
-      "label": "Email",
-      "inputType": "text",
-      "isRequired": true,
-      "validations": {
-        "pattern": {
-          "value": "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
-          "message": "Must be a valid email"
-        }
-      }
-    },
-    { "key": "first_name", "label": "First Name", "inputType": "text" },
-    { "key": "last_name", "label": "Last Name", "inputType": "text" }
-  ]
-}
-```
-
-Use `Form` component with the `signupSchema` to render the form.
-
-```jsx
-import { FormProvider } from '@tutim/headless';
-import { Form, defaultFields } from '@tutim/fields';
-import signupSchema from './signup-schema.json';
-
-const SignupForm = () => {
-  return <Form onSubmit={console.log} config={signupSchema} />;
-};
-
-const App = () => {
-  return (
-    <div className="App">
-      <FormProvider fieldComponents={defaultFields}>
-        <SignupForm />
-      </FormProvider>
-    </div>
-  );
-};
-
-export default App;
-```
-
+4\. Output Example:
 ![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
 
 ### ⭐ Implementation Types
