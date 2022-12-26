@@ -88,8 +88,6 @@ export default App;
 
 Play with Tutim and create a form in 2 minutes
 
-![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
-
 Save this JSON file as 'signup-schema.json' (built by [Tutim form builder](https://builder.tutim.io/))
 
 ```json
@@ -112,6 +110,34 @@ Save this JSON file as 'signup-schema.json' (built by [Tutim form builder](https
   ]
 }
 ```
+
+Use `Form` component with the `signupSchema` to render the form.
+
+```jsx
+import { FormProvider } from '@tutim/headless';
+import { Form, defaultFields } from '@tutim/fields';
+import signupSchema from './signup-schema.json';
+
+const SignupForm = () => {
+  return <Form onSubmit={console.log} config={signupSchema} />;
+};
+
+const App = () => {
+  return (
+    <div className="App">
+      <FormProvider fieldComponents={defaultFields}>
+        <SignupForm />
+      </FormProvider>
+    </div>
+  );
+};
+
+export default App;
+```
+
+![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
+
+### ⭐ Implementation Types
 
 #### [TutimForm](https://docs.tutim.io/react-sdk/tutim-form)
 
