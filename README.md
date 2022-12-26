@@ -56,14 +56,14 @@ npm install @tutim/headless @tutim/fields @tutim/types
 3\. Render the form:
 
 ```jsx
-import { Form, defaultFields } from "@tutim/fields";
-import { FormProvider } from "@tutim/headless";
+import { Form, defaultFields } from '@tutim/fields';
+import { FormProvider } from '@tutim/headless';
 
 const config = {
   // Use https://tutim.io to create and manage rich schemas with no-code
   fields: [
-    { key: "firstName", label: "First Name", inputType: "text" },
-    { key: "lastName", label: "Last Name", inputType: "text" },
+    { key: 'firstName', label: 'First Name', inputType: 'text' },
+    { key: 'lastName', label: 'Last Name', inputType: 'text' },
   ],
 };
 
@@ -118,39 +118,13 @@ Save this JSON file as 'signup-schema.json' (built by [Tutim form builder](https
 `Form` is a component that provides a simple interface for defining the fields and form behavior, while handling the infrastructure and user interface for you.
 
 ```jsx
-import { FormProvider } from "@tutim/headless";
-import { Form, defaultFields } from "@tutim/fields";
-import signupSchema from "./signup-schema.json";
-
-const TutimForm = () => {
-  return <Form onSubmit={console.log} config={signupSchema} />;
-};
-
-const App = () => {
-  return (
-    <div className="App">
-      <FormProvider fieldComponents={defaultFields}>
-        <TutimForm />
-      </FormProvider>
-    </div>
-  );
-};
-
-export default App;
-```
-
-#### [ControlledForm](https://docs.tutim.io/react-sdk/controlled-form)
-
-`ControlledForm` is a component with control over the form logic, while leaving the form infrastructure and user interface to be handled for you. It provides a set of tools for managing the form data and form submission, and a `FormView` component for rendering the form fields and submission button.
-
-```jsx
-import { Form, defaultFields } from "@tutim/fields";
-import { FormProvider } from "@tutim/headless";
+import { FormProvider } from '@tutim/headless';
+import { Form, defaultFields } from '@tutim/fields';
 
 const config = {
   fields: [
-    { key: "firstName", label: "First Name", inputType: "text" },
-    { key: "lastName", label: "Last Name", inputType: "text" },
+    { key: 'firstName', label: 'First Name', inputType: 'text' },
+    { key: 'lastName', label: 'Last Name', inputType: 'text' },
   ],
 };
 
@@ -171,37 +145,71 @@ const App = () => {
 export default App;
 ```
 
+#### [ControlledForm](https://docs.tutim.io/react-sdk/controlled-form)
+
+`ControlledForm` is a component with control over the form logic, while leaving the form infrastructure and user interface to be handled for you. It provides a set of tools for managing the form data and form submission, and a `FormView` component for rendering the form fields and submission button.
+
+```jsx
+import React from 'react';
+import { FormView, defaultFields } from '@tutim/fields';
+import { FormProvider, useForm } from '@tutim/headless';
+
+const config = {
+  fields: [
+    { key: 'firstName', label: 'First Name', inputType: 'text' },
+    { key: 'lastName', label: 'Last Name', inputType: 'text' },
+  ],
+};
+
+const ControlledForm = () => {
+  const form = useForm(config);
+  const { watch, setValue } = form;
+  const firstName = watch('firstName');
+
+  React.useEffect(() => {
+    if (firstName === 'John') setValue('lastName', 'Doe');
+  }, [setValue, firstName]);
+
+  return <FormView onSubmit={console.log} form={form} />;
+};
+
+const App = () => {
+  return (
+    <div className="App">
+      <FormProvider fieldComponents={defaultFields}>
+        <ControlledForm />
+      </FormProvider>
+    </div>
+  );
+};
+
+export default App;
+```
+
 #### [HeadlessForm](https://docs.tutim.io/react-sdk/headless-form)
 
 `HeadlessForm` is a component with complete control over the form logic and design. It provides a set of tools for managing the form infrastructure, such as handling form submissions and managing the form data, while leaving the form logic and design up to you.
 
 ```jsx
-import { FormProvider, useForm } from "@tutim/headless";
-import { Field, FieldComponents, InputType } from "@tutim/types";
+import { FormProvider, useForm } from '@tutim/headless';
+import { Field, FieldComponents, InputType } from '@tutim/types';
 
 const config = {
   fields: [
-    {
-      key: "firstName",
-      label: "First Name",
-      inputType: "text",
-      defaultValue: "first",
-    },
-    { key: "lastName", label: "Last Name", inputType: "text" },
+    { key: 'firstName', label: 'First Name', inputType: 'text', defaultValue: 'first' },
+    { key: 'lastName', label: 'Last Name', inputType: 'text' },
   ],
 };
 
 const HeadlessForm = () => {
   const { fieldsByKey, watch, handleSubmit } = useForm(config);
-  const name = watch("firstName");
+  const name = watch('firstName');
+  const style = { display: 'flex', flexDirection: 'column', gap: '5px' };
 
   return (
-    <form
-      onSubmit={handleSubmit(console.log)}
-      style={{ display: "flex", flexDirection: "column", gap: "5px" }}
-    >
-      {fieldsByKey["firstName"]}
-      {name === "first" && fieldsByKey["lastName"]}
+    <form onSubmit={handleSubmit(console.log)} style={style}>
+      {fieldsByKey['firstName']}
+      {name === 'first' && fieldsByKey['lastName']}
       <input type="submit" />
     </form>
   );
@@ -233,7 +241,7 @@ BYOF - Bring Your Own Field. Use `Field` type to register any type of field. Can
 `CustomField` can be used either globally, by specifying it in the `fieldComponents` object passed to the `FormProvider` component, or locally, by specifying the `Field` prop in the field configuration when creating a form.
 
 ```tsx
-import { Field, FieldConfig } from "@tutim/types";
+import { Field, FieldConfig } from '@tutim/types';
 
 export const CustomField: Field = ({ inputProps, fieldConfig }) => {
   const { value, onChange } = inputProps;
@@ -246,9 +254,9 @@ export const CustomField: Field = ({ inputProps, fieldConfig }) => {
 };
 
 export const customFieldConfig: FieldConfig = {
-  key: "clicker",
-  label: "Click Me",
-  inputType: "custom",
+  key: 'clicker',
+  label: 'Click Me',
+  inputType: 'custom',
   defaultValue: 0,
   Field: CustomField,
 };
@@ -259,9 +267,9 @@ export const customFieldConfig: FieldConfig = {
 `FormProvider` is a component that allows you to define the form fields that you want to use in your react application. It provides a way to specify the field components that will be used to render the form fields, and allows you to use either the default field components provided by the `@tutim/fields` library, or your own custom field components.
 
 ```tsx
-import { FormProvider } from "@tutim/headless";
-import { defaultFields, Form } from "@tutim/fields";
-import { Field, FieldComponents, InputType } from "@tutim/types";
+import { FormProvider } from '@tutim/headless';
+import { defaultFields, Form } from '@tutim/fields';
+import { Field, FieldComponents, InputType } from '@tutim/types';
 
 export const CustomField: Field = ({ inputProps, fieldConfig }) => {
   const { value, onChange } = inputProps;
@@ -276,7 +284,7 @@ export const CustomField: Field = ({ inputProps, fieldConfig }) => {
 const fieldComponents: FieldComponents = {
   ...defaultFields, // optional built in input fields based on MUI
   [InputType.Text]: ({ inputProps }) => <input {...inputProps} />,
-  "custom-field": (fieldProps) => <CustomField {...fieldProps} />,
+  'custom-field': (fieldProps) => <CustomField {...fieldProps} />,
   // add any type of input and reference it by 'inputType'
 };
 
@@ -284,7 +292,7 @@ const App = (): JSX.Element => {
   return (
     <div className="App">
       <FormProvider fieldComponents={fieldComponents}>
-        <Form onSubmit={console.log} config={{ fields: [{ key: "field1" }] }} />
+        <Form onSubmit={console.log} config={{ fields: [{ key: 'field1' }] }} />
       </FormProvider>
     </div>
   );
