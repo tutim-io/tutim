@@ -37,7 +37,7 @@ This repo is 100% free, and will always remain.
 
 [**Sandbox Example »**](https://codesandbox.io/s/tutim-examples-5ny73h?file=/src/App.tsx)
 
-[**Use Buider »**](https://builder.tutim.io/)
+[**Use Buider »**](https://app.tutim.io/)
 
 Create your first form in 2 minutes, by following these steps:
 
@@ -51,7 +51,7 @@ yarn add @tutim/headless @tutim/fields @tutim/types
 npm install @tutim/headless @tutim/fields @tutim/types
 ```
 
-2\. Create your first form schema with [Tutim Form Builder](https://builder.tutim.io/), or by creating the form JSON schema yourself
+2\. Create your first form schema with [Tutim Form Builder](https://app.tutim.io/), or by creating the form JSON schema yourself
 
 3\. Render the form:
 
@@ -321,7 +321,7 @@ If you are getting any errors, facing problems, or need a new feature while work
 ### 🔗 Links
 
 - [Home page](https://tutim.io)
-- [Builder](https://builder.tutim.io)
+- [Builder](https://app.tutim.io)
 - [Discord community](https://discord.tutim.io)
 - [Twitter](https://twitter.com/Tutim_io)
 - [Contribution Guidelines](https://tutim.io/contribute)

@@ -1,15 +1,17 @@
 import React from 'react';
-import { FieldComponents, TutimConfig, FormProviderProps, TutimConfigProvider } from '@tutim/types';
+import { FieldComponents, TutimOptions, FormProviderProps, TutimOptionsProviderValue } from '@tutim/types';
+import { useRemoteSchemas } from './useRemoteSchemas';
 
 export const FieldComponentsContext = React.createContext<FieldComponents>({});
 export const useFieldComponents = (): FieldComponents => React.useContext(FieldComponentsContext);
 
-const configContext = { config: { formConfigs: {} }, setConfig: () => {} };
-export const TutimConfigContext = React.createContext<TutimConfigProvider>(configContext);
-export const useTutimConfig = (): TutimConfigProvider => React.useContext(TutimConfigContext);
+const optionsContext: TutimOptionsProviderValue = { options: { forms: {} }, setOptions: () => null };
+export const TutimOptionsContext = React.createContext<TutimOptionsProviderValue>(optionsContext);
+export const useTutimOptions = (): TutimOptionsProviderValue => React.useContext(TutimOptionsContext);
 
-const mergeTutimConfigs = (config: TutimConfig, newConfig: TutimConfig) => {
-  return { formConfigs: { ...config.formConfigs, ...newConfig.formConfigs } };
+const mergeTutimOptions = (options: TutimOptions, newOptions: TutimOptions) => {
+  const newForms = { ...options.forms, ...newOptions.forms };
+  return { ...options, forms: newForms };
 };
 
 /**
@@ -47,19 +49,18 @@ const mergeTutimConfigs = (config: TutimConfig, newConfig: TutimConfig) => {
  * ```
  */
 export const FormProvider = ({
-  fieldComponents,
-  config = configContext.config,
+  fieldComponents = {},
+  options = optionsContext.options,
   children,
 }: FormProviderProps): JSX.Element => {
-  if (!fieldComponents) throw new Error('fieldComponents is required');
-  const [stateConfig, setStateConfig] = React.useState(config);
-  const configContextValue = {
-    config: stateConfig,
-    setConfig: (newConfig: TutimConfig) => setStateConfig(mergeTutimConfigs(stateConfig, newConfig)),
-  };
+  const [stateOptions, setStateOptions] = React.useState(options);
+  const setOptions = (newOptions: TutimOptions) => setStateOptions(mergeTutimOptions(stateOptions, newOptions));
+  const configContextValue = { options: stateOptions, setOptions };
+  useRemoteSchemas(configContextValue);
+
   return (
     <FieldComponentsContext.Provider value={fieldComponents}>
-      <TutimConfigContext.Provider value={configContextValue}>{children}</TutimConfigContext.Provider>
+      <TutimOptionsContext.Provider value={configContextValue}>{children}</TutimOptionsContext.Provider>
     </FieldComponentsContext.Provider>
   );
 };

@@ -1,10 +1,10 @@
 import { FieldConfig, InputType, PartialFieldConfig } from '@tutim/types';
 import { getExistsMap } from '../../utils';
-import { useTutimConfig } from '../../context';
+import { useTutimOptions } from '../../context';
 
 export const useFormConfig = (formId: string) => {
-  const { config } = useTutimConfig();
-  return config.formConfigs[formId];
+  const { options } = useTutimOptions();
+  return options.forms[formId];
 };
 
 export const getFieldConfigsDefaults = (partialConfigs: PartialFieldConfig[]): FieldConfig[] => {

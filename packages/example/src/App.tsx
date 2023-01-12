@@ -18,11 +18,13 @@ import {
   DeepNested,
   Builder,
   ControlledForm,
+  SchemaServe,
 } from './Forms';
 import formConfig from './basic.json';
 
-const config = {
-  formConfigs: { ['form-config-1337']: formConfig },
+const contextOptions = {
+  clientId: '5',
+  forms: { ['form-config-1337']: formConfig },
 };
 
 const examples: Record<string, () => JSX.Element> = {
@@ -42,12 +44,13 @@ const examples: Record<string, () => JSX.Element> = {
   DeepNested: DeepNested,
   Builder: Builder,
   ControlledForm: ControlledForm,
+  SchemaServe: SchemaServe,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
 
 function App(): React.ReactNode {
-  const [exampleKey, setExample] = React.useState(options[14].value);
+  const [exampleKey, setExample] = React.useState(options[16].value);
   const Example = examples[exampleKey];
 
   return (
@@ -62,7 +65,7 @@ function App(): React.ReactNode {
           }}
         />
       </div>
-      <FormProvider fieldComponents={defaultFields} config={config}>
+      <FormProvider fieldComponents={defaultFields} options={contextOptions}>
         {<Example />}
       </FormProvider>
     </div>
