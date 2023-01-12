@@ -35,7 +35,9 @@ export const useRemoteSchemas = ({ options, setOptions }: TutimOptionsProviderVa
   const { clientId } = options;
   React.useEffect(() => {
     if (clientId) {
-      request({ clientId, url: 'schemas' }).then(setOptions);
+      request({ clientId, url: 'schemas' })
+        .then(setOptions)
+        .catch(() => console.error('failed to fetch remote schemas'));
     }
   }, [clientId]);
 };

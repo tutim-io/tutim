@@ -6,7 +6,8 @@ import { Button } from '../Buttons';
 
 interface FormProps {
   onSubmit: OnSubmit;
-  config: PartialFormConfig;
+  formId?: string;
+  config?: PartialFormConfig;
   initialValues?: Record<string, any>;
 }
 interface FormViewProps {
@@ -71,8 +72,9 @@ export const FormView = ({ form, onSubmit }: FormViewProps): JSX.Element => {
  * export default App;
  * ```
  */
-export const Form = ({ config, onSubmit, initialValues }: FormProps): JSX.Element => {
-  const form = useForm(config);
+export const Form = ({ formId, config, onSubmit, initialValues }: FormProps): JSX.Element => {
+  const form = useForm(formId || config || '');
+  if (!formId && !config) return <p>Error in loading form</p>;
   if (form.error) return <p>Error in loading form</p>;
   form.useFormInit(async () => initialValues);
 

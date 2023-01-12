@@ -17,5 +17,5 @@ const config = {
 };
 
 export const SchemaServe = (): JSX.Element => {
-  return <Form onSubmit={console.log} config={config} />;
+  return <Form onSubmit={console.log} formId={'1'} />;
 };
