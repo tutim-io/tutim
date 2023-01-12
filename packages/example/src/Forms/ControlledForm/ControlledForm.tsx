@@ -191,13 +191,15 @@ const baseStateConfig = {
 };
 
 export const ControlledForm = (): JSX.Element => {
-  const [stateConfig, setStateConfig] = React.useState({ fields: [] });
-  const form = useForm(config, stateConfig);
+  const [stateConfig, setStateConfig] = React.useState(config);
+  const form = useForm(stateConfig, { resetOptions: { keepValues: true } });
   if (form.error) return <p>Error in form</p>;
 
   const { reset, getValues, schema } = form;
   const changeState = () => {
-    setStateConfig({ fields: [{ ...baseStateConfig, label: `Name random ${Math.random()}` }] } as any);
+    setStateConfig({
+      fields: [...config.fields, { ...baseStateConfig, label: `Name random ${Math.random()}` }],
+    } as any);
   };
   return (
     <div>

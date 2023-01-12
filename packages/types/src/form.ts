@@ -1,4 +1,4 @@
-import { UseFormReturn as RHFUseFormReturn } from 'react-hook-form';
+import { UseFormReturn as RHFUseFormReturn, UseFormProps as RHFUseFormProps } from 'react-hook-form';
 
 /**
  * input field types, can add any input that you want and register with `FormProvider` or use with `Custom` `inputType` and `Field` prop.
@@ -237,3 +237,4 @@ export interface TutimFormReturn {
 }
 
 export type UseFormReturn = RHFUseFormReturn<any> & TutimFormReturn;
+export type UseFormOptions = RHFUseFormProps<any>;
