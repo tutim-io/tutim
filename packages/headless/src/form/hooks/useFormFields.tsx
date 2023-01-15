@@ -26,11 +26,9 @@ export const useFormFields = (
   formValue: Record<string, any>
 ): FieldsByKey => {
   const fieldComponents = useFieldComponents();
-  if (!Object.keys(fieldComponents || {}).length) {
-    throw new Error('fieldComponents is required, use `<FormProvider fieldComponents={...}`');
-  }
 
   const Field = getField(control, fieldComponents);
+  if (!Field) throw new Error('fieldComponents is required, use `<FormProvider fieldComponents={...}`');
 
   const configsToMap = (configs: FieldConfig[]) => {
     const flatConfigs = configToFlatConfigs(configs);

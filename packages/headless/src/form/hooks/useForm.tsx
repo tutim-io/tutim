@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm as RHFuseForm } from 'react-hook-form';
-import { PartialFormConfig, UseFormReturn } from '@tutim/types';
+import { PartialFormConfig, UseFormOptions, UseFormReturn } from '@tutim/types';
 import { getFieldsFromMap } from '../utils';
 import { getUseFormInit } from './useFormInit';
 import { useDisplayIfLogic } from './useRenderLogic';
-import { getDefaults, getFieldConfigs } from './useFormConfig';
+import { getDefaults, getFieldConfigs, useFormConfig } from './useFormConfig';
 import { useFormFields } from './useFormFields';
 import { useFormLayout } from './useFormLayout';
 
@@ -43,16 +43,14 @@ import { useFormLayout } from './useFormLayout';
  * };
  * ```
  */
-export const useForm = (
-  baseConfig: PartialFormConfig,
-  stateConfig: PartialFormConfig = { fields: [] }
-): UseFormReturn => {
+export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFormOptions): UseFormReturn => {
   try {
-    const fieldConfigs = getFieldConfigs(baseConfig.fields, stateConfig.fields);
-    const formConfig = { ...baseConfig, fields: fieldConfigs };
+    const config = useFormConfig(baseConfig);
+    const fieldConfigs = getFieldConfigs(config.fields, []);
+    const formConfig = { ...config, fields: fieldConfigs };
     const defaultValues = getDefaults(fieldConfigs);
 
-    const { control, setValue, watch, getValues, ...form } = RHFuseForm({ defaultValues });
+    const { control, setValue, watch, getValues, ...form } = RHFuseForm({ ...options, defaultValues });
     useDisplayIfLogic(watch, fieldConfigs);
 
     const useFormInit = React.useMemo(() => getUseFormInit(setValue), [setValue]);

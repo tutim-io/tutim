@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from '@tutim/fields';
-import { useFormConfig, useTutimConfig } from '@tutim/headless';
+import { useFormConfig, useTutimOptions } from '@tutim/headless';
 import { getDataAsync } from '../../utils';
 
 export const BasicConfigProvider = ({ formId }: { formId: string }): JSX.Element => {
@@ -12,7 +12,7 @@ export const BasicConfigProvider = ({ formId }: { formId: string }): JSX.Element
 
 export const ConfigProvider = (): JSX.Element => {
   const [formId, setFormId] = React.useState('form-config-1337');
-  const { setConfig } = useTutimConfig();
+  const { setOptions } = useTutimOptions();
 
   React.useEffect(() => {
     getDataAsync().then((data) => {
@@ -25,7 +25,7 @@ export const ConfigProvider = (): JSX.Element => {
           },
         ],
       };
-      setConfig({ formConfigs: { ['form-config-async-1337']: config } });
+      setOptions({ forms: { ['form-config-async-1337']: config } });
     });
   }, []);
 

@@ -1,4 +1,4 @@
-import { UseFormReturn as RHFUseFormReturn } from "react-hook-form";
+import { UseFormReturn as RHFUseFormReturn, UseFormProps as RHFUseFormProps } from 'react-hook-form';
 
 /**
  * input field types, can add any input that you want and register with `FormProvider` or use with `Custom` `inputType` and `Field` prop.
@@ -8,20 +8,20 @@ import { UseFormReturn as RHFUseFormReturn } from "react-hook-form";
  **/
 
 export enum InputType {
-  Text = "text",
-  Select = "select",
-  Radio = "radio",
-  Switch = "switch",
-  Checkbox = "checkbox",
-  Number = "number",
-  Date = "date",
-  Password = "password",
-  TextArea = "text-area",
-  Json = "json",
-  MultiText = "multi-text",
-  Nested = "nested",
-  Array = "array",
-  Custom = "custom",
+  Text = 'text',
+  Select = 'select',
+  Radio = 'radio',
+  Switch = 'switch',
+  Checkbox = 'checkbox',
+  Number = 'number',
+  Date = 'date',
+  Password = 'password',
+  TextArea = 'text-area',
+  Json = 'json',
+  MultiText = 'multi-text',
+  Nested = 'nested',
+  Array = 'array',
+  Custom = 'custom',
 }
 
 export interface Option {
@@ -45,8 +45,8 @@ interface FieldLogic {
 }
 
 export enum Operators {
-  EQUAL = "equal",
-  IN = "in",
+  EQUAL = 'equal',
+  IN = 'in',
 }
 
 export interface MultiConfig {
@@ -73,12 +73,12 @@ export interface FieldConfig {
   validations?: Record<string, Validation | undefined>;
   logic?: FieldLogic;
   Field?: Field;
-  children?: Pick<FormConfig, "fields">;
+  children?: Pick<FormConfig, 'fields'>;
 }
 
 export interface InputProps {
   value: any;
-  onChange: (newValue: InputProps["value"]) => void;
+  onChange: (newValue: InputProps['value']) => void;
 }
 
 export interface InputState {
@@ -133,12 +133,12 @@ export interface LayoutGroupConfigsGroup {
   fieldKeys: string[];
   title?: string;
   subGroups?: LayoutGroupConfigs;
-  layout?: Pick<FormLayout, "fieldsPerRow">;
+  layout?: Pick<FormLayout, 'fieldsPerRow'>;
 }
 
 export interface LayoutGroupConfigs {
   groups?: LayoutGroupConfigsGroup[];
-  layout?: Record<string, Pick<FormLayout, "fieldsPerRow">>;
+  layout?: Record<string, Pick<FormLayout, 'fieldsPerRow'>>;
 }
 
 export interface LayoutArrayConfig {
@@ -163,8 +163,7 @@ export interface FormLogic {
   submissionPage?: { allowResubmit?: boolean };
 }
 
-export type PartialFieldConfig = Partial<FieldConfig> &
-  Pick<FieldConfig, "key">;
+export type PartialFieldConfig = Partial<FieldConfig> & Pick<FieldConfig, 'key'>;
 
 /**
  * form configuration
@@ -207,16 +206,17 @@ export interface MultiProps {
 
 export type FieldComponents = Record<string, Field>;
 
-export interface TutimConfig {
-  formConfigs: Record<string, FormConfig>;
+export interface TutimOptions {
+  forms: Record<string, FormConfig>;
+  clientId?: string;
 }
-export interface TutimConfigProvider {
-  config: TutimConfig;
-  setConfig: (config: TutimConfig) => void;
+export interface TutimOptionsProviderValue {
+  options: TutimOptions;
+  setOptions: (config: TutimOptions) => void;
 }
 export interface FormProviderProps {
-  fieldComponents: FieldComponents;
-  config?: TutimConfig;
+  fieldComponents?: FieldComponents;
+  options?: Partial<TutimOptions>;
   children: React.ReactNode;
 }
 
@@ -224,9 +224,7 @@ export type FieldsByKey = Record<string, React.ReactNode>;
 
 export type OnSubmit = (values: { data: any; schema: FormConfig }) => void;
 
-export type UseFormInit = (
-  getData: () => Promise<Record<string, any> | undefined>
-) => boolean;
+export type UseFormInit = (getData: () => Promise<Record<string, any> | undefined>) => boolean;
 
 export interface TutimFormReturn {
   schema: FormConfig;
@@ -239,3 +237,4 @@ export interface TutimFormReturn {
 }
 
 export type UseFormReturn = RHFUseFormReturn<any> & TutimFormReturn;
+export type UseFormOptions = RHFUseFormProps<any>;
