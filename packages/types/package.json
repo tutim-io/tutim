@@ -24,7 +24,6 @@
   },
   "main": "./src/index.ts",
   "module": "./src/index.ts",
-  "types": "./src/index.ts",
   "keywords": [
     "form",
     "form-builder",

@@ -216,7 +216,7 @@ export interface TutimOptionsProviderValue {
 }
 export interface FormProviderProps {
   fieldComponents?: FieldComponents;
-  options?: TutimOptions;
+  options?: Partial<TutimOptions>;
   children: React.ReactNode;
 }
 
