@@ -1,7 +1,7 @@
 import React from 'react';
 import { TutimOptionsProviderValue } from '@tutim/types';
 
-const API_BASE_URL = 'http://localhost/api/v0/pb';
+const API_BASE_URL = 'https://api.tutim.io/api/v0/pb';
 
 const parseResponseJson = async (rawResponse) => {
   try {

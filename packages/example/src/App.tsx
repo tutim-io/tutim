@@ -23,7 +23,7 @@ import {
 import formConfig from './basic.json';
 
 const contextOptions = {
-  clientId: '5',
+  clientId: '2',
   forms: { ['form-config-1337']: formConfig },
 };
 
