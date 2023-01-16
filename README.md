@@ -37,7 +37,7 @@ This repo is 100% free, and will always remain.
 
 [**Sandbox Example »**](https://codesandbox.io/s/tutim-examples-5ny73h?file=/src/App.tsx)
 
-[**Get Started »**](https://app.tutim.io/)
+[**Admin Portal & Builder »**](https://app.tutim.io/)
 
 Create your first form in 2 minutes, by following these steps:
 
@@ -321,10 +321,8 @@ If you are getting any errors, facing problems, or need a new feature while work
 ### 🔗 Links
 
 - [Home page](https://tutim.io)
-  <<<<<<< HEAD
-- # [Builder](https://app.tutim.io)
+- [Portal](https://app.tutim.io)
 - [Admin Portal](https://app.tutim.io)
-  > > > > > > > 6708b3fee216babdb184db9ed68ff68043bfa68f
 - [Discord community](https://discord.tutim.io)
 - [Twitter](https://twitter.com/Tutim_io)
 - [Contribution Guidelines](https://tutim.io/contribute)
