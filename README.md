@@ -321,7 +321,6 @@ If you are getting any errors, facing problems, or need a new feature while work
 ### 🔗 Links
 
 - [Home page](https://tutim.io)
-- [Portal](https://app.tutim.io)
 - [Admin Portal](https://app.tutim.io)
 - [Discord community](https://discord.tutim.io)
 - [Twitter](https://twitter.com/Tutim_io)
