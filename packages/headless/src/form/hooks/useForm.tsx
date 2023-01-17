@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm as RHFuseForm } from 'react-hook-form';
-import { PartialFormConfig, UseFormOptions, UseFormReturn } from '@tutim/types';
+import { OnSubmit, PartialFormConfig, UseFormOptions, UseFormReturn } from '@tutim/types';
 import { getFieldsFromMap } from '../utils';
 import { getUseFormInit } from './useFormInit';
 import { useDisplayIfLogic } from './useRenderLogic';
@@ -50,10 +50,12 @@ export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFor
     const formConfig = { ...config, fields: fieldConfigs };
     const defaultValues = getDefaults(fieldConfigs);
 
-    const { control, setValue, watch, getValues, ...form } = RHFuseForm({ ...options, defaultValues });
+    const { control, setValue, watch, getValues, handleSubmit, ...form } = RHFuseForm({ ...options, defaultValues });
     useDisplayIfLogic(watch, fieldConfigs);
 
     const useFormInit = React.useMemo(() => getUseFormInit(setValue), [setValue]);
+    const nativeSubmit = (onSubmit: OnSubmit) => handleSubmit((data) => onSubmit({ data, schema: formConfig }));
+
     const fieldsByKey = useFormFields(control, { fields: fieldConfigs, layout: formConfig.layout }, getValues());
     const fields = getFieldsFromMap(fieldsByKey);
     const layout = useFormLayout(formConfig);
@@ -66,6 +68,7 @@ export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFor
       setValue,
       watch,
       getValues,
+      handleSubmit,
       fields,
       fieldsByKey,
       layout,
@@ -73,6 +76,7 @@ export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFor
       meta,
       schema: formConfig,
       useFormInit,
+      nativeSubmit,
     };
   } catch (error) {
     console.error(error);

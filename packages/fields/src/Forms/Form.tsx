@@ -27,9 +27,9 @@ const SuccessfulSubmission = ({ reset }: { reset: () => void }) => {
 };
 
 export const FormView = ({ form, onSubmit }: FormViewProps): JSX.Element => {
-  const { fieldsByKey, handleSubmit, formState, reset, layout, meta, logic, schema } = form;
+  const { fieldsByKey, nativeSubmit, formState, reset, layout, meta, logic } = form;
   const { isSubmitSuccessful } = formState;
-  const onControlledSubmit = handleSubmit((data) => onSubmit({ data, schema }));
+  const onControlledSubmit = nativeSubmit(onSubmit);
 
   if (isSubmitSuccessful && logic.submissionPage) return <SuccessfulSubmission reset={reset} />;
   return <FormElement onSubmit={onControlledSubmit} layout={layout} meta={meta} fieldsByKey={fieldsByKey} />;
