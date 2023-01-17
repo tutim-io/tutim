@@ -56,11 +56,7 @@ const WizardLayout = ({ layout = {}, fieldsByKey }: Pick<FormProps, 'layout' | '
 };
 
 export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey }: FormProps) => {
-  const title = meta.title && (
-    <Typography variant="h5" mb={2}>
-      {meta.title}
-    </Typography>
-  );
+  const title = meta.title && <Typography variant="h5">{meta.title}</Typography>;
 
   const fields = layout.wizard ? (
     <WizardLayout layout={layout} fieldsByKey={fieldsByKey} />
