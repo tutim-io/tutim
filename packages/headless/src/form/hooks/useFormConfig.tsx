@@ -10,7 +10,7 @@ export const useFormConfig = (formIdOrConfig: PartialFormConfig | string): Parti
 
 export const getFieldConfigsDefaults = (partialConfigs: PartialFieldConfig[]): FieldConfig[] => {
   const mapConfigDefault = (partialConfig: PartialFieldConfig): FieldConfig => ({
-    inputType: partialConfig.inputType || InputType.Text,
+    type: partialConfig.type || InputType.Text,
     label: partialConfig.label ?? partialConfig.key,
     ...partialConfig,
   });
@@ -48,10 +48,10 @@ export const getFieldConfigs = (prevConfig: PartialFieldConfig[], overrides: Par
 };
 
 export const getDefaults = (fieldConfigs: FieldConfig[]) => {
-  return fieldConfigs.reduce((prev: Record<string, any>, { key, defaultValue, children, inputType }) => {
-    if (inputType === InputType.Array) {
+  return fieldConfigs.reduce((prev: Record<string, any>, { key, defaultValue, children, type }) => {
+    if (type === InputType.Array) {
       prev[key] = [];
-    } else if (inputType === InputType.Nested && children) {
+    } else if (type === InputType.Nested && children) {
       prev[key] = getDefaults(children.fields);
     } else {
       prev[key] = defaultValue;

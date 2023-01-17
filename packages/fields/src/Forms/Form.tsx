@@ -50,8 +50,8 @@ export const FormView = ({ form, onSubmit }: FormViewProps): JSX.Element => {
  *
  * const config = {
  *   fields: [
- *     { key: 'firstName', label: 'First Name', inputType: 'text' },
- *     { key: 'lastName', label: 'Last Name', inputType: 'text' },
+ *     { key: 'firstName', label: 'First Name', type: 'text' },
+ *     { key: 'lastName', label: 'Last Name', type: 'text' },
  *   ],
  * };
  *

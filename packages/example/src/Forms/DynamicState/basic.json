@@ -4,21 +4,21 @@
       "key": "firstName",
       "label": "Name",
       "isDisabled": false,
-      "inputType": "text",
+      "type": "text",
       "isRequired": true
     },
     {
       "key": "lastName",
       "label": "Last Name",
       "isDisabled": false,
-      "inputType": "text",
+      "type": "text",
       "isRequired": true
     },
     {
       "key": "role",
       "label": "Role",
       "isDisabled": false,
-      "inputType": "select",
+      "type": "select",
       "options": [
         { "value": "admin", "label": "Administrator" },
         { "value": "viewer", "label": "Viewer" },

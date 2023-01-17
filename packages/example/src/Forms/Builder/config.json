@@ -54,14 +54,14 @@
     {
       "key": "fields",
       "label": "Fields",
-      "inputType": "array",
+      "type": "array",
       "defaultValue": [],
       "children": {
         "fields": [
           {
             "key": "key",
             "label": "Field Key",
-            "inputType": "text",
+            "type": "text",
             "isRequired": true,
             "validations": {
               "minLength": { "value": 5, "message": "Min 5" }
@@ -70,13 +70,13 @@
           {
             "key": "label",
             "label": "Display Name",
-            "inputType": "text",
+            "type": "text",
             "isRequired": true
           },
           {
-            "key": "inputType",
+            "key": "type",
             "label": "Input Type",
-            "inputType": "select",
+            "type": "select",
             "options": [
               {
                 "value": "array",
@@ -155,12 +155,12 @@
           {
             "key": "options",
             "label": "Options",
-            "inputType": "multi-text",
+            "type": "multi-text",
             "isRequired": true,
             "defaultValue": [],
             "logic": {
               "displayIf": {
-                "field": "$.inputType",
+                "field": "$.type",
                 "operator": "in",
                 "value": ["select", "radio"]
               }
@@ -169,10 +169,10 @@
           {
             "key": "defaultValue",
             "label": "Default Value",
-            "inputType": "text",
+            "type": "text",
             "logic": {
               "displayIf": {
-                "field": "$.inputType",
+                "field": "$.type",
                 "operator": "in",
                 "value": ["text", "select", "radio"]
               }
@@ -181,34 +181,34 @@
           {
             "key": "isRequired",
             "label": "Required",
-            "inputType": "checkbox"
+            "type": "checkbox"
           },
           {
             "key": "validate",
             "label": "Validate",
-            "inputType": "checkbox"
+            "type": "checkbox"
           },
           {
             "key": "validations",
             "label": "Validations",
-            "inputType": "nested",
+            "type": "nested",
             "children": {
               "fields": [
                 {
                   "key": "minLength",
                   "label": "Min Length",
-                  "inputType": "nested",
+                  "type": "nested",
                   "children": {
                     "fields": [
                       {
                         "key": "value",
                         "label": "Value",
-                        "inputType": "number"
+                        "type": "number"
                       },
                       {
                         "key": "message",
                         "label": "Message",
-                        "inputType": "text"
+                        "type": "text"
                       }
                     ]
                   }
@@ -216,18 +216,18 @@
                 {
                   "key": "maxLength",
                   "label": "Max Length",
-                  "inputType": "nested",
+                  "type": "nested",
                   "children": {
                     "fields": [
                       {
                         "key": "value",
                         "label": "Value",
-                        "inputType": "number"
+                        "type": "number"
                       },
                       {
                         "key": "message",
                         "label": "Message",
-                        "inputType": "text"
+                        "type": "text"
                       }
                     ]
                   }
@@ -235,19 +235,19 @@
                 {
                   "key": "pattern",
                   "label": "Pattern",
-                  "inputType": "nested",
+                  "type": "nested",
                   "isRequired": true,
                   "children": {
                     "fields": [
                       {
                         "key": "value",
                         "label": "Value",
-                        "inputType": "text"
+                        "type": "text"
                       },
                       {
                         "key": "message",
                         "label": "Message",
-                        "inputType": "text"
+                        "type": "text"
                       }
                     ]
                   }
@@ -265,31 +265,31 @@
           {
             "key": "children",
             "label": "Children",
-            "inputType": "nested",
+            "type": "nested",
             "children": {
               "fields": [
                 {
                   "key": "fields",
                   "label": "Nested Fields",
-                  "inputType": "array",
+                  "type": "array",
                   "children": {
                     "fields": [
                       {
                         "key": "key",
                         "label": "Field Key",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       },
                       {
                         "key": "label",
                         "label": "Display Name",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       },
                       {
-                        "key": "inputType",
+                        "key": "type",
                         "label": "Input Type",
-                        "inputType": "select",
+                        "type": "select",
                         "options": [
                           {
                             "value": "checkbox",
@@ -326,12 +326,12 @@
                       {
                         "key": "options",
                         "label": "Options",
-                        "inputType": "multi-text",
+                        "type": "multi-text",
                         "isRequired": true,
                         "defaultValue": [],
                         "logic": {
                           "displayIf": {
-                            "field": "$.inputType",
+                            "field": "$.type",
                             "operator": "in",
                             "value": ["select", "radio"]
                           }
@@ -340,10 +340,10 @@
                       {
                         "key": "defaultValue",
                         "label": "Default Value",
-                        "inputType": "text",
+                        "type": "text",
                         "logic": {
                           "displayIf": {
-                            "field": "$.inputType",
+                            "field": "$.type",
                             "operator": "in",
                             "value": ["text", "select", "radio"]
                           }
@@ -352,34 +352,34 @@
                       {
                         "key": "isRequired",
                         "label": "Required",
-                        "inputType": "checkbox"
+                        "type": "checkbox"
                       },
                       {
                         "key": "validate",
                         "label": "Validate",
-                        "inputType": "checkbox"
+                        "type": "checkbox"
                       },
                       {
                         "key": "validations",
                         "label": "ValidationsNested",
-                        "inputType": "nested",
+                        "type": "nested",
                         "children": {
                           "fields": [
                             {
                               "key": "minLength",
                               "label": "Min Length",
-                              "inputType": "nested",
+                              "type": "nested",
                               "children": {
                                 "fields": [
                                   {
                                     "key": "value",
                                     "label": "Value",
-                                    "inputType": "number"
+                                    "type": "number"
                                   },
                                   {
                                     "key": "message",
                                     "label": "Message",
-                                    "inputType": "text"
+                                    "type": "text"
                                   }
                                 ]
                               }
@@ -387,18 +387,18 @@
                             {
                               "key": "maxLength",
                               "label": "Max Length",
-                              "inputType": "nested",
+                              "type": "nested",
                               "children": {
                                 "fields": [
                                   {
                                     "key": "value",
                                     "label": "Value",
-                                    "inputType": "number"
+                                    "type": "number"
                                   },
                                   {
                                     "key": "message",
                                     "label": "Message",
-                                    "inputType": "text"
+                                    "type": "text"
                                   }
                                 ]
                               }
@@ -406,19 +406,19 @@
                             {
                               "key": "pattern",
                               "label": "Pattern",
-                              "inputType": "nested",
+                              "type": "nested",
                               "isRequired": true,
                               "children": {
                                 "fields": [
                                   {
                                     "key": "value",
                                     "label": "Value",
-                                    "inputType": "text"
+                                    "type": "text"
                                   },
                                   {
                                     "key": "message",
                                     "label": "Message",
-                                    "inputType": "text"
+                                    "type": "text"
                                   }
                                 ]
                               }
@@ -440,7 +440,7 @@
             },
             "logic": {
               "displayIf": {
-                "field": "$.inputType",
+                "field": "$.type",
                 "operator": "in",
                 "value": ["nested", "array"]
               }
@@ -453,29 +453,29 @@
     {
       "key": "layout",
       "label": "Layout",
-      "inputType": "nested",
+      "type": "nested",
       "children": {
         "fields": [
           {
             "key": "submitLabel",
             "label": "Submit Label",
-            "inputType": "text"
+            "type": "text"
           },
           {
             "key": "wizard",
             "label": "Display As Wizard",
-            "inputType": "checkbox"
+            "type": "checkbox"
           },
           {
             "key": "style",
             "label": "Style",
-            "inputType": "nested",
+            "type": "nested",
             "children": {
               "fields": [
                 {
                   "key": "backgroundColor",
                   "label": "Background Color",
-                  "inputType": "select",
+                  "type": "select",
                   "options": [
                     { "label": "Default", "value": "unset" },
                     { "label": "Black", "value": "black" }
@@ -490,13 +490,13 @@
     {
       "key": "logic",
       "label": "Logic",
-      "inputType": "nested",
+      "type": "nested",
       "children": {
         "fields": [
           {
             "key": "submissionPage",
             "label": "Display Submission Page",
-            "inputType": "checkbox"
+            "type": "checkbox"
           }
         ]
       }

@@ -7,7 +7,7 @@ const additionalField = {
   key: 'additional',
   label: 'Additional Name',
   isDisabled: false,
-  inputType: 'text',
+  type: 'text',
   isRequired: true,
 };
 
@@ -15,7 +15,7 @@ const overrideField = {
   key: 'lastName',
   label: 'Last Name Changed',
   isDisabled: true,
-  inputType: 'text',
+  type: 'text',
   isRequired: true,
 };
 

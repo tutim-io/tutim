@@ -36,13 +36,13 @@ const config: FormConfig = {
     {
       key: 'app',
       label: 'Application',
-      inputType: 'text',
+      type: 'text',
       defaultValue: 'admin',
     },
     {
       key: 'hobbies',
       label: 'Hobbies',
-      inputType: 'multi-text',
+      type: 'multi-text',
       isRequired: true,
       logic: {
         displayIf: { field: 'app', operator: 'equal', value: 'admin' },
@@ -51,20 +51,20 @@ const config: FormConfig = {
     {
       key: 'kids',
       label: 'Kids',
-      inputType: 'array',
+      type: 'array',
       children: {
         fields: [
           {
             key: 'firstName',
             label: 'First Name',
-            inputType: 'text',
+            type: 'text',
             defaultValue: 'name',
             isRequired: true,
           },
           {
             key: 'lastName',
             label: 'Last Name',
-            inputType: 'text',
+            type: 'text',
             logic: {
               displayIf: { field: '$.firstName', operator: 'equal', value: 'nameo' },
             },
@@ -72,7 +72,7 @@ const config: FormConfig = {
           {
             key: 'favColor',
             label: 'Favourite Color',
-            inputType: 'text',
+            type: 'text',
             logic: {
               displayIf: { field: 'app', operator: 'equal', value: 'admin' },
             },
@@ -80,20 +80,20 @@ const config: FormConfig = {
           {
             key: 'kidAddress',
             label: 'Kid Address',
-            inputType: 'nested',
+            type: 'nested',
             children: {
               fields: [
                 {
                   key: 'kcountry',
                   label: 'kCountry',
-                  inputType: 'text',
+                  type: 'text',
                   defaultValue: 'Germany',
                   isRequired: true,
                 },
                 {
                   key: 'kcity',
                   label: 'kCity',
-                  inputType: 'text',
+                  type: 'text',
                 },
               ],
             },
@@ -104,20 +104,20 @@ const config: FormConfig = {
     {
       key: 'address',
       label: 'Address',
-      inputType: 'nested',
+      type: 'nested',
       children: {
         fields: [
           {
             key: 'country',
             label: 'Country',
-            inputType: 'text',
+            type: 'text',
             defaultValue: 'Germany',
             isRequired: true,
           },
           {
             key: 'city',
             label: 'City',
-            inputType: 'text',
+            type: 'text',
             logic: {
               displayIf: { field: 'address.country', operator: 'equal', value: 'israel' },
             },

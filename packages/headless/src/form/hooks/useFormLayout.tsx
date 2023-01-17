@@ -7,13 +7,13 @@ import {
   LayoutGroupConfigsGroup,
 } from '@tutim/types';
 
-const isNestedField = (config: FieldConfig) => config.inputType === InputType.Nested;
+const isNestedField = (config: FieldConfig) => config.type === InputType.Nested;
 
 // Create a group configuration for a field.
 // If the field has children, the group will include
 // the children's keys in its `fieldKeys` array.
-const createGroupForField = ({ key, label, children, inputType }: FieldConfig): LayoutGroupConfigsGroup => {
-  if (!children || inputType === InputType.Array) return { key, fieldKeys: [key] };
+const createGroupForField = ({ key, label, children, type }: FieldConfig): LayoutGroupConfigsGroup => {
+  if (!children || type === InputType.Array) return { key, fieldKeys: [key] };
 
   // Create a list of field keys for the children of the field.
   const fieldKeys = children.fields.map((child) => `${key}.${child.key}`);

@@ -62,8 +62,8 @@ import { FormProvider } from '@tutim/headless';
 const config = {
   // Use https://tutim.io to create and manage rich schemas with no-code
   fields: [
-    { key: 'firstName', label: 'First Name', inputType: 'text' },
-    { key: 'lastName', label: 'Last Name', inputType: 'text' },
+    { key: 'firstName', label: 'First Name', type: 'text' },
+    { key: 'lastName', label: 'Last Name', type: 'text' },
   ],
 };
 
@@ -100,8 +100,8 @@ import { Form, defaultFields } from '@tutim/fields';
 
 const config = {
   fields: [
-    { key: 'firstName', label: 'First Name', inputType: 'text' },
-    { key: 'lastName', label: 'Last Name', inputType: 'text' },
+    { key: 'firstName', label: 'First Name', type: 'text' },
+    { key: 'lastName', label: 'Last Name', type: 'text' },
   ],
 };
 
@@ -133,8 +133,8 @@ import { FormProvider, useForm } from '@tutim/headless';
 
 const config = {
   fields: [
-    { key: 'firstName', label: 'First Name', inputType: 'text' },
-    { key: 'lastName', label: 'Last Name', inputType: 'text' },
+    { key: 'firstName', label: 'First Name', type: 'text' },
+    { key: 'lastName', label: 'Last Name', type: 'text' },
   ],
 };
 
@@ -173,8 +173,8 @@ import { Field, FieldComponents, InputType } from '@tutim/types';
 
 const config = {
   fields: [
-    { key: 'firstName', label: 'First Name', inputType: 'text', defaultValue: 'first' },
-    { key: 'lastName', label: 'Last Name', inputType: 'text' },
+    { key: 'firstName', label: 'First Name', type: 'text', defaultValue: 'first' },
+    { key: 'lastName', label: 'Last Name', type: 'text' },
   ],
 };
 
@@ -213,7 +213,7 @@ export default App;
 
 BYOF - Bring Your Own Field. Use `Field` type to register any type of field. Can be used on `FormProvider` level for global inputs or withing `FieldConfig` for local use cases
 
-`CustomField` is a component that allows you to define custom form fields that can be used in your react application. You can use it to render any type of form field that you want, based on the `inputType` specified in the field configuration.
+`CustomField` is a component that allows you to define custom form fields that can be used in your react application. You can use it to render any type of form field that you want, based on the `type` specified in the field configuration.
 
 `CustomField` can be used either globally, by specifying it in the `fieldComponents` object passed to the `FormProvider` component, or locally, by specifying the `Field` prop in the field configuration when creating a form.
 
@@ -233,7 +233,7 @@ export const CustomField: Field = ({ inputProps, fieldConfig }) => {
 export const customFieldConfig: FieldConfig = {
   key: 'clicker',
   label: 'Click Me',
-  inputType: 'custom',
+  type: 'custom',
   defaultValue: 0,
   Field: CustomField,
 };
@@ -262,7 +262,7 @@ const fieldComponents: FieldComponents = {
   ...defaultFields, // optional built in input fields based on MUI
   [InputType.Text]: ({ inputProps }) => <input {...inputProps} />,
   'custom-field': (fieldProps) => <CustomField {...fieldProps} />,
-  // add any type of input and reference it by 'inputType'
+  // add any type of input and reference it by 'type'
 };
 
 const App = (): JSX.Element => {
