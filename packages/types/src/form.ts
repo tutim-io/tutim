@@ -242,6 +242,7 @@ export interface TutimFormReturn {
   logic: FormLogic;
   meta: FormMeta;
   useFormInit: UseFormInit;
+  nativeSubmit: (onSubmit: OnSubmit) => React.FormEventHandler<HTMLFormElement>;
   error?: unknown;
 }
 
