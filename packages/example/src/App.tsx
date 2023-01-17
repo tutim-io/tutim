@@ -19,6 +19,7 @@ import {
   Builder,
   ControlledForm,
   SchemaServe,
+  FormMeta,
 } from './Forms';
 import formConfig from './basic.json';
 
@@ -45,12 +46,13 @@ const examples: Record<string, () => JSX.Element> = {
   Builder: Builder,
   ControlledForm: ControlledForm,
   SchemaServe: SchemaServe,
+  FormMeta: FormMeta,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
 
 function App(): React.ReactNode {
-  const [exampleKey, setExample] = React.useState(options[16].value);
+  const [exampleKey, setExample] = React.useState(options[17].value);
   const Example = examples[exampleKey];
 
   return (
