@@ -1,15 +1,17 @@
 import React from 'react';
-import { FieldsByKey, FormLayout } from '@tutim/types';
+import { FieldsByKey, FormLayout, FormMeta } from '@tutim/types';
 import { FormGrid } from './FormGrid';
 import { SubmitButton } from '../Buttons';
 import { FormTabs } from '../Tabs';
 import { getFieldsFromMap } from '@tutim/headless';
 import { getGroupFields } from './getGroupFields';
+import { Typography } from '@mui/material';
 
 interface FormProps {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   fieldsByKey: FieldsByKey;
   layout?: FormLayout;
+  meta?: FormMeta;
 }
 
 const fieldsLayout = ({ layout = {}, fieldsByKey }: Pick<FormProps, 'layout' | 'fieldsByKey'>): React.ReactNode[] => {
@@ -53,14 +55,23 @@ const WizardLayout = ({ layout = {}, fieldsByKey }: Pick<FormProps, 'layout' | '
   );
 };
 
-export const FormElement = ({ onSubmit, layout = {}, fieldsByKey }: FormProps) => {
+export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey }: FormProps) => {
+  const title = meta.title && (
+    <Typography variant="h5" mb={2}>
+      {meta.title}
+    </Typography>
+  );
+
+  const fields = layout.wizard ? (
+    <WizardLayout layout={layout} fieldsByKey={fieldsByKey} />
+  ) : (
+    <FormGrid>{fieldsLayout({ layout, fieldsByKey })}</FormGrid>
+  );
+
   return (
     <form onSubmit={onSubmit} style={layout.style} noValidate>
-      {layout.wizard ? (
-        <WizardLayout layout={layout} fieldsByKey={fieldsByKey} />
-      ) : (
-        <FormGrid>{fieldsLayout({ layout, fieldsByKey })}</FormGrid>
-      )}
+      {title}
+      {fields}
     </form>
   );
 };

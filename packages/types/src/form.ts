@@ -144,6 +144,12 @@ export interface LayoutGroupConfigs {
 export interface LayoutArrayConfig {
   [key: string]: FormLayout;
 }
+
+export interface FormMeta {
+  title?: string;
+  description?: string;
+  version?: string;
+}
 export interface FormLayout {
   style?: any;
   wizard?: WizardLayout;
@@ -153,14 +159,14 @@ export interface FormLayout {
   submitLabel?: string;
 }
 
+export interface FormLogic {
+  submissionPage?: { allowResubmit?: boolean };
+}
+
 export enum FieldsPerRow {
   One = 1,
   Two = 2,
   Three = 3,
-}
-
-export interface FormLogic {
-  submissionPage?: { allowResubmit?: boolean };
 }
 
 export type PartialFieldConfig = Partial<FieldConfig> & Pick<FieldConfig, 'key'>;
@@ -172,10 +178,11 @@ export type PartialFieldConfig = Partial<FieldConfig> & Pick<FieldConfig, 'key'>
  * [API](https://docs.tutim.io/) • [Builder](https://tutim.io/)
  **/
 export interface FormConfig {
-  formId?: string;
   fields: FieldConfig[];
   layout?: FormLayout;
   logic?: FormLogic;
+  meta?: FormMeta;
+  id?: string;
 }
 
 /**
@@ -185,10 +192,11 @@ export interface FormConfig {
  * [API](https://docs.tutim.io/) • [Builder](https://tutim.io/)
  **/
 export interface PartialFormConfig {
-  formId?: string;
   fields: PartialFieldConfig[];
   layout?: FormLayout;
   logic?: FormLogic;
+  meta?: FormMeta;
+  id?: string;
 }
 
 export interface ArrayFieldsProps {
@@ -232,6 +240,7 @@ export interface TutimFormReturn {
   fieldsByKey: FieldsByKey;
   layout: FormLayout;
   logic: FormLogic;
+  meta: FormMeta;
   useFormInit: UseFormInit;
   error?: unknown;
 }

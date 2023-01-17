@@ -58,6 +58,7 @@ export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFor
     const fields = getFieldsFromMap(fieldsByKey);
     const layout = useFormLayout(formConfig);
     const logic = formConfig.logic || {};
+    const meta = formConfig.meta || {};
 
     return {
       ...form,
@@ -69,6 +70,7 @@ export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFor
       fieldsByKey,
       layout,
       logic,
+      meta,
       schema: formConfig,
       useFormInit,
     };
