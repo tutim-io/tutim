@@ -6,12 +6,12 @@ const config = {
     {
       key: 'firstName',
       label: 'First Name',
-      inputType: 'text',
+      type: 'text',
     },
     {
       key: 'lastName',
       label: 'Last Name',
-      inputType: 'text',
+      type: 'text',
     },
   ],
 };

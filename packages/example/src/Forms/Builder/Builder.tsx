@@ -5,33 +5,33 @@ const fields = [
   {
     key: 'test',
     label: 'Test',
-    inputType: 'array',
+    type: 'array',
     children: {
       fields: [
         {
           key: 'name',
           label: 'Name',
           defaultValue: 'nana',
-          inputType: 'text',
+          type: 'text',
           isRequired: true,
         },
         {
           key: 'nestedFields',
           label: 'Nested Fields',
-          inputType: 'nested',
+          type: 'nested',
           children: {
             fields: [
               {
                 key: 'nestedName',
                 label: 'nestedName',
                 defaultValue: 'nestedName',
-                inputType: 'text',
+                type: 'text',
                 isRequired: true,
               },
               {
                 key: 'arrayNested',
                 label: 'arrayNested',
-                inputType: 'array',
+                type: 'array',
                 isRequired: true,
                 children: {
                   fields: [
@@ -39,7 +39,7 @@ const fields = [
                       key: 'nestedFieldInArrayNested',
                       label: 'NestedKey',
                       defaultValue: 'jaja',
-                      inputType: 'text',
+                      type: 'text',
                       isRequired: true,
                       validations: { minLength: { value: 5, message: 'Min Length is 5 characters.' } },
                     },
@@ -47,7 +47,7 @@ const fields = [
                       key: 'nestedFieldInArrayNestedHidden',
                       label: 'NestedKeyHidden',
                       defaultValue: 'hidden',
-                      inputType: 'text',
+                      type: 'text',
                       isRequired: true,
                       validations: { minLength: { value: 5, message: 'Min Length is 5 characters.' } },
                       logic: {
@@ -67,7 +67,7 @@ const fields = [
         {
           key: 'nestedArray',
           label: 'Nested Array',
-          inputType: 'array',
+          type: 'array',
           defaultValue: [],
           children: {
             fields: [
@@ -75,30 +75,30 @@ const fields = [
                 key: 'field1',
                 label: 'NestedKey',
                 defaultValue: 'jaja',
-                inputType: 'text',
+                type: 'text',
                 isRequired: true,
               },
               {
                 key: 'validations',
                 label: 'Validations',
-                inputType: 'nested',
+                type: 'nested',
                 children: {
                   fields: [
                     {
                       key: 'minLength',
                       label: 'Min Length',
-                      inputType: 'nested',
+                      type: 'nested',
                       children: {
                         fields: [
                           {
                             key: 'value',
                             label: 'Value',
-                            inputType: 'number',
+                            type: 'number',
                           },
                           {
                             key: 'message',
                             label: 'Message',
-                            inputType: 'text',
+                            type: 'text',
                           },
                         ],
                       },
@@ -106,18 +106,18 @@ const fields = [
                     {
                       key: 'maxLength',
                       label: 'Max Length',
-                      inputType: 'nested',
+                      type: 'nested',
                       children: {
                         fields: [
                           {
                             key: 'value',
                             label: 'Value',
-                            inputType: 'number',
+                            type: 'number',
                           },
                           {
                             key: 'message',
                             label: 'Message',
-                            inputType: 'text',
+                            type: 'text',
                           },
                         ],
                       },
@@ -125,19 +125,19 @@ const fields = [
                     {
                       key: 'pattern',
                       label: 'Pattern',
-                      inputType: 'nested',
+                      type: 'nested',
                       isRequired: true,
                       children: {
                         fields: [
                           {
                             key: 'value',
                             label: 'Value',
-                            inputType: 'text',
+                            type: 'text',
                           },
                           {
                             key: 'message',
                             label: 'Message',
-                            inputType: 'text',
+                            type: 'text',
                           },
                         ],
                       },
@@ -148,20 +148,20 @@ const fields = [
               {
                 key: 'children',
                 label: 'Children',
-                inputType: 'text',
+                type: 'text',
                 children: {
                   fields: [
                     {
                       key: 'test',
                       label: 'Test',
-                      inputType: 'array',
+                      type: 'array',
                       children: {
                         fields: [
                           {
                             key: 'name',
                             label: 'Name',
                             defaultValue: 'nana',
-                            inputType: 'text',
+                            type: 'text',
                             isRequired: true,
                           },
                         ],

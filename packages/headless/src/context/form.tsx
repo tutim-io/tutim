@@ -34,7 +34,7 @@ const mergeTutimOptions = (options: Partial<TutimOptions>, newOptions: TutimOpti
  *   ...defaultFields, // optional built in input fields based on MUI
  *   text: ({ inputProps }) => <input {...inputProps} />,
  *   'custom-field': (fieldProps) => <CustomField {...fieldProps} />,
- *   // add any type of input and reference it by 'inputType'
+ *   // add any type of input and reference it by 'type'
  * };
  *
  * export const App = (): JSX.Element => {

@@ -21,7 +21,7 @@ export const ConfigProvider = (): JSX.Element => {
           {
             key: 'name',
             label: data.firstName,
-            inputType: 'text',
+            type: 'text',
           },
         ],
       };

@@ -22,9 +22,9 @@ import { useFormLayout } from './useFormLayout';
  * ```tsx
  *  const config = {
  *   fields: [
- *     { key: 'firstName', label: 'First Name', inputType: 'text', defaultValue: 'first' },
- *     { key: 'lastName', label: 'Last Name', inputType: 'text' },
- *     { key: 'clicker', label: 'Click Me', inputType: 'custom', defaultValue: 0, Field: CustomField },
+ *     { key: 'firstName', label: 'First Name', type: 'text', defaultValue: 'first' },
+ *     { key: 'lastName', label: 'Last Name', type: 'text' },
+ *     { key: 'clicker', label: 'Click Me', type: 'custom', defaultValue: 0, Field: CustomField },
  *   ],
  * };
  *

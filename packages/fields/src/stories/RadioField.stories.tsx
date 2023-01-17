@@ -12,7 +12,7 @@ const fieldConfig = {
   key: 'firstName',
   label: 'Field Display Name',
   isDisabled: false,
-  inputType: 'radio',
+  type: 'radio',
   isRequired: false,
   options: [
     { value: 'admin', label: 'Administrator' },

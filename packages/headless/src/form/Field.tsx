@@ -41,7 +41,7 @@ export const getField = (control: Control, fieldComponents: FieldComponents) => 
         control={control}
         rules={rules}
         render={({ field, fieldState }) => {
-          const Field = fieldConfig.Field || fieldComponents[fieldConfig.inputType];
+          const Field = fieldConfig.Field || fieldComponents[fieldConfig.type];
 
           return (
             <FieldRegistry control={control} fieldKey={fieldConfig.key}>

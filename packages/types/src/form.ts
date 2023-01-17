@@ -1,7 +1,7 @@
 import { UseFormReturn as RHFUseFormReturn, UseFormProps as RHFUseFormProps } from 'react-hook-form';
 
 /**
- * input field types, can add any input that you want and register with `FormProvider` or use with `Custom` `inputType` and `Field` prop.
+ * input field types, can add any input that you want and register with `FormProvider` or use with `Custom` `type` and `Field` prop.
  *
  * @remarks
  * [API](https://docs.tutim.io/) • [Builder](https://tutim.io/)
@@ -64,7 +64,7 @@ export interface MultiConfig {
  **/
 export interface FieldConfig {
   key: string;
-  inputType: string;
+  type: string;
   label?: string;
   isDisabled?: boolean;
   isRequired?: boolean;
@@ -116,7 +116,7 @@ export interface FieldProps {
  * export const customFieldConfig: FieldConfig = {
  *   key: 'clicker',
  *   label: 'Click Me',
- *   inputType: 'custom',
+ *   type: 'custom',
  *   defaultValue: 0,
  *   Field: CustomField,
  * };
