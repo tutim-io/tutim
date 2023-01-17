@@ -60,7 +60,7 @@ function App(): React.ReactNode {
       <div style={{ padding: '10px', borderBottom: '4px solid green', marginBottom: '30px' }}>
         <h3>Pick any form example</h3>
         <SelectField
-          fieldConfig={{ key: 'select', label: 'Example', inputType: 'select', options }}
+          fieldConfig={{ key: 'select', label: 'Example', type: 'select', options }}
           inputProps={{
             value: exampleKey,
             onChange: (e: any) => setExample(e.target.value),

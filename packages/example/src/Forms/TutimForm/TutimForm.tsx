@@ -16,7 +16,7 @@ const CustomField: Field = ({ inputProps }) => {
 const customField = {
   key: 'clicker',
   label: 'Click Me',
-  inputType: 'custom',
+  type: 'custom',
   defaultValue: 0,
   Field: CustomField,
 };

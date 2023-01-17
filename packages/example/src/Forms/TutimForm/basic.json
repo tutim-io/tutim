@@ -5,14 +5,14 @@
       "key": "firstName",
       "label": "First Name",
       "isDisabled": false,
-      "inputType": "text",
+      "type": "text",
       "isRequired": false
     },
     {
       "key": "lastName",
       "label": "Last Name",
       "isDisabled": false,
-      "inputType": "text",
+      "type": "text",
       "isRequired": false,
       "defaultValue": "no last"
     },
@@ -20,7 +20,7 @@
       "key": "role",
       "label": "Role",
       "isDisabled": false,
-      "inputType": "select",
+      "type": "select",
       "options": [
         { "value": "admin", "label": "Administrator" },
         { "value": "viewer", "label": "Viewer", "disabled": true },
@@ -33,7 +33,7 @@
       "key": "hosting",
       "label": "Hosting",
       "isDisabled": false,
-      "inputType": "radio",
+      "type": "radio",
       "options": [
         { "value": "self", "label": "Self-Host" },
         { "value": "cloud", "label": "Cloud", "disabled": true }
@@ -45,21 +45,21 @@
       "key": "agree",
       "label": "Agree to our terms and conditions",
       "isDisabled": false,
-      "inputType": "checkbox",
+      "type": "checkbox",
       "isRequired": false
     },
     {
       "key": "enable",
       "label": "Enable this feature",
       "isDisabled": false,
-      "inputType": "switch",
+      "type": "switch",
       "isRequired": false
     },
     {
       "key": "settings",
       "label": "User Settings",
       "isDisabled": false,
-      "inputType": "json",
+      "type": "json",
       "isRequired": false
     }
   ]

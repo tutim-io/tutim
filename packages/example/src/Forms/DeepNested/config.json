@@ -4,19 +4,19 @@
       "key": "fields",
       "label": "Fields",
       "defaultValue": [],
-      "inputType": "array",
+      "type": "array",
       "children": {
         "fields": [
           {
             "key": "label",
             "label": "Display Name",
-            "inputType": "text",
+            "type": "text",
             "isRequired": true
           },
           {
-            "key": "inputType",
+            "key": "type",
             "label": "Input Type",
-            "inputType": "select",
+            "type": "select",
             "options": [
               {
                 "value": "text",
@@ -75,18 +75,18 @@
           {
             "key": "key",
             "label": "Field Key",
-            "inputType": "text",
+            "type": "text",
             "isRequired": true
           },
           {
             "key": "options",
             "label": "Options",
-            "inputType": "multi-text",
+            "type": "multi-text",
             "isRequired": true,
             "defaultValue": [],
             "logic": {
               "displayIf": {
-                "field": "$.inputType",
+                "field": "$.type",
                 "operator": "in",
                 "value": ["select", "radio"]
               }
@@ -95,20 +95,20 @@
           {
             "key": "defaultValue",
             "label": "Default Value",
-            "inputType": "text"
+            "type": "text"
           },
           {
             "key": "isRequired",
             "label": "Required",
-            "inputType": "checkbox"
+            "type": "checkbox"
           },
           {
             "key": "children",
             "label": "Children",
-            "inputType": "custom",
+            "type": "custom",
             "logic": {
               "displayIf": {
-                "field": "$.inputType",
+                "field": "$.type",
                 "operator": "in",
                 "value": ["nested", "array"]
               }
@@ -118,26 +118,26 @@
           {
             "key": "validations",
             "label": "Validations",
-            "inputType": "nested",
+            "type": "nested",
             "children": {
               "fields": [
                 {
                   "key": "minLength",
                   "label": "Min Length",
-                  "inputType": "nested",
+                  "type": "nested",
                   "isRequired": true,
                   "children": {
                     "fields": [
                       {
                         "key": "value",
                         "label": "Value",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       },
                       {
                         "key": "message",
                         "label": "Message",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       }
                     ]
@@ -146,20 +146,20 @@
                 {
                   "key": "maxLength",
                   "label": "Max Length",
-                  "inputType": "nested",
+                  "type": "nested",
                   "isRequired": true,
                   "children": {
                     "fields": [
                       {
                         "key": "value",
                         "label": "Value",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       },
                       {
                         "key": "message",
                         "label": "Message",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       }
                     ]
@@ -168,20 +168,20 @@
                 {
                   "key": "pattern",
                   "label": "Patern",
-                  "inputType": "nested",
+                  "type": "nested",
                   "isRequired": true,
                   "children": {
                     "fields": [
                       {
                         "key": "value",
                         "label": "Value",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       },
                       {
                         "key": "message",
                         "label": "Message",
-                        "inputType": "text",
+                        "type": "text",
                         "isRequired": true
                       }
                     ]

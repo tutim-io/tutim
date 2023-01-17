@@ -28,36 +28,36 @@ const validationsConfig = {
     },
   },
   fields: [
-    { key: 'fieldName', label: 'Field name', inputType: 'text' },
+    { key: 'fieldName', label: 'Field name', type: 'text' },
     {
       key: 'validations',
       label: 'Validations',
-      inputType: 'nested',
+      type: 'nested',
       children: {
         fields: [
           {
             key: 'requiredMessage',
             label: 'Required Message',
-            inputType: 'text',
+            type: 'text',
             isRequired: true,
           },
           {
             key: 'minLength',
             label: 'Min Length',
-            inputType: 'nested',
+            type: 'nested',
             isRequired: true,
             children: {
               fields: [
                 {
                   key: 'value',
                   label: 'Value',
-                  inputType: 'text',
+                  type: 'text',
                   isRequired: true,
                 },
                 {
                   key: 'message',
                   label: 'Message',
-                  inputType: 'text',
+                  type: 'text',
                   isRequired: true,
                 },
               ],
@@ -66,20 +66,20 @@ const validationsConfig = {
           {
             key: 'maxLength',
             label: 'Max Length',
-            inputType: 'nested',
+            type: 'nested',
             isRequired: true,
             children: {
               fields: [
                 {
                   key: 'value',
                   label: 'Value',
-                  inputType: 'text',
+                  type: 'text',
                   isRequired: true,
                 },
                 {
                   key: 'message',
                   label: 'Message',
-                  inputType: 'text',
+                  type: 'text',
                   isRequired: true,
                 },
               ],
@@ -88,20 +88,20 @@ const validationsConfig = {
           {
             key: 'pattern',
             label: 'Patern',
-            inputType: 'nested',
+            type: 'nested',
             isRequired: true,
             children: {
               fields: [
                 {
                   key: 'value',
                   label: 'Value',
-                  inputType: 'text',
+                  type: 'text',
                   isRequired: true,
                 },
                 {
                   key: 'message',
                   label: 'Message',
-                  inputType: 'text',
+                  type: 'text',
                   isRequired: true,
                 },
               ],
@@ -113,25 +113,25 @@ const validationsConfig = {
     {
       key: 'validationFlat',
       label: 'Validations Flat',
-      inputType: 'array',
+      type: 'array',
       children: {
         fields: [
           {
             key: 'minLength',
             label: 'Min Length',
-            inputType: 'text',
+            type: 'text',
             isRequired: true,
           },
           {
             key: 'minLength3',
             label: 'Min Length3',
-            inputType: 'text',
+            type: 'text',
             isRequired: true,
           },
           {
             key: 'minLength4',
             label: 'Min Length4',
-            inputType: 'text',
+            type: 'text',
             isRequired: true,
           },
         ],

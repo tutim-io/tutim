@@ -12,7 +12,7 @@ const fieldConfig = {
   key: 'firstName',
   label: 'Field Display Name',
   isDisabled: false,
-  inputType: 'text',
+  type: 'text',
   isRequired: false,
 };
 

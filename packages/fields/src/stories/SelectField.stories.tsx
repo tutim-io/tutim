@@ -13,7 +13,7 @@ const fieldConfig = {
   key: 'firstName',
   label: 'Field Display Name',
   isDisabled: false,
-  inputType: 'select',
+  type: 'select',
   isRequired: false,
   options: [
     { value: 'admin', label: 'Administrator' },
