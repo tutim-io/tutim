@@ -27,7 +27,10 @@ export const getGroupFields = (formLayout: FormLayout, fieldsByKey: FieldsByKey)
             error={undefined}
             title={<span style={{ fontSize: '16px' }}>{group.title} </span>}
           >
-            <Box key={group.key} sx={{ p: 1, border: '1px dashed grey', display: 'block', paddingTop: '16px' }}>
+            <Box
+              key={group.key}
+              sx={{ p: 1, border: '1px dashed rgba(0, 0, 0, 0.1)', display: 'block', paddingTop: '16px' }}
+            >
               {fieldGroup}
             </Box>
           </FieldCollapse>
