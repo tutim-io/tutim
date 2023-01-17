@@ -15,7 +15,13 @@ export const ROW_SIZE = {
 
 export const FormGrid = ({ children, fieldsPerRow = FieldsPerRow.One }: GridProps): JSX.Element => {
   return (
-    <MuiGrid container spacing={{ xs: 2, md: 3 }} rowSpacing={3} columns={{ xs: 4, sm: 8, md: 12 }}>
+    <MuiGrid
+      container
+      sx={{ marginTop: '0px' }}
+      spacing={{ xs: 2, md: 3 }}
+      rowSpacing={2}
+      columns={{ xs: 4, sm: 8, md: 12 }}
+    >
       {children.map((child, index) => (
         <MuiGrid item xs={ROW_SIZE[fieldsPerRow]} key={index}>
           {child}

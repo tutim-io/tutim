@@ -19,7 +19,9 @@ export function FieldCollapse({ children, error, title }) {
   );
 
   return (
-    <Card sx={{ border: error ? '1px solid #dc3d3d99' : '1px solid rgba(211,211,211,0.6)' }}>
+    <Card
+      sx={{ border: error ? '1px solid #dc3d3d99' : '1px solid rgba(0, 0, 0, 0.1)', backgroundColor: 'transparent' }}
+    >
       <CardHeader
         sx={{ padding: '8px 16px', cursor: 'pointer', fontWeight: 300 }}
         title={title ?? 'Field'}

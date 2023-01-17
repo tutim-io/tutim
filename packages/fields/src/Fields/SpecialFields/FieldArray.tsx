@@ -21,7 +21,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
   const { onAdd, arrayFields, layout, error } = multiProps;
   const { key, label } = fieldConfig;
 
-  const fields = arrayFields.map(({ id, fieldsByKey, onDelete }, ix) => {
+  const arrayFieldsRender = arrayFields.map(({ id, fieldsByKey, onDelete }, ix) => {
     const fieldsLayout = getFieldsLayout({
       fieldsByKey: getRelativeFieldsByKey(fieldsByKey),
       layout,
@@ -38,7 +38,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
           </>
         }
       >
-        <Box key={id} sx={{ p: 2, border: '1px dashed grey', display: 'flex' }}>
+        <Box key={id} sx={{ p: 2, border: '1px dashed rgba(0, 0, 0, 0.1)', display: 'flex' }}>
           <FieldGroup>{fieldsLayout}</FieldGroup>
           <div style={{ width: '100px', display: 'flex', alignItems: 'baseline', justifyContent: 'end' }}>
             <DeleteButton key="remove" onClick={onDelete} />
@@ -53,7 +53,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <h3>{label}</h3>
       </div>
-      <FieldGroup>{fields}</FieldGroup>
+      <FieldGroup>{arrayFieldsRender}</FieldGroup>
       <div style={{ marginTop: '10px' }}>
         <AddButton onClick={onAdd} />
       </div>
