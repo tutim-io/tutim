@@ -54,7 +54,7 @@
                 "disabled": false
               },
               {
-                "value": "nested",
+                "value": "object",
                 "label": "NESTED",
                 "disabled": false
               },
@@ -110,7 +110,7 @@
               "displayIf": {
                 "field": "$.type",
                 "operator": "in",
-                "value": ["nested", "array"]
+                "value": ["object", "array"]
               }
             },
             "isRequired": true
@@ -118,13 +118,13 @@
           {
             "key": "validations",
             "label": "Validations",
-            "type": "nested",
+            "type": "object",
             "children": {
               "fields": [
                 {
                   "key": "minLength",
                   "label": "Min Length",
-                  "type": "nested",
+                  "type": "object",
                   "isRequired": true,
                   "children": {
                     "fields": [
@@ -146,7 +146,7 @@
                 {
                   "key": "maxLength",
                   "label": "Max Length",
-                  "type": "nested",
+                  "type": "object",
                   "isRequired": true,
                   "children": {
                     "fields": [
@@ -168,7 +168,7 @@
                 {
                   "key": "pattern",
                   "label": "Patern",
-                  "type": "nested",
+                  "type": "object",
                   "isRequired": true,
                   "children": {
                     "fields": [

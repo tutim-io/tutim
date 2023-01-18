@@ -32,7 +32,7 @@ const validationsConfig = {
     {
       key: 'validations',
       label: 'Validations',
-      type: 'nested',
+      type: 'object',
       children: {
         fields: [
           {
@@ -44,7 +44,7 @@ const validationsConfig = {
           {
             key: 'minLength',
             label: 'Min Length',
-            type: 'nested',
+            type: 'object',
             isRequired: true,
             children: {
               fields: [
@@ -66,7 +66,7 @@ const validationsConfig = {
           {
             key: 'maxLength',
             label: 'Max Length',
-            type: 'nested',
+            type: 'object',
             isRequired: true,
             children: {
               fields: [
@@ -88,7 +88,7 @@ const validationsConfig = {
           {
             key: 'pattern',
             label: 'Patern',
-            type: 'nested',
+            type: 'object',
             isRequired: true,
             children: {
               fields: [

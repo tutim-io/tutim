@@ -57,7 +57,7 @@ interface UseMulti {
 }
 
 export const useMultiField = ({ parentConfig, control, configsToMap, layoutConfig }: UseMulti) => {
-  if (!parentConfig.children) throw new Error('Only supports multi nested fields');
+  if (!parentConfig.children) throw new Error('Only supports multi object fields');
   const { fields, append, remove } = useFieldArray({ control, name: parentConfig.key });
   const { error } = control.getFieldState(parentConfig.key);
   const watchedKey = watchIfRelativeKeys(parentConfig);

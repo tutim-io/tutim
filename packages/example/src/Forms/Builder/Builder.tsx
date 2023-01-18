@@ -17,8 +17,8 @@ const fields = [
         },
         {
           key: 'nestedFields',
-          label: 'Nested Fields',
-          type: 'nested',
+          label: 'Object Fields',
+          type: 'object',
           children: {
             fields: [
               {
@@ -66,7 +66,7 @@ const fields = [
         },
         {
           key: 'nestedArray',
-          label: 'Nested Array',
+          label: 'Object Array',
           type: 'array',
           defaultValue: [],
           children: {
@@ -81,13 +81,13 @@ const fields = [
               {
                 key: 'validations',
                 label: 'Validations',
-                type: 'nested',
+                type: 'object',
                 children: {
                   fields: [
                     {
                       key: 'minLength',
                       label: 'Min Length',
-                      type: 'nested',
+                      type: 'object',
                       children: {
                         fields: [
                           {
@@ -106,7 +106,7 @@ const fields = [
                     {
                       key: 'maxLength',
                       label: 'Max Length',
-                      type: 'nested',
+                      type: 'object',
                       children: {
                         fields: [
                           {
@@ -125,7 +125,7 @@ const fields = [
                     {
                       key: 'pattern',
                       label: 'Pattern',
-                      type: 'nested',
+                      type: 'object',
                       isRequired: true,
                       children: {
                         fields: [

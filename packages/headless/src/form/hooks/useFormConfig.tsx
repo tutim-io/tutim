@@ -51,7 +51,7 @@ export const getDefaults = (fieldConfigs: FieldConfig[]) => {
   return fieldConfigs.reduce((prev: Record<string, any>, { key, defaultValue, children, type }) => {
     if (type === InputType.Array) {
       prev[key] = [];
-    } else if (type === InputType.Nested && children) {
+    } else if (type === InputType.Object && children) {
       prev[key] = getDefaults(children.fields);
     } else {
       prev[key] = defaultValue;
