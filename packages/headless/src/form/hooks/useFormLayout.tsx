@@ -7,7 +7,7 @@ import {
   LayoutGroupConfigsGroup,
 } from '@tutim/types';
 
-const isNestedField = (config: FieldConfig) => config.type === InputType.Nested;
+const isNestedField = (config: FieldConfig) => config.type === InputType.Object;
 
 // Create a group configuration for a field.
 // If the field has children, the group will include
@@ -53,7 +53,7 @@ const mapLayoutToGroups = (groupConfigs: LayoutGroupConfigs): LayoutGroupConfigs
 const enrichNestedUngrouped = (fields: FieldConfig[]) => (group: LayoutGroupConfigsGroup) => {
   const isInvalidGroup = group.fieldKeys.find((key) => key.includes('.'));
   if (isInvalidGroup) {
-    throw new Error(`Invalid group: ${group.key}, top level groups can't include nested field i.e '.'`);
+    throw new Error(`Invalid group: ${group.key}, top level groups can't include object field i.e '.'`);
   }
   const childConfigs = group.fieldKeys.map((key) => fields.find((f) => f.key === key)).filter(Boolean) as FieldConfig[];
 

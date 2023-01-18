@@ -19,7 +19,7 @@ export enum InputType {
   TextArea = 'text-area',
   Json = 'json',
   MultiText = 'multi-text',
-  Nested = 'nested',
+  Object = 'object',
   Array = 'array',
   Custom = 'custom',
 }

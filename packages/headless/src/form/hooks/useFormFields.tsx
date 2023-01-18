@@ -8,7 +8,7 @@ import { computeRenderedConfigs } from './useRenderLogic';
 
 const configToFlatConfigs = (configs: FieldConfig[]): FieldConfig[] => {
   const aggConfigs = configs.reduce<FieldConfig[]>((prev, config) => {
-    if (config.type === InputType.Nested) {
+    if (config.type === InputType.Object) {
       const childConfigs = getChildConfigs(config);
       const flatConfigs = configToFlatConfigs(childConfigs);
       prev.push(...flatConfigs);

@@ -80,7 +80,7 @@ const config: FormConfig = {
           {
             key: 'kidAddress',
             label: 'Kid Address',
-            type: 'nested',
+            type: 'object',
             children: {
               fields: [
                 {
@@ -104,7 +104,7 @@ const config: FormConfig = {
     {
       key: 'address',
       label: 'Address',
-      type: 'nested',
+      type: 'object',
       children: {
         fields: [
           {

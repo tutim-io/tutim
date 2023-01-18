@@ -109,7 +109,7 @@
                 "disabled": false
               },
               {
-                "value": "nested",
+                "value": "object",
                 "label": "NESTED",
                 "disabled": false
               },
@@ -191,13 +191,13 @@
           {
             "key": "validations",
             "label": "Validations",
-            "type": "nested",
+            "type": "object",
             "children": {
               "fields": [
                 {
                   "key": "minLength",
                   "label": "Min Length",
-                  "type": "nested",
+                  "type": "object",
                   "children": {
                     "fields": [
                       {
@@ -216,7 +216,7 @@
                 {
                   "key": "maxLength",
                   "label": "Max Length",
-                  "type": "nested",
+                  "type": "object",
                   "children": {
                     "fields": [
                       {
@@ -235,7 +235,7 @@
                 {
                   "key": "pattern",
                   "label": "Pattern",
-                  "type": "nested",
+                  "type": "object",
                   "isRequired": true,
                   "children": {
                     "fields": [
@@ -265,12 +265,12 @@
           {
             "key": "children",
             "label": "Children",
-            "type": "nested",
+            "type": "object",
             "children": {
               "fields": [
                 {
                   "key": "fields",
-                  "label": "Nested Fields",
+                  "label": "Object Fields",
                   "type": "array",
                   "children": {
                     "fields": [
@@ -362,13 +362,13 @@
                       {
                         "key": "validations",
                         "label": "ValidationsNested",
-                        "type": "nested",
+                        "type": "object",
                         "children": {
                           "fields": [
                             {
                               "key": "minLength",
                               "label": "Min Length",
-                              "type": "nested",
+                              "type": "object",
                               "children": {
                                 "fields": [
                                   {
@@ -387,7 +387,7 @@
                             {
                               "key": "maxLength",
                               "label": "Max Length",
-                              "type": "nested",
+                              "type": "object",
                               "children": {
                                 "fields": [
                                   {
@@ -406,7 +406,7 @@
                             {
                               "key": "pattern",
                               "label": "Pattern",
-                              "type": "nested",
+                              "type": "object",
                               "isRequired": true,
                               "children": {
                                 "fields": [
@@ -442,7 +442,7 @@
               "displayIf": {
                 "field": "$.type",
                 "operator": "in",
-                "value": ["nested", "array"]
+                "value": ["object", "array"]
               }
             },
             "isRequired": true
@@ -453,7 +453,7 @@
     {
       "key": "layout",
       "label": "Layout",
-      "type": "nested",
+      "type": "object",
       "children": {
         "fields": [
           {
@@ -469,7 +469,7 @@
           {
             "key": "style",
             "label": "Style",
-            "type": "nested",
+            "type": "object",
             "children": {
               "fields": [
                 {
@@ -490,7 +490,7 @@
     {
       "key": "logic",
       "label": "Logic",
-      "type": "nested",
+      "type": "object",
       "children": {
         "fields": [
           {

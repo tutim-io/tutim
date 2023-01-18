@@ -286,7 +286,7 @@ Tutim provides all forms solutions. Through code or drag & drop interface.
 
 - [x] All basic (Text, Select, Checkbox, Date...)
 - [x] Array & Multi fields
-- [x] Nested and deep nested support
+- [x] Object and deep object support
 - [ ] Rich input library (coming soon)
 
 **📞 Design & Layout**
