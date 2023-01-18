@@ -4,6 +4,7 @@ import { Form } from '@tutim/fields';
 
 const config: FormConfig = {
   meta: { title: 'My Form' },
+
   fields: [
     {
       key: 'firstName',

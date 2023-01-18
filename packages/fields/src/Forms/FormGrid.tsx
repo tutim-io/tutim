@@ -19,7 +19,7 @@ export const FormGrid = ({ children, fieldsPerRow = FieldsPerRow.One }: GridProp
       container
       sx={{ marginTop: '0px' }}
       spacing={{ xs: 2, md: 3 }}
-      rowSpacing={2}
+      rowSpacing={1}
       columns={{ xs: 4, sm: 8, md: 12 }}
     >
       {children.map((child, index) => (

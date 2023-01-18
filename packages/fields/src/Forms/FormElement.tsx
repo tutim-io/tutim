@@ -8,6 +8,7 @@ import { getGroupFields } from './getGroupFields';
 import { Typography } from '@mui/material';
 
 interface FormProps {
+  formId?: string;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   fieldsByKey: FieldsByKey;
   layout?: FormLayout;
@@ -16,12 +17,7 @@ interface FormProps {
 
 const fieldsLayout = ({ layout = {}, fieldsByKey }: Pick<FormProps, 'layout' | 'fieldsByKey'>): React.ReactNode[] => {
   const fieldsLayout = getFieldsLayout({ layout, fieldsByKey });
-  return [
-    ...fieldsLayout,
-    <div key="submit" style={{ display: 'flex', justifyContent: 'flex-end' }}>
-      <SubmitButton key="submit" label={layout.submitLabel} />
-    </div>,
-  ];
+  return [...fieldsLayout, <SubmitButton key="submit" {...layout.submit} />];
 };
 
 export const getFieldsLayout = ({
@@ -41,21 +37,14 @@ const WizardLayout = ({ layout = {}, fieldsByKey }: Pick<FormProps, 'layout' | '
     <FormTabs labels={labels}>
       {groups.map((group: any, ix: number) => {
         return (
-          <FormGrid key={group.key}>
-            {[
-              groupFields[ix],
-              <div key="submit" style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <SubmitButton key="submit" label={layout.submitLabel} />
-              </div>,
-            ]}
-          </FormGrid>
+          <FormGrid key={group.key}>{[groupFields[ix], <SubmitButton key="submit" {...layout.submit} />]}</FormGrid>
         );
       })}
     </FormTabs>
   );
 };
 
-export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey }: FormProps) => {
+export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey, formId }: FormProps) => {
   const title = meta.title && <Typography variant="h5">{meta.title}</Typography>;
 
   const fields = layout.wizard ? (
@@ -65,7 +54,7 @@ export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey }: F
   );
 
   return (
-    <form onSubmit={onSubmit} style={layout.style} noValidate>
+    <form onSubmit={onSubmit} style={layout.style} noValidate id={formId}>
       {title}
       {fields}
     </form>

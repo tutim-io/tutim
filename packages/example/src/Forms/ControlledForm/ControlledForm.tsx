@@ -180,7 +180,7 @@ const fields = [
   },
 ];
 
-const config = { fields };
+const config = { layout: { submit: { display: false } }, fields };
 const onSubmit: OnSubmit = ({ data }) => alert(JSON.stringify(data));
 const baseStateConfig = {
   key: 'name',
@@ -190,7 +190,27 @@ const baseStateConfig = {
   isRequired: true,
 };
 
+export const OutsideHandler = () => {
+  return (
+    <div style={{ padding: '20px 0' }}>
+      <p>Outside Handler</p>
+      <button type="submit" form="form1" value="Submit">
+        Submit
+      </button>
+    </div>
+  );
+};
+
 export const ControlledForm = (): JSX.Element => {
+  return (
+    <div>
+      <OutsideHandler />
+      <Form />
+    </div>
+  );
+};
+
+export const Form = (): JSX.Element => {
   const [stateConfig, setStateConfig] = React.useState(config);
   const form = useForm(stateConfig, { resetOptions: { keepValues: true } });
   if (form.error) return <p>Error in form</p>;
@@ -198,6 +218,7 @@ export const ControlledForm = (): JSX.Element => {
   const { reset, getValues, schema } = form;
   const changeState = () => {
     setStateConfig({
+      ...config,
       fields: [...config.fields, { ...baseStateConfig, label: `Name random ${Math.random()}` }],
     } as any);
   };
@@ -208,8 +229,9 @@ export const ControlledForm = (): JSX.Element => {
         <button onClick={() => console.log(getValues())}>Get Values</button>
         <button onClick={() => console.log(schema)}>Get Schema</button>
         <button onClick={changeState}>Change State</button>
+        <button onClick={form.nativeSubmit(onSubmit)}>Submit Form</button>
       </div>
-      <FormView onSubmit={onSubmit} form={form} />
+      <FormView formId={'form1'} onSubmit={onSubmit} form={form} />
     </div>
   );
 };

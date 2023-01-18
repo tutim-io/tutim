@@ -3,7 +3,9 @@ import { FormConfig } from '@tutim/types';
 
 const config: FormConfig = {
   layout: {
-    submitLabel: 'Next',
+    submit: {
+      label: 'Next',
+    },
     groupConfigs: {
       layout: {
         address: { fieldsPerRow: 2 },
@@ -19,10 +21,7 @@ const config: FormConfig = {
       },
       kids: {
         groupConfigs: {
-          groups: [
-            { key: 'name', title: 'Name', fieldKeys: ['firstName', 'lastName', 'favColor'] },
-            { key: 'kidAddress', title: 'Address', fieldKeys: ['kidAddress.kcountry', 'kidAddress.kcity'] },
-          ],
+          groups: [{ key: 'name', title: 'Name', fieldKeys: ['firstName', 'lastName', 'favColor'] }],
           layout: {
             address: { fieldsPerRow: 2 },
             name: { fieldsPerRow: 2 },

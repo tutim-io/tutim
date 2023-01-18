@@ -1,6 +1,8 @@
 {
   "layout": {
-    "submitLabel": "Generate Form",
+    "submit": {
+      "label": "Generate Form"
+    },
     "groupConfigs": {
       "layout": {
         "validations.minLength": {
