@@ -180,7 +180,7 @@ const fields = [
   },
 ];
 
-const config = { fields };
+const config = { layout: { submit: { display: false } }, fields };
 const onSubmit: OnSubmit = ({ data }) => alert(JSON.stringify(data));
 const baseStateConfig = {
   key: 'name',
@@ -198,6 +198,7 @@ export const ControlledForm = (): JSX.Element => {
   const { reset, getValues, schema } = form;
   const changeState = () => {
     setStateConfig({
+      ...config,
       fields: [...config.fields, { ...baseStateConfig, label: `Name random ${Math.random()}` }],
     } as any);
   };
@@ -208,6 +209,7 @@ export const ControlledForm = (): JSX.Element => {
         <button onClick={() => console.log(getValues())}>Get Values</button>
         <button onClick={() => console.log(schema)}>Get Schema</button>
         <button onClick={changeState}>Change State</button>
+        <button onClick={form.nativeSubmit(onSubmit)}>Submit Form</button>
       </div>
       <FormView onSubmit={onSubmit} form={form} />
     </div>

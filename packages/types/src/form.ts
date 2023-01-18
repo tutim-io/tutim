@@ -156,7 +156,7 @@ export interface FormLayout {
   groupConfigs?: LayoutGroupConfigs;
   arrayConfigs?: LayoutArrayConfig;
   fieldsPerRow?: FieldsPerRow;
-  submitLabel?: string;
+  submit?: { label?: string; display?: boolean };
 }
 
 export interface FormLogic {
@@ -242,7 +242,7 @@ export interface TutimFormReturn {
   logic: FormLogic;
   meta: FormMeta;
   useFormInit: UseFormInit;
-  nativeSubmit: (onSubmit: OnSubmit) => React.FormEventHandler<HTMLFormElement>;
+  nativeSubmit: (onSubmit: OnSubmit) => (e: React.BaseSyntheticEvent) => void;
   error?: unknown;
 }
 
