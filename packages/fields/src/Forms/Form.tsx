@@ -11,6 +11,7 @@ interface FormProps {
   initialValues?: Record<string, any>;
 }
 interface FormViewProps {
+  formId?: string;
   form: UseFormReturn;
   onSubmit: OnSubmit;
 }
@@ -26,13 +27,15 @@ const SuccessfulSubmission = ({ reset }: { reset: () => void }) => {
   );
 };
 
-export const FormView = ({ form, onSubmit }: FormViewProps): JSX.Element => {
+export const FormView = ({ formId, form, onSubmit }: FormViewProps): JSX.Element => {
   const { fieldsByKey, nativeSubmit, formState, reset, layout, meta, logic } = form;
   const { isSubmitSuccessful } = formState;
   const onControlledSubmit = nativeSubmit(onSubmit);
 
   if (isSubmitSuccessful && logic.submissionPage) return <SuccessfulSubmission reset={reset} />;
-  return <FormElement onSubmit={onControlledSubmit} layout={layout} meta={meta} fieldsByKey={fieldsByKey} />;
+  return (
+    <FormElement formId={formId} onSubmit={onControlledSubmit} layout={layout} meta={meta} fieldsByKey={fieldsByKey} />
+  );
 };
 
 /**
@@ -73,10 +76,10 @@ export const FormView = ({ form, onSubmit }: FormViewProps): JSX.Element => {
  * ```
  */
 export const Form = ({ formId, config, onSubmit, initialValues }: FormProps): JSX.Element => {
-  const form = useForm(formId || config || '');
+  const form = useForm(config || formId || '');
   if (!formId && !config) return <p>Error in loading form</p>;
   if (form.error) return <p>Error in loading form</p>;
   form.useFormInit(async () => initialValues);
 
-  return <FormView form={form} onSubmit={onSubmit} />;
+  return <FormView formId={formId} form={form} onSubmit={onSubmit} />;
 };

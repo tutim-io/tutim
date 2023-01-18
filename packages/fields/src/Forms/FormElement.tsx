@@ -8,6 +8,7 @@ import { getGroupFields } from './getGroupFields';
 import { Typography } from '@mui/material';
 
 interface FormProps {
+  formId?: string;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   fieldsByKey: FieldsByKey;
   layout?: FormLayout;
@@ -43,7 +44,7 @@ const WizardLayout = ({ layout = {}, fieldsByKey }: Pick<FormProps, 'layout' | '
   );
 };
 
-export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey }: FormProps) => {
+export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey, formId }: FormProps) => {
   const title = meta.title && <Typography variant="h5">{meta.title}</Typography>;
 
   const fields = layout.wizard ? (
@@ -53,7 +54,7 @@ export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey }: F
   );
 
   return (
-    <form onSubmit={onSubmit} style={layout.style} noValidate>
+    <form onSubmit={onSubmit} style={layout.style} noValidate id={formId}>
       {title}
       {fields}
     </form>
