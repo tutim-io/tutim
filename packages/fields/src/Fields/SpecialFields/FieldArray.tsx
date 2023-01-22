@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { Field, FieldsByKey } from '@tutim/types';
 import { AddButton, DeleteButton } from '../../Buttons';
 import { FieldGroup, getFieldsLayout } from '../../Forms';
@@ -40,23 +40,21 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
       >
         <Box key={id} sx={{ p: 2, border: '1px dashed rgba(0, 0, 0, 0.1)', display: 'flex' }}>
           <FieldGroup>{fieldsLayout}</FieldGroup>
-          <div style={{ width: '100px', display: 'flex', alignItems: 'baseline', justifyContent: 'end' }}>
+          <Box style={{ width: '100px', display: 'flex', alignItems: 'baseline', justifyContent: 'end' }}>
             <DeleteButton key="remove" onClick={onDelete} />
-          </div>
+          </Box>
         </Box>
       </FieldCollapse>
     );
   });
 
   return (
-    <div key={key}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <h3>{label}</h3>
-      </div>
+    <Box key={key}>
+      <Typography variant="subtitle1">{label}</Typography>
       <FieldGroup>{arrayFieldsRender}</FieldGroup>
-      <div style={{ marginTop: '10px' }}>
+      <Box style={{ marginTop: '10px' }}>
         <AddButton onClick={onAdd} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
