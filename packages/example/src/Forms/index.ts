@@ -16,3 +16,4 @@ export * from './Builder';
 export * from './ControlledForm';
 export * from './SchemaServe';
 export * from './FormMeta';
+export * from './BasicWizard';

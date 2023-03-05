@@ -149,6 +149,14 @@ export interface FormMeta {
   title?: string;
   description?: string;
   version?: string;
+  steps?: Steps;
+}
+
+export interface Steps {
+  [stepname: string]: {
+    label: string;
+    elements: string[];
+  };
 }
 export interface FormLayout {
   style?: any;
