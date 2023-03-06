@@ -1,7 +1,7 @@
-import { FormView } from '@tutim/fields';
 import { useWizard } from 'react-use-wizard';
 import { OnSubmit } from '@tutim/types';
 import { useForm } from '@tutim/headless';
+import { FormView } from '../Form';
 
 const getStepConfig = (config, step) => {
   const { meta } = config;
