@@ -1,0 +1,417 @@
+{
+  "schema": {
+    "h3": {
+      "name": "h3",
+      "type": "static",
+      "content": "<h3 style=\"font-size: 24px; font-weight: 600; line-height: 1.5; border-bottom: 1px solid #d1d5db; padding-bottom: 12px; margin-top: 1rem;\">Basic data</h3>"
+    },
+    "title": {
+      "name": "title",
+      "type": "text",
+      "label": "Position name",
+      "description": "Name the position (eg. Marketing intern, IT fresh graduate program)"
+    },
+    "static": {
+      "name": "static",
+      "type": "static",
+      "content": "<div style=\"margin-bottom: -12px\">Place of work</div>"
+    },
+    "location": {
+      "name": "location",
+      "type": "location",
+      "placeholder": "Add the exact address of the work",
+      "conditions": [["default_location", "==", false]]
+    },
+    "default_location": {
+      "name": "default_location",
+      "type": "checkbox",
+      "text": "The place of work is the same as in your company profile:",
+      "description": "1600 Amphitheatre Parkway in Mountain View, California, United States"
+    },
+    "job_type": {
+      "name": "job_type",
+      "type": "checkboxgroup",
+      "view": "tabs",
+      "items": [
+        { "value": "internship", "label": "Internship" },
+        { "value": "graduate", "label": "Graduate" },
+        { "value": "voluntary", "label": "Voluntary" },
+        { "value": "junior", "label": "Junior" }
+      ],
+      "label": "Job type"
+    },
+    "tags": {
+      "name": "tags",
+      "type": "tags",
+      "closeOnSelect": false,
+      "search": true,
+      "label": "Tags",
+      "items": "/job_fields.json",
+      "description": "Select up to 3"
+    },
+    "static_copy": {
+      "name": "static_copy",
+      "type": "static",
+      "content": "<div style=\"margin-bottom: 1.5rem\">Required minimum weekly working hours</div>"
+    },
+    "work_hours": {
+      "name": "work_hours",
+      "type": "slider",
+      "default": 20,
+      "format": { "suffix": " hours", "decimals": 0 },
+      "min": 2,
+      "max": 40
+    },
+    "h3_copy5": {
+      "name": "h3_copy5",
+      "type": "static",
+      "content": "<h3 style=\"font-size: 24px; font-weight: 600; line-height: 1.5; border-bottom: 1px solid #d1d5db; padding-bottom: 12px; margin-top: 1rem;\">Salary</h3>"
+    },
+    "has_salary": {
+      "name": "has_salary",
+      "type": "select",
+      "items": [
+        { "value": "unpaid", "label": "Unpaid" },
+        { "value": "paid", "label": "Paid" }
+      ],
+      "label": "Payment",
+      "placeholder": "Select",
+      "columns": { "container": 3 }
+    },
+    "salary": {
+      "name": "salary",
+      "type": "text",
+      "label": "&nbsp;",
+      "placeholder": "Amount",
+      "inputType": "number",
+      "columns": { "container": 3, "label": 12, "wrapper": 12 },
+      "conditions": [["has_salary", "in", ["paid"]]]
+    },
+    "salary_currency": {
+      "name": "salary_currency",
+      "type": "select",
+      "items": [
+        { "value": "usd", "label": "USD" },
+        { "value": "eur", "label": "EUR" }
+      ],
+      "search": true,
+      "label": "&nbsp;",
+      "columns": { "container": 3, "label": 12, "wrapper": 12 },
+      "default": "usd",
+      "canClear": false,
+      "canDeselect": false,
+      "conditions": [["has_salary", "in", ["paid"]]]
+    },
+    "salary_period": {
+      "name": "salary_period",
+      "type": "select",
+      "items": [
+        { "value": "hourly", "label": "/ hour" },
+        { "value": "daily", "label": "/ day" },
+        { "value": "weekly", "label": "/ week" },
+        { "value": "monthly", "label": "/ month" }
+      ],
+      "label": "&nbsp;",
+      "default": "weekly",
+      "columns": { "container": 3, "label": 12, "wrapper": 12 },
+      "conditions": [["has_salary", "in", ["paid"]]]
+    },
+    "static_copy2": {
+      "name": "static_copy2",
+      "type": "static",
+      "content": "<div style=\"margin-bottom: -8px\">Application deadline</div>"
+    },
+    "application_deadline": {
+      "name": "application_deadline",
+      "type": "date",
+      "conditions": [["continuous_application", "==", false]]
+    },
+    "continuous_application": {
+      "name": "continuous_application",
+      "type": "checkbox",
+      "text": "Can apply contiuously"
+    },
+    "static_copy3": {
+      "name": "static_copy3",
+      "type": "static",
+      "content": "<div style=\"margin-bottom: -8px\">Start date</div>",
+      "columns": { "container": 6 }
+    },
+    "static_copy4": {
+      "name": "static_copy4",
+      "type": "static",
+      "content": "<div style=\"margin-bottom: -8px\">End of work</div>",
+      "columns": { "container": 6 }
+    },
+    "job_start_date": {
+      "name": "job_start_date",
+      "type": "date",
+      "columns": { "container": 6 },
+      "rules": ["before:job_end_date"]
+    },
+    "job_end_date": {
+      "name": "job_end_date",
+      "type": "date",
+      "columns": { "container": 6 },
+      "rules": ["after:job_start_date"]
+    },
+    "h3_copy3": {
+      "name": "h3_copy3",
+      "type": "static",
+      "content": "<h3 style=\"font-size: 24px; font-weight: 600; line-height: 1.5; border-bottom: 1px solid #d1d5db; padding-bottom: 12px; margin-top: 1rem;\">Requirements</h3>"
+    },
+    "student_status": {
+      "name": "student_status",
+      "type": "checkbox",
+      "text": "Student status is required for the job",
+      "label": "Student status"
+    },
+    "degree": {
+      "name": "degree",
+      "type": "checkbox",
+      "text": "Degree is required for work",
+      "label": "Degree"
+    },
+    "degree_level": {
+      "name": "degree_level",
+      "type": "select",
+      "items": [
+        { "value": "25", "label": "BA/BSc" },
+        { "value": "50", "label": "MA/MSc" },
+        { "value": "75", "label": "PhD" }
+      ],
+      "placeholder": "Degree level",
+      "native": false,
+      "conditions": [["degree", "==", true]]
+    },
+    "professional_skills": {
+      "name": "professional_skills",
+      "type": "tags",
+      "closeOnSelect": false,
+      "search": true,
+      "label": "Professional skills",
+      "description": "Choose as many as you can",
+      "items": "/professional_skills.json"
+    },
+    "computer_skills": {
+      "name": "computer_skills",
+      "type": "tags",
+      "closeOnSelect": false,
+      "search": true,
+      "label": "Computer skills",
+      "description": "Choose as many as you can",
+      "items": "/computer_skills.json"
+    },
+    "soft_skills": {
+      "name": "soft_skills",
+      "type": "tags",
+      "closeOnSelect": false,
+      "search": true,
+      "label": "Competences, soft skills",
+      "description": "Choose as many as you can",
+      "items": "/soft_skills.json"
+    },
+    "h3_copy": {
+      "name": "h3_copy",
+      "type": "static",
+      "content": "<h3 style=\"font-size: 24px; font-weight: 600; line-height: 1.5; border-bottom: 1px solid #d1d5db; padding-bottom: 12px; margin-top: 1rem\">Job description</h3>"
+    },
+    "description": {
+      "name": "description",
+      "type": "editor",
+      "label": "Position description, tasks",
+      "hideTools": ["code", "attach"]
+    },
+    "requirements": {
+      "name": "requirements",
+      "type": "editor",
+      "label": "Requirements",
+      "hideTools": ["code", "attach"]
+    },
+    "offer": {
+      "name": "offer",
+      "type": "editor",
+      "label": "What we offer",
+      "hideTools": ["code", "attach"]
+    },
+    "h3_copy2": {
+      "name": "h3_copy2",
+      "type": "static",
+      "content": "<h3 style=\"font-size: 24px; font-weight: 600; line-height: 1.5; border-bottom: 1px solid #d1d5db; padding-bottom: 12px; margin-top: 1rem\">How to apply</h3>"
+    },
+    "internal_application": {
+      "name": "internal_application",
+      "type": "radio",
+      "text": "<b>Recommended:</b> Apply with profile",
+      "description": "Select this if you want to rely on our internal application tracking system",
+      "radioName": "application_type",
+      "radioValue": "yes"
+    },
+    "static_1": {
+      "name": "static_1",
+      "type": "static",
+      "label": "Auto reply message for applicants",
+      "description": "Here you can write messages in advance you would like to send out to applicants when you accept or reject their application.",
+      "conditions": [["internal_application", "in", ["yes"]]]
+    },
+    "accept_feedback": {
+      "name": "accept_feedback",
+      "type": "editor",
+      "label": "Successful",
+      "default": "Congratulations! You're application has been accepted. We'll contact you soon.",
+      "conditions": [["internal_application", "in", ["yes"]]]
+    },
+    "reject_feedback": {
+      "name": "reject_feedback",
+      "type": "editor",
+      "label": "Unsuccessful",
+      "default": "Unfortunately you haven't been selected in round. We wish you the best of luck next time!",
+      "conditions": [["internal_application", "in", ["yes"]]]
+    },
+    "external_application": {
+      "name": "external_application",
+      "type": "radio",
+      "text": " Forward candidates to an external site",
+      "description": "Select this if you want to rely on an external application tracking system",
+      "radioName": "application_type",
+      "radioValue": "yes"
+    },
+    "url": {
+      "name": "url",
+      "type": "text",
+      "inputType": "url",
+      "rules": ["nullable", "url"],
+      "placeholder": "eg. http(s)://domain.com",
+      "floating": false,
+      "label": "URL",
+      "conditions": [["external_application", "in", ["yes"]]]
+    },
+    "h3_copy4": {
+      "name": "h3_copy4",
+      "type": "static",
+      "content": "<h3 style=\"font-size: 24px; font-weight: 600; line-height: 1.5; border-bottom: 1px solid #d1d5db; padding-bottom: 12px; margin-top: 1rem\">Pictures and videos</h3>"
+    },
+    "static_copy5": {
+      "name": "static_copy5",
+      "type": "static",
+      "content": "<div style=\"margin-bottom: -12px\">Cover image</div>"
+    },
+    "cover": {
+      "name": "cover",
+      "type": "file",
+      "accept": "image/*",
+      "view": "image",
+      "rules": [
+        "mimetypes:image/jpeg,image/png,image/gif,image/webp,image/svg+xml,image/tiff"
+      ],
+      "description": "This is the first image job seekers will see at the top of your ad. Use a high quality image. Recommended image size: 1640x720px (Similar to Facebook cover photo size)",
+      "conditions": [["default_cover", "==", false]]
+    },
+    "default_cover": {
+      "name": "default_cover",
+      "type": "checkbox",
+      "text": "Use the cover image provided in your company profile"
+    },
+    "gallery": {
+      "name": "gallery",
+      "type": "multifile",
+      "label": "Image gallery (optional)",
+      "view": "gallery",
+      "accept": "image/*",
+      "file": {
+        "rules": [
+          "mimetypes:image/jpeg,image/png,image/gif,image/webp,image/svg+xml,image/tiff"
+        ]
+      }
+    },
+    "youtube": {
+      "name": "youtube",
+      "type": "text",
+      "label": "Youtube video (optional)",
+      "addons": { "before": "https://www.youtube.com/watch?v=\n" },
+      "description": "Copy your Youtube video ID . Eg:  https://www.youtube.com/watch?v=<b>welpvNwbw0E</b>"
+    }
+  },
+  "form": {
+    "size": "md",
+    "displayErrors": false,
+    "steps": {
+      "page0": {
+        "label": "Basic",
+        "elements": [
+          "h3",
+          "title",
+          "static",
+          "location",
+          "default_location",
+          "job_type",
+          "tags",
+          "static_copy",
+          "work_hours"
+        ],
+        "builder": { "type": "steps" }
+      },
+      "page1": {
+        "label": "Salary",
+        "elements": [
+          "h3_copy5",
+          "has_salary",
+          "salary",
+          "salary_currency",
+          "salary_period",
+          "static_copy2",
+          "application_deadline",
+          "continuous_application",
+          "static_copy3",
+          "static_copy4",
+          "job_start_date",
+          "job_end_date"
+        ],
+        "builder": { "type": ["steps"] }
+      },
+      "page2": {
+        "label": "Requirements",
+        "elements": [
+          "h3_copy3",
+          "student_status",
+          "degree",
+          "degree_level",
+          "professional_skills",
+          "computer_skills",
+          "soft_skills"
+        ],
+        "builder": { "type": ["steps"] }
+      },
+      "page3": {
+        "label": "Description",
+        "elements": ["h3_copy", "description", "requirements", "offer"],
+        "builder": { "type": ["steps"] }
+      },
+      "page4": {
+        "label": "Applying",
+        "elements": [
+          "h3_copy2",
+          "internal_application",
+          "static_1",
+          "accept_feedback",
+          "reject_feedback",
+          "external_application",
+          "url"
+        ],
+        "builder": { "type": ["steps"] }
+      },
+      "page5": {
+        "label": "Content",
+        "elements": [
+          "h3_copy4",
+          "static_copy5",
+          "cover",
+          "default_cover",
+          "gallery",
+          "youtube"
+        ],
+        "builder": { "type": "steps" }
+      }
+    }
+  }
+}

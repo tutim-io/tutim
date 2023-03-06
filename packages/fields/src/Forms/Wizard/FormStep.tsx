@@ -7,7 +7,7 @@ const getStepConfig = (config, step) => {
   const { meta } = config;
   const { steps } = meta;
   const stepConfig = steps[step];
-  const fields = stepConfig.elements.map((key) => config.fields.find((field) => field.key === key));
+  const fields = stepConfig.elements.map((key) => config.fields.find((field) => field.key === key)).filter(Boolean);
   return fields;
 };
 
