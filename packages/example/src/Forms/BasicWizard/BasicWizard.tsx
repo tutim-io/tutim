@@ -19,18 +19,20 @@ const config: FormConfig = {
     { key: 'email', isRequired: true, label: 'Email', type: 'text' },
     { key: 'phone', label: 'Phone', type: 'number' },
   ],
+  wizard: {
+    steps: [
+      {
+        label: 'Basic',
+        fields: ['firstName', 'lastName'],
+      },
+      {
+        label: 'Contact',
+        fields: ['email', 'phone'],
+      },
+    ],
+  },
   meta: {
     title: 'Basic Wizard',
-    steps: {
-      page0: {
-        label: 'Basic',
-        elements: ['firstName', 'lastName'],
-      },
-      page1: {
-        label: 'Contact',
-        elements: ['email', 'phone'],
-      },
-    },
   },
 };
 

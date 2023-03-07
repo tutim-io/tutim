@@ -11,6 +11,7 @@ import { FormLayout } from './FormLayout';
 export interface FormConfig {
   fields: FieldConfig[];
   layout?: FormLayout;
+  wizard?: Wizard;
   logic?: FormLogic;
   meta?: FormMeta;
   id?: string;
@@ -27,6 +28,7 @@ export type PartialFieldConfig = Partial<FieldConfig> & Pick<FieldConfig, 'key'>
 export interface PartialFormConfig {
   fields: PartialFieldConfig[];
   layout?: FormLayout;
+  wizard?: Wizard;
   logic?: FormLogic;
   meta?: FormMeta;
   id?: string;
@@ -36,14 +38,15 @@ export interface FormMeta {
   title?: string;
   description?: string;
   version?: string;
-  steps?: Steps;
 }
 
-export interface Steps {
-  [stepname: string]: {
-    label: string;
-    elements: string[];
-  };
+export interface Wizard {
+  steps: WizardStep[];
+}
+
+export interface WizardStep {
+  label: string;
+  fields: string[];
 }
 
 export interface FormLogic {
