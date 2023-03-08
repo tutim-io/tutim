@@ -2,9 +2,9 @@ import { useWizard } from 'react-use-wizard';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
-import { FormConfig } from '@tutim/types';
+import { PartialFormConfig } from '@tutim/types';
 
-export const Header = ({ config }: { config: FormConfig }) => {
+export const Header = ({ config }: { config: PartialFormConfig }) => {
   const { activeStep, goToStep } = useWizard();
   if (!config.wizard) return null;
 

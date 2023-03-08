@@ -4,11 +4,11 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 import { WizardStep } from './WizardStep';
 import { Typography } from '@mui/material';
-import { OnSubmit, FormConfig } from '@tutim/types';
+import { OnSubmit, PartialFormConfig } from '@tutim/types';
 
 interface WizardProps {
   onSubmit: OnSubmit;
-  config: FormConfig;
+  config: PartialFormConfig;
   initialValues?: Record<string, any>;
 }
 

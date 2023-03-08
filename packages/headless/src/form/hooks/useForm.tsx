@@ -43,9 +43,8 @@ import { useFormLayout } from './useFormLayout';
  * };
  * ```
  */
-export const useForm = (baseConfig: PartialFormConfig | string, options?: UseFormOptions): UseFormReturn => {
+export const useForm = (config: PartialFormConfig, options?: UseFormOptions): UseFormReturn => {
   try {
-    const config = useFormConfig(baseConfig);
     const fieldConfigs = getFieldConfigs(config.fields, []);
     const formConfig = { ...config, fields: fieldConfigs };
     const defaultValues = getDefaults(fieldConfigs);
