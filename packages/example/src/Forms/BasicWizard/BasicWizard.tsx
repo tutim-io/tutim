@@ -37,5 +37,6 @@ const config: FormConfig = {
 };
 
 export const BasicWizard = (): JSX.Element => {
-  return <Wizard onSubmit={console.log} config={config} />;
+  const initialValues = { lastName: 'Doe' };
+  return <Wizard onSubmit={console.log} config={config} initialValues={initialValues} />;
 };

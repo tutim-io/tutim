@@ -4,11 +4,18 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 import { WizardStep } from './WizardStep';
 import { Typography } from '@mui/material';
+import { OnSubmit, FormConfig } from '@tutim/types';
 
-export const Wizard = ({ onSubmit, config }) => {
-  const [wizardValues, setWizardValues] = React.useState({});
-  const steps = Object.keys(config.wizard.steps);
-  const title = config.meta.title && <Typography variant="h5">{config.meta.title}</Typography>;
+interface WizardProps {
+  onSubmit: OnSubmit;
+  config: FormConfig;
+  initialValues?: Record<string, any>;
+}
+
+export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) => {
+  if (!config.wizard) throw new Error('Wizard config is missing');
+  const [wizardValues, setWizardValues] = React.useState(initialValues);
+  const title = config.meta?.title && <Typography variant="h5">{config.meta.title}</Typography>;
 
   const onWizardSubmit = (stepValues: Record<string, any>, isLastStep: boolean) => {
     const values = { ...wizardValues, ...stepValues };
@@ -20,8 +27,8 @@ export const Wizard = ({ onSubmit, config }) => {
     <div style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
       {title}
       <Wiz footer={<Footer />} header={<Header config={config} />}>
-        {steps.map((step) => (
-          <WizardStep key={step} config={config} handleSubmit={onWizardSubmit} />
+        {config.wizard.steps.map((step) => (
+          <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onWizardSubmit} />
         ))}
       </Wiz>
     </div>
