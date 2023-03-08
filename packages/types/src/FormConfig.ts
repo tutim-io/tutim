@@ -42,6 +42,7 @@ export interface FormMeta {
 
 export interface Wizard {
   steps: WizardStep[];
+  orientation?: 'horizontal' | 'vertical';
 }
 
 export interface WizardStep {

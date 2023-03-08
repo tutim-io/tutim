@@ -16,6 +16,7 @@ export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) =>
   if (!config.wizard) throw new Error('Wizard config is missing');
   const [wizardValues, setWizardValues] = React.useState(initialValues);
   const title = config.meta?.title && <Typography variant="h5">{config.meta.title}</Typography>;
+  const isVertical = config.wizard.orientation === 'vertical';
 
   const onWizardSubmit = (stepValues: Record<string, any>, isLastStep: boolean) => {
     const values = { ...wizardValues, ...stepValues };
@@ -24,13 +25,15 @@ export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) =>
   };
 
   return (
-    <div style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
+    <div id="wizard" style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
       {title}
-      <Wiz footer={<Footer />} header={<Header config={config} />}>
-        {config.wizard.steps.map((step) => (
-          <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onWizardSubmit} />
-        ))}
-      </Wiz>
+      <div style={isVertical ? { gap: '30px', display: 'flex', flexDirection: 'row' } : {}}>
+        <Wiz header={<Header config={config} />}>
+          {config.wizard.steps.map((step) => (
+            <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onWizardSubmit} />
+          ))}
+        </Wiz>
+      </div>
     </div>
   );
 };

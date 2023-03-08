@@ -30,6 +30,7 @@ const config: FormConfig = {
         fields: ['email', 'phone'],
       },
     ],
+    orientation: 'vertical',
   },
   meta: {
     title: 'Basic Wizard',

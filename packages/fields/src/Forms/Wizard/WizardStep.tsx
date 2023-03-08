@@ -3,6 +3,8 @@ import { FieldConfig, FormConfig, OnSubmit } from '@tutim/types';
 import { useForm } from '@tutim/headless';
 import { FormView } from '../Form';
 import React from 'react';
+import { Footer } from './Footer';
+import { Box } from '@mui/system';
 
 const getStepConfig = (config: FormConfig, step: number): FieldConfig[] => {
   const { wizard } = config;
@@ -48,5 +50,10 @@ export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
   }, []);
 
   if (!isInitializing) return <div>Loading</div>;
-  return <FormView formId={stepKey} form={form} onSubmit={onSubmit} />;
+  return (
+    <Box style={{ padding: '0px 10px', width: 'calc(100% - 24px)' }}>
+      <FormView formId={stepKey} form={form} onSubmit={onSubmit} />
+      <Footer />
+    </Box>
+  );
 };
