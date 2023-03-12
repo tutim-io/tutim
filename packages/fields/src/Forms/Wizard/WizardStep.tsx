@@ -5,6 +5,7 @@ import { FormView } from '../Form';
 import React from 'react';
 import { Footer } from './Footer';
 import { Box } from '@mui/system';
+import { WizardCurrentFormContext } from './use-wizard';
 
 const getStepConfig = (config: FormConfig, step: number): FieldConfig[] => {
   const { wizard } = config;
@@ -40,7 +41,7 @@ export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
     handleSubmit(data, true);
   };
   const initialValues = getStepValues(config, activeStep, wizardValues);
-  const form = useForm({ fields, layout });
+  const form = useForm({ fields, layout: { ...config.layout, ...layout } });
   const isInitializing = form.useFormInit(async () => initialValues);
 
   const submit = form.nativeSubmit(onSubmit);
@@ -51,9 +52,11 @@ export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
 
   if (!isInitializing) return <div>Loading</div>;
   return (
-    <Box style={{ padding: '0px 10px', width: 'calc(100% - 24px)' }}>
-      <FormView formId={stepKey} form={form} onSubmit={onSubmit} />
-      <Footer onFinalSubmit={form.nativeSubmit(onFinalSubmit)} />
-    </Box>
+    <WizardCurrentFormContext.Provider value={form}>
+      <Box style={{ padding: '0px 10px', width: 'calc(100% - 24px)' }}>
+        <FormView formId={stepKey} form={form} onSubmit={onSubmit} />
+        <Footer onFinalSubmit={form.nativeSubmit(onFinalSubmit)} />
+      </Box>
+    </WizardCurrentFormContext.Provider>
   );
 };

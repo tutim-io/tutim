@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { WizardStep } from './WizardStep';
 import { Typography } from '@mui/material';
 import { OnSubmit, PartialFormConfig } from '@tutim/types';
+import { WizardContext } from './use-wizard';
 
 interface WizardProps {
   onSubmit: OnSubmit;
@@ -30,15 +31,14 @@ export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) =>
   return (
     <div id="wizard" style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
       {title}
-      <button type="button" onClick={() => onSubmit({ data: wizardValues, schema: config })}>
-        SubmitForm
-      </button>
       <div style={isVertical ? { gap: '30px', display: 'flex', flexDirection: 'row' } : {}}>
-        <Wiz header={<Header config={config} />}>
-          {config.wizard.steps.map((step) => (
-            <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onStepSubmit} />
-          ))}
-        </Wiz>
+        <WizardContext.Provider value={{ wizardValues }}>
+          <Wiz header={<Header config={config} />}>
+            {config.wizard.steps.map((step) => (
+              <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onStepSubmit} />
+            ))}
+          </Wiz>
+        </WizardContext.Provider>
       </div>
     </div>
   );
