@@ -18,6 +18,7 @@ const config: FormConfig = {
     },
     { key: 'email', isRequired: true, label: 'Email', type: 'text' },
     { key: 'phone', label: 'Phone', type: 'number' },
+    { key: 'additional', label: 'additional', type: 'text', isRequired: true },
   ],
   wizard: {
     steps: [
@@ -28,6 +29,10 @@ const config: FormConfig = {
       {
         label: 'Contact',
         fields: ['email', 'phone'],
+      },
+      {
+        label: 'Additional',
+        fields: ['additional'],
       },
     ],
     orientation: 'vertical',

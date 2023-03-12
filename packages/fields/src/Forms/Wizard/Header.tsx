@@ -9,16 +9,20 @@ export const Header = ({ config }: { config: PartialFormConfig }) => {
   if (!config.wizard) return null;
 
   return (
-    <div>
-      <Stepper nonLinear activeStep={activeStep} orientation={config.wizard.orientation} id="wizard-header">
-        {Object.values(config.wizard.steps).map(({ label }, index) => (
-          <Step key={label}>
-            <StepButton color="inherit" onClick={() => goToStep(index)}>
-              {label}
-            </StepButton>
-          </Step>
-        ))}
-      </Stepper>
-    </div>
+    <Stepper
+      nonLinear
+      activeStep={activeStep}
+      orientation={config.wizard.orientation}
+      id="wizard-header"
+      sx={{ height: '60px' }}
+    >
+      {Object.values(config.wizard.steps).map(({ label }, index) => (
+        <Step key={label}>
+          <StepButton color="inherit" onClick={() => goToStep(index)}>
+            {label}
+          </StepButton>
+        </Step>
+      ))}
+    </Stepper>
   );
 };

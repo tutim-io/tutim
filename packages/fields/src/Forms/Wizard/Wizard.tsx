@@ -1,6 +1,5 @@
 import { Wizard as Wiz } from 'react-use-wizard';
 import React from 'react';
-import { Footer } from './Footer';
 import { Header } from './Header';
 import { WizardStep } from './WizardStep';
 import { Typography } from '@mui/material';
@@ -18,19 +17,26 @@ export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) =>
   const title = config.meta?.title && <Typography variant="h5">{config.meta.title}</Typography>;
   const isVertical = config.wizard.orientation === 'vertical';
 
-  const onWizardSubmit = (stepValues: Record<string, any>, isLastStep: boolean) => {
-    const values = { ...wizardValues, ...stepValues };
-    if (isLastStep) onSubmit({ data: values, schema: config });
-    else setWizardValues(values);
+  const onStepSubmit = (stepValues: Record<string, any>, isFinalSubmit: boolean) => {
+    setWizardValues((prevWizardValues) => {
+      const values = { ...prevWizardValues, ...stepValues };
+      if (isFinalSubmit) {
+        onSubmit({ data: values, schema: config });
+      }
+      return values;
+    });
   };
 
   return (
     <div id="wizard" style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
       {title}
+      <button type="button" onClick={() => onSubmit({ data: wizardValues, schema: config })}>
+        SubmitForm
+      </button>
       <div style={isVertical ? { gap: '30px', display: 'flex', flexDirection: 'row' } : {}}>
         <Wiz header={<Header config={config} />}>
           {config.wizard.steps.map((step) => (
-            <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onWizardSubmit} />
+            <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onStepSubmit} />
           ))}
         </Wiz>
       </div>

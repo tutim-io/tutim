@@ -30,30 +30,30 @@ const getStepValues = (config: FormConfig, step: number, values: Record<string, 
 const layout = { submit: { display: false } };
 
 export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
-  const { nextStep, activeStep, isLastStep } = useWizard();
+  const { activeStep } = useWizard();
   const stepKey = `page${activeStep}`;
   const fields = getStepConfig(config, activeStep);
   const onSubmit: OnSubmit = ({ data }) => {
-    handleSubmit(data, isLastStep);
-    nextStep();
+    handleSubmit(data, false);
+  };
+  const onFinalSubmit: OnSubmit = ({ data }) => {
+    handleSubmit(data, true);
   };
   const initialValues = getStepValues(config, activeStep, wizardValues);
   const form = useForm({ fields, layout });
   const isInitializing = form.useFormInit(async () => initialValues);
 
-  const saveCurrentValues = () => {
-    const values = form.getValues();
-    handleSubmit(values, false);
-  };
+  const submit = form.nativeSubmit(onSubmit);
+
   React.useEffect(() => {
-    return saveCurrentValues;
+    return submit;
   }, []);
 
   if (!isInitializing) return <div>Loading</div>;
   return (
     <Box style={{ padding: '0px 10px', width: 'calc(100% - 24px)' }}>
       <FormView formId={stepKey} form={form} onSubmit={onSubmit} />
-      <Footer />
+      <Footer onFinalSubmit={form.nativeSubmit(onFinalSubmit)} />
     </Box>
   );
 };
