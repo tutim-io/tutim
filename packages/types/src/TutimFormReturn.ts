@@ -12,7 +12,7 @@ export interface TutimFormReturn {
   logic: FormLogic;
   meta: FormMeta;
   useFormInit: UseFormInit;
-  nativeSubmit: (onSubmit: OnSubmit) => (e: React.BaseSyntheticEvent) => void;
+  nativeSubmit: (onSubmit: OnSubmit) => (e?: React.BaseSyntheticEvent) => void;
   error?: unknown;
 }
 

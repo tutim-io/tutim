@@ -1,8 +1,9 @@
 import React from 'react';
-import { useForm } from '@tutim/headless';
+import { useForm, useFormConfig } from '@tutim/headless';
 import { OnSubmit, PartialFormConfig, UseFormReturn } from '@tutim/types';
 import { FormElement } from './FormElement';
 import { Button } from '../Buttons';
+import { Wizard } from './Wizard';
 
 interface FormProps {
   onSubmit: OnSubmit;
@@ -76,7 +77,24 @@ export const FormView = ({ formId, form, onSubmit }: FormViewProps): JSX.Element
  * ```
  */
 export const Form = ({ formId, config, onSubmit, initialValues }: FormProps): JSX.Element => {
-  const form = useForm(config || formId || '');
+  const configOrRemoteConfig = useFormConfig(config || formId || '');
+  const isWizard = configOrRemoteConfig.wizard?.steps?.length;
+
+  if (isWizard) return <Wizard onSubmit={onSubmit} config={configOrRemoteConfig} initialValues={initialValues} />;
+  return (
+    <SinglePageForm onSubmit={onSubmit} formId={formId} config={configOrRemoteConfig} initialValues={initialValues} />
+  );
+};
+
+interface SinglePageFormProps {
+  formId?: string;
+  config: PartialFormConfig;
+  onSubmit: OnSubmit;
+  initialValues?: Record<string, any>;
+}
+
+export const SinglePageForm = ({ formId, config, onSubmit, initialValues }: SinglePageFormProps): JSX.Element => {
+  const form = useForm(config);
   if (!formId && !config) return <p>Error in loading form</p>;
   if (form.error) return <p>Error in loading form</p>;
   form.useFormInit(async () => initialValues);

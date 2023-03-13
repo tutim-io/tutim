@@ -1,29 +1,45 @@
 import { Wizard as Wiz } from 'react-use-wizard';
 import React from 'react';
-import { Footer } from './Footer';
 import { Header } from './Header';
-import { FormStep } from './FormStep';
+import { WizardStep } from './WizardStep';
 import { Typography } from '@mui/material';
+import { OnSubmit, PartialFormConfig } from '@tutim/types';
+import { WizardContext } from './use-wizard';
 
-export const Wizard = ({ onSubmit, config }) => {
-  const [wizardValues, setWizardValues] = React.useState({});
-  const steps = Object.keys(config.meta.steps);
-  const title = config.meta.title && <Typography variant="h5">{config.meta.title}</Typography>;
+interface WizardProps {
+  onSubmit: OnSubmit;
+  config: PartialFormConfig;
+  initialValues?: Record<string, any>;
+}
 
-  const onWizardSubmit = (stepValues: Record<string, any>, isLastStep: boolean) => {
-    const values = { ...wizardValues, ...stepValues };
-    if (isLastStep) onSubmit({ data: values, schema: config });
-    else setWizardValues(values);
+export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) => {
+  if (!config.wizard) throw new Error('Wizard config is missing');
+  const [wizardValues, setWizardValues] = React.useState(initialValues);
+  const title = config.meta?.title && <Typography variant="h5">{config.meta.title}</Typography>;
+  const isVertical = config.wizard.orientation === 'vertical';
+
+  const onStepSubmit = (stepValues: Record<string, any>, isFinalSubmit: boolean) => {
+    setWizardValues((prevWizardValues) => {
+      const values = { ...prevWizardValues, ...stepValues };
+      if (isFinalSubmit) {
+        onSubmit({ data: values, schema: config });
+      }
+      return values;
+    });
   };
 
   return (
-    <div style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
+    <div id="wizard" style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
       {title}
-      <Wiz footer={<Footer />} header={<Header config={config} />}>
-        {steps.map((step) => (
-          <FormStep key={step} config={config} handleSubmit={onWizardSubmit} />
-        ))}
-      </Wiz>
+      <div style={isVertical ? { gap: '30px', display: 'flex', flexDirection: 'row' } : {}}>
+        <WizardContext.Provider value={{ wizardValues }}>
+          <Wiz header={<Header config={config} />}>
+            {config.wizard.steps.map((step) => (
+              <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onStepSubmit} />
+            ))}
+          </Wiz>
+        </WizardContext.Provider>
+      </div>
     </div>
   );
 };

@@ -1,3 +1,3 @@
-import { FormConfig } from './FormConfig';
+import { FormConfig, PartialFormConfig } from './FormConfig';
 
-export type OnSubmit = (values: { data: any; schema: FormConfig }) => void;
+export type OnSubmit = (values: { data: any; schema: FormConfig | PartialFormConfig }) => void;

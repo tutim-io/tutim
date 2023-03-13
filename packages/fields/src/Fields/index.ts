@@ -6,6 +6,7 @@ export * from './CheckboxField';
 export * from './SwitchField';
 export * from './JsonField';
 export * from './MultiTextField';
+export * from './MultiSelectField';
 export * from './DateField';
 export * from './NumberField';
 export * from './PasswordField';

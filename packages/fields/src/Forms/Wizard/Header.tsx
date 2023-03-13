@@ -1,16 +1,26 @@
 import { useWizard } from 'react-use-wizard';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
+import StepButton from '@mui/material/StepButton';
+import { PartialFormConfig } from '@tutim/types';
 
-export const Header = ({ config }) => {
-  const { activeStep } = useWizard();
+export const Header = ({ config }: { config: PartialFormConfig }) => {
+  const { activeStep, goToStep } = useWizard();
+  if (!config.wizard) return null;
 
   return (
-    <Stepper activeStep={activeStep}>
-      {Object.values(config.meta.steps).map((step, index) => (
-        <Step key={index}>
-          <StepLabel>{(step as any).label}</StepLabel>
+    <Stepper
+      nonLinear
+      activeStep={activeStep}
+      orientation={config.wizard.orientation}
+      id="wizard-header"
+      sx={{ height: '60px' }}
+    >
+      {Object.values(config.wizard.steps).map(({ label }, index) => (
+        <Step key={label}>
+          <StepButton color="inherit" onClick={() => goToStep(index)}>
+            {label}
+          </StepButton>
         </Step>
       ))}
     </Stepper>

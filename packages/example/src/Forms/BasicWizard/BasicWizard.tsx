@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormConfig } from '@tutim/types';
-import { Wizard } from '@tutim/fields';
+import { Form } from '@tutim/fields';
 
 const config: FormConfig = {
   fields: [
@@ -18,22 +18,31 @@ const config: FormConfig = {
     },
     { key: 'email', isRequired: true, label: 'Email', type: 'text' },
     { key: 'phone', label: 'Phone', type: 'number' },
+    { key: 'additional', label: 'additional', type: 'text', isRequired: true },
   ],
+  wizard: {
+    steps: [
+      {
+        label: 'Basic',
+        fields: ['firstName', 'lastName'],
+      },
+      {
+        label: 'Contact',
+        fields: ['email', 'phone'],
+      },
+      {
+        label: 'Additional',
+        fields: ['additional'],
+      },
+    ],
+    orientation: 'vertical',
+  },
   meta: {
     title: 'Basic Wizard',
-    steps: {
-      page0: {
-        label: 'Basic',
-        elements: ['firstName', 'lastName'],
-      },
-      page1: {
-        label: 'Contact',
-        elements: ['email', 'phone'],
-      },
-    },
   },
 };
 
 export const BasicWizard = (): JSX.Element => {
-  return <Wizard onSubmit={console.log} config={config} />;
+  const initialValues = { lastName: 'Doe' };
+  return <Form onSubmit={console.log} config={config} initialValues={initialValues} />;
 };

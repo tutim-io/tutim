@@ -18,6 +18,7 @@ export const MultiTextField: Field = ({ fieldConfig, inputProps: { value = [], o
           label={isRequired ? `${label}*` : label}
           error={!!error?.message}
           helperText={error?.message}
+          InputLabelProps={{ shrink: true }}
         />
       )}
       fullWidth
