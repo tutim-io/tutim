@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormConfig } from '@tutim/types';
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 
 const config: FormConfig = {
   meta: { title: 'My Form' },
@@ -20,5 +20,5 @@ const config: FormConfig = {
 };
 
 export const FormMeta = (): JSX.Element => {
-  return <Form onSubmit={console.log} config={config} />;
+  return <TutimWizard onSubmit={console.log} config={config} />;
 };

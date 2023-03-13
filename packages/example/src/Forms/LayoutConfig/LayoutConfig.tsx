@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import config from './basic.json';
 import { FieldsPerRow } from '@tutim/types';
 
@@ -27,5 +27,5 @@ const layout = {
 export const LayoutConfig = (): JSX.Element => {
   const onSubmit = (data: any) => alert(JSON.stringify(data));
 
-  return <Form onSubmit={onSubmit} config={{ ...config, layout }} />;
+  return <TutimWizard onSubmit={onSubmit} config={{ ...config, layout }} />;
 };

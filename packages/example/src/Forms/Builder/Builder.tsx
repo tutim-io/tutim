@@ -1,4 +1,4 @@
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import config from './config.json';
 
 const onSubmit = ({ data, schema }: any) => {
@@ -7,5 +7,5 @@ const onSubmit = ({ data, schema }: any) => {
 };
 
 export const Builder = (): JSX.Element => {
-  return <Form onSubmit={onSubmit} config={config} />;
+  return <TutimWizard onSubmit={onSubmit} config={config} />;
 };

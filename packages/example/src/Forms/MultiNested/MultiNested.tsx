@@ -1,4 +1,4 @@
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import { FormConfig } from '@tutim/types';
 
 const config: FormConfig = {
@@ -129,5 +129,5 @@ const config: FormConfig = {
 
 export const MultiNested = (): JSX.Element => {
   const onSubmit = (data: any) => alert(JSON.stringify(data));
-  return <Form onSubmit={onSubmit} config={config} />;
+  return <TutimWizard onSubmit={onSubmit} config={config} />;
 };

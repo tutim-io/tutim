@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormConfig } from '@tutim/types';
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 
 const config: FormConfig = {
   fields: [
@@ -44,5 +44,5 @@ const config: FormConfig = {
 
 export const BasicWizard = (): JSX.Element => {
   const initialValues = { lastName: 'Doe' };
-  return <Form onSubmit={console.log} config={config} initialValues={initialValues} />;
+  return <TutimWizard onSubmit={console.log} config={config} initialValues={initialValues} />;
 };
