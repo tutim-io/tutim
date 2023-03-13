@@ -78,7 +78,7 @@ export const FormView = ({ formId, form, onSubmit }: FormViewProps): JSX.Element
  */
 export const Form = ({ formId, config, onSubmit, initialValues }: FormProps): JSX.Element => {
   const configOrRemoteConfig = useFormConfig(config || formId || '');
-  const isWizard = configOrRemoteConfig.wizard;
+  const isWizard = configOrRemoteConfig.wizard?.steps?.length;
 
   if (isWizard) return <Wizard onSubmit={onSubmit} config={configOrRemoteConfig} initialValues={initialValues} />;
   return (
