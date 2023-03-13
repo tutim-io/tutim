@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import { useFormConfig, useTutimOptions } from '@tutim/headless';
 import { getDataAsync } from '../../utils';
 
@@ -7,7 +7,7 @@ export const BasicConfigProvider = ({ formId }: { formId: string }): JSX.Element
   const config = useFormConfig(formId);
   const onSubmit = (data: any) => alert(JSON.stringify(data));
 
-  return <Form onSubmit={onSubmit} config={config} />;
+  return <TutimWizard onSubmit={onSubmit} config={config} />;
 };
 
 export const ConfigProvider = (): JSX.Element => {

@@ -1,4 +1,4 @@
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import { FieldsPerRow } from '@tutim/types';
 // import config from './config.json';
 
@@ -165,5 +165,5 @@ const config = {
 
 export const DeepNested = (): JSX.Element => {
   const onSubmit = (data: any) => alert(JSON.stringify(data));
-  return <Form onSubmit={onSubmit} config={config} />;
+  return <TutimWizard onSubmit={onSubmit} config={config} />;
 };

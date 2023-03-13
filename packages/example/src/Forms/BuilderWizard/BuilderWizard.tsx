@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormConfig } from '@tutim/types';
-import { Wizard } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import builderSchema from './builder-config.json';
 import { schemaTranform } from './utils';
 
@@ -13,5 +13,5 @@ const builderConfig: FormConfig = {
 };
 
 export const BuilderWizard = (): JSX.Element => {
-  return <Wizard onSubmit={console.log} config={builderConfig} />;
+  return <TutimWizard onSubmit={console.log} config={builderConfig} />;
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 
 const config = {
   fields: [
@@ -17,5 +17,5 @@ const config = {
 };
 
 export const SimpleForm = (): JSX.Element => {
-  return <Form onSubmit={console.log} config={config} />;
+  return <TutimWizard onSubmit={console.log} config={config} />;
 };

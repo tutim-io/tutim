@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '@tutim/fields';
+import { TutimWizard } from '@tutim/fields';
 import configBase from './basic.json';
 import { Field } from '@tutim/types';
 
@@ -35,5 +35,5 @@ export const TutimForm = (): JSX.Element => {
     alert(JSON.stringify(data));
   };
 
-  return <Form onSubmit={onSubmit} config={config} initialValues={initialValues} />;
+  return <TutimWizard onSubmit={onSubmit} config={config} initialValues={initialValues} />;
 };

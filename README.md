@@ -56,7 +56,7 @@ npm install @tutim/headless @tutim/fields @tutim/types
 3\. Render the form:
 
 ```jsx
-import { Form, defaultFields } from '@tutim/fields';
+import { TutimWizard, defaultFields } from '@tutim/fields';
 import { FormProvider } from '@tutim/headless';
 
 const config = {
@@ -68,7 +68,7 @@ const config = {
 };
 
 const TutimForm = () => {
-  return <Form onSubmit={console.log} config={config} />;
+  return <TutimWizard onSubmit={console.log} config={config} />;
 };
 
 const App = () => {
@@ -96,7 +96,7 @@ export default App;
 
 ```jsx
 import { FormProvider } from '@tutim/headless';
-import { Form, defaultFields } from '@tutim/fields';
+import { TutimWizard, defaultFields } from '@tutim/fields';
 
 const config = {
   fields: [
@@ -106,7 +106,7 @@ const config = {
 };
 
 const TutimForm = () => {
-  return <Form onSubmit={console.log} config={config} />;
+  return <TutimWizard onSubmit={console.log} config={config} />;
 };
 
 const App = () => {
@@ -245,7 +245,7 @@ export const customFieldConfig: FieldConfig = {
 
 ```tsx
 import { FormProvider } from '@tutim/headless';
-import { defaultFields, Form } from '@tutim/fields';
+import { defaultFields, TutimWizard } from '@tutim/fields';
 import { Field, FieldComponents, InputType } from '@tutim/types';
 
 export const CustomField: Field = ({ inputProps, fieldConfig }) => {
@@ -269,7 +269,7 @@ const App = (): JSX.Element => {
   return (
     <div className="App">
       <FormProvider fieldComponents={fieldComponents}>
-        <Form onSubmit={console.log} config={{ fields: [{ key: 'field1' }] }} />
+        <TutimWizard onSubmit={console.log} config={{ fields: [{ key: 'field1' }] }} />
       </FormProvider>
     </div>
   );

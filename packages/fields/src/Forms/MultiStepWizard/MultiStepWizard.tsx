@@ -12,7 +12,7 @@ interface WizardProps {
   initialValues?: Record<string, any>;
 }
 
-export const Wizard = ({ onSubmit, config, initialValues = {} }: WizardProps) => {
+export const MultiStepWizard = ({ onSubmit, config, initialValues = {} }: WizardProps) => {
   if (!config.wizard) throw new Error('Wizard config is missing');
   const [wizardValues, setWizardValues] = React.useState(initialValues);
   const title = config.meta?.title && <Typography variant="h5">{config.meta.title}</Typography>;
