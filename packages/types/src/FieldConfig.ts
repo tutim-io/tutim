@@ -41,6 +41,8 @@ export enum InputType {
   TextArea = 'text-area',
   Json = 'json',
   MultiText = 'multi-text',
+  MultiSelect = 'multi-select',
+  MultiCheckbox = 'multi-checkbox',
   Object = 'object',
   Array = 'array',
   Custom = 'custom',

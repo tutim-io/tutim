@@ -6,6 +6,7 @@ import { CheckboxField } from './CheckboxField';
 import { SwitchField } from './SwitchField';
 import { JsonField } from './JsonField';
 import { MultiTextField } from './MultiTextField';
+import { MultiSelectField } from './MultiSelectField';
 import { FieldArray } from './SpecialFields';
 import { DateField } from './DateField';
 import { NumberField } from './NumberField';
@@ -24,5 +25,6 @@ export const defaultFields: FieldComponents = {
   [InputType.TextArea]: TextAreaField,
   [InputType.Json]: JsonField,
   [InputType.MultiText]: MultiTextField,
+  [InputType.MultiSelect]: MultiSelectField,
   [InputType.Array]: FieldArray,
 };
