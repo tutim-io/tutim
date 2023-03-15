@@ -14,8 +14,12 @@ export interface FieldConfig {
   label?: string;
   isDisabled?: boolean;
   isRequired?: boolean;
+  placeholder?: string;
+  tooltip?: string;
+  helperText?: string;
   options?: Option[];
   defaultValue?: any;
+  custom?: Record<string, any>;
   validations?: Record<string, Validation | undefined>;
   logic?: FieldLogic;
   Field?: Field;
