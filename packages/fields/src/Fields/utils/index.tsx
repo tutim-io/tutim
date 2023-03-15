@@ -1,1 +1,2 @@
-export * from './InputLabelWithIcon';
+export * from './Label';
+export * from './FieldWrapper';

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Field } from '@tutim/types';
 import { TextField as MuiTextField } from '@mui/material';
-import { InputLabelWithTooltip } from './utils';
+import { FieldWrapper } from './utils';
 
 export const TextAreaField: Field = ({ fieldConfig, inputProps: { value, onChange }, fieldState }) => {
-  const { key, label, isRequired, isDisabled, placeholder, tooltip, helperText } = fieldConfig;
-  const { error = { message: '' } } = fieldState || {};
+  const { key, isRequired, isDisabled, placeholder } = fieldConfig;
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.currentTarget.value);
   };
 
   return (
-    <>
-      <InputLabelWithTooltip label={label || key} tooltip={tooltip} />
+    <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
       <MuiTextField
         onChange={onInputChange}
         value={value || ''}
@@ -24,12 +22,10 @@ export const TextAreaField: Field = ({ fieldConfig, inputProps: { value, onChang
         multiline
         rows={4}
         fullWidth
-        error={!!error?.message}
-        helperText={error?.message || helperText}
         key={key}
         required={isRequired}
         disabled={isDisabled}
       />
-    </>
+    </FieldWrapper>
   );
 };

@@ -1,10 +1,9 @@
 import { Option, Field } from '@tutim/types';
 import { TextField as MuiTextField, MenuItem as MuiMenuItem } from '@mui/material';
-import { InputLabelWithTooltip } from './utils';
+import { FieldWrapper } from './utils';
 
 export const SelectField: Field = ({ fieldConfig, inputProps: { value, onChange }, fieldState }) => {
-  const { key, label, isRequired, isDisabled, options = [], placeholder, tooltip, helperText } = fieldConfig;
-  const { error = { message: '' } } = fieldState || {};
+  const { key, isRequired, isDisabled, options = [], placeholder } = fieldConfig;
 
   const childOptions = options.map((option: Option) => (
     <MuiMenuItem disabled={option.disabled} key={option.value} value={option.value}>
@@ -13,8 +12,7 @@ export const SelectField: Field = ({ fieldConfig, inputProps: { value, onChange 
   ));
 
   return (
-    <>
-      <InputLabelWithTooltip label={label || key} tooltip={tooltip} />
+    <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
       <MuiTextField
         value={value || ''}
         onChange={onChange}
@@ -26,14 +24,12 @@ export const SelectField: Field = ({ fieldConfig, inputProps: { value, onChange 
           placeholder: placeholder,
         }}
         SelectProps={{ native: false }}
-        error={!!error?.message}
-        helperText={error?.message || helperText}
         size="small"
         required={isRequired}
         disabled={isDisabled}
       >
         {childOptions}
       </MuiTextField>
-    </>
+    </FieldWrapper>
   );
 };
