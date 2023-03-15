@@ -8,7 +8,10 @@ const config: FormConfig = {
       key: 'firstName',
       label: 'First Name',
       type: 'text',
-      defaultValue: 'John',
+      isRequired: true,
+      tooltip: 'A tooltip',
+      helperText: 'A helper text',
+      placeholder: 'A placeholder',
     },
     {
       key: 'lastName',

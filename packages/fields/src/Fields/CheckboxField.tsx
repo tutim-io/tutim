@@ -6,7 +6,7 @@ export const CheckboxField: Field = ({ fieldConfig, inputProps: { value = false,
   const { key, helperText } = fieldConfig;
 
   return (
-    <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
+    <FieldWrapper fieldConfig={{ ...fieldConfig, helperText: undefined }} fieldState={fieldState}>
       <FormControlLabel label={helperText} control={<Checkbox key={key} checked={value} onChange={onChange} />} />
     </FieldWrapper>
   );
