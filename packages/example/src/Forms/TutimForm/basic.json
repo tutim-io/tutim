@@ -6,7 +6,7 @@
       "label": "First Name",
       "isDisabled": false,
       "type": "text",
-      "isRequired": false
+      "isRequired": true
     },
     {
       "key": "lastName",

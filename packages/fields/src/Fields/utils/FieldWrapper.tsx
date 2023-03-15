@@ -7,17 +7,18 @@ export const FieldWrapper: React.FC<{ fieldConfig: any; fieldState: any; childre
   fieldState,
   children,
 }) => {
-  const { key, label, isRequired, isDisabled, tooltip } = fieldConfig;
+  const { key, label, isRequired, isDisabled, tooltip, helperText } = fieldConfig;
   const { error = { message: '' } } = fieldState || {};
+  const showError = !!error.message;
 
   return (
     <FormControl key={key} required={isRequired} disabled={isDisabled} component="fieldset" sx={{ width: '100%' }}>
       <Label label={label} tooltip={tooltip} />
       {children}
-      {!!error && (
-        <FormHelperText error sx={{ px: 2 }}>
-          {error.message}
-        </FormHelperText>
+      {showError ? (
+        <FormHelperText error>{error.message}</FormHelperText>
+      ) : (
+        <FormHelperText>{helperText}</FormHelperText>
       )}
     </FormControl>
   );
