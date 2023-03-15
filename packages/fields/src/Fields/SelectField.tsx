@@ -14,17 +14,17 @@ export const SelectField: Field = ({ fieldConfig, inputProps: { value, onChange 
   return (
     <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
       <MuiTextField
-        value={value || ''}
-        onChange={onChange}
-        key={key}
         select
-        fullWidth
+        onChange={onChange}
+        value={value || ''}
         InputLabelProps={{ shrink: true }}
         InputProps={{
           placeholder: placeholder,
         }}
         SelectProps={{ native: false }}
+        fullWidth
         size="small"
+        key={key}
         required={isRequired}
         disabled={isDisabled}
       >

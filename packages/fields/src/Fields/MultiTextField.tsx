@@ -1,30 +1,23 @@
 import { Field } from '@tutim/types';
 import { TextField as MuiTextField, Autocomplete } from '@mui/material';
+import { FieldWrapper } from './utils';
 
 export const MultiTextField: Field = ({ fieldConfig, inputProps: { value = [], onChange }, fieldState }) => {
-  const { key, label, isRequired, isDisabled } = fieldConfig;
-  const { error = { message: '' } } = fieldState || {};
+  const { isDisabled } = fieldConfig;
 
   return (
-    <Autocomplete
-      onChange={(_e, value) => onChange(value)}
-      value={value}
-      multiple
-      options={[]}
-      freeSolo
-      renderInput={(params) => (
-        <MuiTextField
-          {...params}
-          label={isRequired ? `${label}*` : label}
-          error={!!error?.message}
-          helperText={error?.message}
-          InputLabelProps={{ shrink: true }}
-        />
-      )}
-      fullWidth
-      size="small"
-      key={key}
-      disabled={isDisabled}
-    />
+    <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
+      <Autocomplete
+        onChange={(_e, value) => onChange(value)}
+        value={value}
+        multiple
+        options={[]}
+        freeSolo
+        renderInput={(params) => <MuiTextField {...params} InputLabelProps={{ shrink: true }} />}
+        fullWidth
+        size="small"
+        disabled={isDisabled}
+      />
+    </FieldWrapper>
   );
 };

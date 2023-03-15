@@ -13,13 +13,13 @@ export const TextAreaField: Field = ({ fieldConfig, inputProps: { value, onChang
   return (
     <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
       <MuiTextField
+        multiline
         onChange={onInputChange}
         value={value || ''}
         InputLabelProps={{ shrink: true }}
         InputProps={{
           placeholder: placeholder,
         }}
-        multiline
         rows={4}
         fullWidth
         key={key}
