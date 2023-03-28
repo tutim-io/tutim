@@ -1,5 +1,6 @@
 {
   "wizard": {
+    "orientation": "vertical",
     "steps": [
       {
         "label": "Meta",
@@ -7,7 +8,7 @@
       },
       {
         "label": "Fields",
-        "fields": ["fields"]
+        "fields": ["generator", "fields"]
       },
       {
         "label": "Wizard",
@@ -16,7 +17,6 @@
     ]
   },
   "layout": {
-    "submitLabel": "Save Form",
     "arrayConfigs": {
       "fields": {
         "groupConfigs": {
@@ -24,6 +24,13 @@
             {
               "key": "name",
               "fieldKeys": ["type", "key", "label"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            },
+            {
+              "key": "helpers",
+              "fieldKeys": ["helperText", "tooltip", "placeholder"],
               "layout": {
                 "fieldsPerRow": 3
               }
@@ -63,6 +70,13 @@
               }
             },
             {
+              "key": "helpers",
+              "fieldKeys": ["helperText", "tooltip", "placeholder"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            },
+            {
               "key": "vals",
               "fieldKeys": ["defaultValue", "isRequired", "validate"],
               "layout": {
@@ -85,6 +99,96 @@
             }
           }
         }
+      },
+      "fields.$.options": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["value", "label"],
+              "layout": {
+                "fieldsPerRow": 2
+              }
+            }
+          ]
+        }
+      },
+      "fields.$.children.fields.$.options": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["value", "label"],
+              "layout": {
+                "fieldsPerRow": 2
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "logic": {
+    "arrayFieldsLogic": {
+      "fields": {
+        "options": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["select", "radio", "multi-checkbox", "multi-select"]
+          }
+        },
+        "defaultValue": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["text", "text-area", "select", "radio"]
+          }
+        },
+        "validations": {
+          "displayIf": {
+            "field": "$.validate",
+            "operator": "equal",
+            "value": true
+          }
+        },
+        "children": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["object", "array"]
+          }
+        }
+      },
+      "fields.$.children.fields": {
+        "options": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["select", "radio", "multi-checkbox", "multi-select"]
+          }
+        },
+        "defaultValue": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["text", "text-area", "select", "radio"]
+          }
+        },
+        "validations": {
+          "displayIf": {
+            "field": "$.validate",
+            "operator": "equal",
+            "value": true
+          }
+        },
+        "children": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["object", "array"]
+          }
+        }
       }
     }
   },
@@ -97,17 +201,26 @@
         "fields": [
           {
             "key": "title",
-            "label": "Form Title",
+            "label": "Wizard Title",
             "type": "text",
-            "isRequired": true
+            "isRequired": true,
+            "tooltip": "Your wizard title",
+            "placeholder": "Enter a wizard title"
           },
           {
             "key": "description",
-            "label": "Form Description",
-            "type": "text"
+            "label": "Wizard Description",
+            "type": "text",
+            "tooltip": "Your wizard description",
+            "placeholder": "Enter a wizard description"
           }
         ]
       }
+    },
+    {
+      "key": "generator",
+      "label": "Fields AI Generator",
+      "type": "text"
     },
     {
       "key": "fields",
@@ -120,12 +233,16 @@
             "key": "key",
             "label": "Field Key",
             "type": "text",
-            "isRequired": true
+            "isRequired": true,
+            "placeholder": "Enter a unique key for this field",
+            "tooltip": "Used for referencing this field in logic and data"
           },
           {
             "key": "label",
             "label": "Label",
-            "type": "text"
+            "type": "text",
+            "placeholder": "Enter a label for this field",
+            "tooltip": "The label is used to identify the field to the user"
           },
           {
             "key": "type",
@@ -156,6 +273,16 @@
               {
                 "value": "json",
                 "label": "JSON",
+                "disabled": false
+              },
+              {
+                "value": "multi-checkbox",
+                "label": "MULTI-CHECKBOX",
+                "disabled": false
+              },
+              {
+                "value": "multi-select",
+                "label": "MULTI-SELECT",
                 "disabled": false
               },
               {
@@ -204,42 +331,67 @@
                 "disabled": false
               }
             ],
-            "defaultValue": "text"
+            "defaultValue": "text",
+            "tooltip": "Select the type of input for this field"
           },
           {
             "key": "options",
             "label": "Options",
-            "type": "multi-text",
-            "defaultValue": [],
-            "logic": {
-              "displayIf": {
-                "field": "$.type",
-                "operator": "in",
-                "value": ["select", "radio"]
-              }
-            }
+            "type": "array",
+            "isRequired": true,
+            "children": {
+              "fields": [
+                {
+                  "key": "value",
+                  "label": "Option Value",
+                  "type": "text",
+                  "isRequired": true
+                },
+                {
+                  "key": "label",
+                  "label": "Option Label",
+                  "type": "text",
+                  "isRequired": true
+                }
+              ]
+            },
+            "defaultValue": []
           },
           {
             "key": "defaultValue",
             "label": "Default Value",
             "type": "text",
-            "logic": {
-              "displayIf": {
-                "field": "$.type",
-                "operator": "in",
-                "value": ["text", "select", "radio"]
-              }
-            }
+            "placeholder": "Enter a default value for this field"
+          },
+          {
+            "key": "helperText",
+            "label": "Helper Text",
+            "type": "text",
+            "placeholder": "Enter a text to help the user"
+          },
+          {
+            "key": "tooltip",
+            "label": "Tooltip",
+            "type": "text",
+            "placeholder": "Enter a Tooltip"
+          },
+          {
+            "key": "placeholder",
+            "label": "Placeholder",
+            "type": "text",
+            "placeholder": "Enter a Placeholder"
           },
           {
             "key": "isRequired",
             "label": "Required",
-            "type": "checkbox"
+            "type": "checkbox",
+            "helperText": "Is this field required?"
           },
           {
             "key": "validate",
             "label": "Validate",
-            "type": "checkbox"
+            "type": "checkbox",
+            "helperText": "Should this field be validated?"
           },
           {
             "key": "validations",
@@ -306,13 +458,6 @@
                   }
                 }
               ]
-            },
-            "logic": {
-              "displayIf": {
-                "field": "$.validate",
-                "operator": "equal",
-                "value": true
-              }
             }
           },
           {
@@ -325,24 +470,28 @@
                   "key": "fields",
                   "label": "Object Fields",
                   "type": "array",
-                  "defaultValue": [],
                   "children": {
                     "fields": [
                       {
                         "key": "key",
                         "label": "Field Key",
                         "type": "text",
-                        "isRequired": true
+                        "isRequired": true,
+                        "placeholder": "Enter a unique key for this field",
+                        "tooltip": "Used for referencing this field in logic and data"
                       },
                       {
                         "key": "label",
                         "label": "Label",
-                        "type": "text"
+                        "type": "text",
+                        "placeholder": "Enter a label for this field",
+                        "tooltip": "The label is used to identify the field to the user"
                       },
                       {
                         "key": "type",
                         "label": "Input Type",
                         "type": "select",
+                        "isRequired": true,
                         "options": [
                           {
                             "value": "array",
@@ -370,19 +519,29 @@
                             "disabled": false
                           },
                           {
+                            "value": "multi-checkbox",
+                            "label": "MULTI-CHECKBOX",
+                            "disabled": false
+                          },
+                          {
+                            "value": "multi-select",
+                            "label": "MULTI-SELECT",
+                            "disabled": false
+                          },
+                          {
                             "value": "multi-text",
                             "label": "MULTI-TEXT",
+                            "disabled": false
+                          },
+                          {
+                            "value": "number",
+                            "label": "NUMBER",
                             "disabled": false
                           },
                           {
                             "value": "object",
                             "label": "OBJECT",
                             "disabled": true
-                          },
-                          {
-                            "value": "number",
-                            "label": "NUMBER",
-                            "disabled": false
                           },
                           {
                             "value": "password",
@@ -415,44 +574,67 @@
                             "disabled": false
                           }
                         ],
-                        "isRequired": true,
-                        "defaultValue": "text"
+                        "defaultValue": "text",
+                        "tooltip": "Select the type of input for this field"
                       },
                       {
                         "key": "options",
                         "label": "Options",
-                        "type": "multi-text",
+                        "type": "array",
                         "isRequired": true,
-                        "defaultValue": [],
-                        "logic": {
-                          "displayIf": {
-                            "field": "$.type",
-                            "operator": "in",
-                            "value": ["select", "radio"]
-                          }
-                        }
+                        "children": {
+                          "fields": [
+                            {
+                              "key": "value",
+                              "label": "Option Value",
+                              "type": "text",
+                              "isRequired": true
+                            },
+                            {
+                              "key": "label",
+                              "label": "Option Label",
+                              "type": "text",
+                              "isRequired": true
+                            }
+                          ]
+                        },
+                        "defaultValue": []
                       },
                       {
                         "key": "defaultValue",
                         "label": "Default Value",
                         "type": "text",
-                        "logic": {
-                          "displayIf": {
-                            "field": "$.type",
-                            "operator": "in",
-                            "value": ["text", "select", "radio"]
-                          }
-                        }
+                        "placeholder": "Enter a default value for this field"
+                      },
+                      {
+                        "key": "helperText",
+                        "label": "Helper Text",
+                        "type": "text",
+                        "placeholder": "Enter a text to help the user"
+                      },
+                      {
+                        "key": "tooltip",
+                        "label": "Tooltip",
+                        "type": "text",
+                        "placeholder": "Enter a Tooltip"
+                      },
+                      {
+                        "key": "placeholder",
+                        "label": "Placeholder",
+                        "type": "text",
+                        "placeholder": "Enter a Placeholder"
                       },
                       {
                         "key": "isRequired",
                         "label": "Required",
-                        "type": "checkbox"
+                        "type": "checkbox",
+                        "helperText": "Is this field required?"
                       },
                       {
                         "key": "validate",
                         "label": "Validate",
-                        "type": "checkbox"
+                        "type": "checkbox",
+                        "helperText": "Should this field be validated?"
                       },
                       {
                         "key": "validations",
@@ -473,7 +655,7 @@
                                   },
                                   {
                                     "key": "message",
-                                    "label": "Message",
+                                    "label": "Error Message",
                                     "type": "text"
                                   }
                                 ]
@@ -492,7 +674,7 @@
                                   },
                                   {
                                     "key": "message",
-                                    "label": "Message",
+                                    "label": "Error Message",
                                     "type": "text"
                                   }
                                 ]
@@ -512,33 +694,20 @@
                                   },
                                   {
                                     "key": "message",
-                                    "label": "Message",
+                                    "label": "Error Message",
                                     "type": "text"
                                   }
                                 ]
                               }
                             }
                           ]
-                        },
-                        "logic": {
-                          "displayIf": {
-                            "field": "$.validate",
-                            "operator": "equal",
-                            "value": true
-                          }
                         }
                       }
                     ]
-                  }
+                  },
+                  "isRequired": true
                 }
               ]
-            },
-            "logic": {
-              "displayIf": {
-                "field": "$.type",
-                "operator": "in",
-                "value": ["object", "array"]
-              }
             },
             "isRequired": true
           }
@@ -552,9 +721,29 @@
       "children": {
         "fields": [
           {
+            "key": "orientation",
+            "label": "Orientation",
+            "type": "radio",
+            "options": [
+              {
+                "label": "Horizontal",
+                "value": "horizontal"
+              },
+              {
+                "label": "Vertical",
+                "value": "vertical"
+              }
+            ],
+            "defaultValue": "horizontal",
+            "isRequired": true,
+            "tooltip": "Your wizard orientation"
+          },
+          {
             "key": "steps",
             "label": "Form Steps",
             "type": "array",
+            "tooltip": "Add steps to your form",
+            "helperText": "Add steps to your form",
             "defaultValue": [],
             "children": {
               "fields": [
@@ -562,13 +751,18 @@
                   "key": "label",
                   "label": "Step Label",
                   "type": "text",
+                  "tooltip": "Add steps to your form",
+                  "placeholder": "Enter a wizard step label",
                   "isRequired": true
                 },
                 {
                   "key": "fields",
                   "label": "Step Fields",
-                  "type": "multi-text",
-                  "isRequired": true
+                  "type": "multi-select",
+                  "isRequired": true,
+                  "tooltip": "Add steps to your form",
+                  "placeholder": "Add steps to your form",
+                  "options": []
                 }
               ]
             }
