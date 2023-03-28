@@ -40,9 +40,9 @@ export const useFormFields = (
 
   const configToField = (config: FieldConfig) => {
     if (config.type === InputType.Array) {
-      const UiFieldArray = fieldComponents[InputType.Array];
+      const UiFieldArray = fieldComponents[InputType.Array] || config.Field;
       const key = getFieldRelativeKeys(config.key).join('.');
-      const layoutConfig = formConfig.layout?.arrayConfigs?.[key];
+      const layoutConfig = formConfig.layout?.gridConfigs?.[key];
       const logic = formConfig.logic?.arrayFieldsLogic?.[key];
       const field = FieldArray({ parentConfig: config, configsToMap, control, layoutConfig, logic, UiFieldArray });
       return field;
