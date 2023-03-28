@@ -64,9 +64,10 @@ export enum Operators {
   IN = 'in',
 }
 
-type FieldsLogic = Record<string, FieldLogic>;
+export type FieldsLogic = Record<string, FieldLogic>;
 
 export interface FormLogic {
   submissionPage?: { allowResubmit?: boolean };
   fieldsLogic?: FieldsLogic;
+  arrayFieldsLogic?: Record<string, FieldsLogic>;
 }

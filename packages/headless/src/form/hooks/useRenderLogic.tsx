@@ -1,5 +1,5 @@
 import * as RHF from 'react-hook-form';
-import { FormConfig, FieldConfig, Operators } from '@tutim/types';
+import { FormConfig, FieldConfig, Operators, FieldLogic } from '@tutim/types';
 
 export const useDisplayIfLogic = (watch: RHF.UseFormWatch<Record<string, any>>, formConfig: FormConfig) => {
   const { fieldsLogic = {} } = formConfig.logic || {};
@@ -14,7 +14,7 @@ export const useDisplayIfLogic = (watch: RHF.UseFormWatch<Record<string, any>>, 
 };
 
 export const computeRenderedConfigs = (values: Record<string, any>) => {
-  return (formConfig: FormConfig): FieldConfig[] => {
+  return (formConfig: Pick<FormConfig, 'logic' | 'fields'>): FieldConfig[] => {
     const displayFilter = predicateDisplayIf(values);
 
     const filterConfigChilds = (config: FieldConfig, parentKey?: string): FieldConfig | null => {
@@ -48,7 +48,7 @@ export const computeRenderedConfigs = (values: Record<string, any>) => {
 };
 
 export const predicateDisplayIf = (values: Record<string, any>) => {
-  return (displayIf: any): boolean => {
+  return (displayIf: FieldLogic['displayIf']): boolean => {
     if (!displayIf) return true;
 
     const { field, operator, value } = displayIf;

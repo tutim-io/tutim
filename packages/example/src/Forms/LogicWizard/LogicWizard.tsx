@@ -27,6 +27,24 @@ const config: FormConfig = {
         },
       },
     },
+    arrayFieldsLogic: {
+      kids: {
+        age: {
+          displayIf: {
+            field: 'firstName',
+            operator: Operators.EQUAL,
+            value: 'display',
+          },
+        },
+        job: {
+          displayIf: {
+            field: '$.name',
+            operator: Operators.EQUAL,
+            value: 'display',
+          },
+        },
+      },
+    },
   },
   fields: [
     {
@@ -87,6 +105,30 @@ const config: FormConfig = {
       key: 'lastName',
       label: 'Last Name',
       type: 'text',
+    },
+    {
+      key: 'kids',
+      label: 'Kids',
+      type: 'array',
+      children: {
+        fields: [
+          {
+            key: 'name',
+            label: 'Name',
+            type: 'text',
+          },
+          {
+            key: 'job',
+            label: 'Job',
+            type: 'text',
+          },
+          {
+            key: 'age',
+            label: 'Age',
+            type: 'number',
+          },
+        ],
+      },
     },
   ],
 };
