@@ -50,12 +50,12 @@ export const useForm = (config: PartialFormConfig, options?: UseFormOptions): Us
     const defaultValues = getDefaults(fieldConfigs);
 
     const { control, setValue, watch, getValues, handleSubmit, ...form } = RHFuseForm({ ...options, defaultValues });
-    useDisplayIfLogic(watch, fieldConfigs);
+    useDisplayIfLogic(watch, formConfig);
 
     const useFormInit = React.useMemo(() => getUseFormInit(setValue), [setValue]);
     const nativeSubmit = (onSubmit: OnSubmit) => handleSubmit((data) => onSubmit({ data, schema: formConfig }));
 
-    const fieldsByKey = useFormFields(control, { fields: fieldConfigs, layout: formConfig.layout }, getValues());
+    const fieldsByKey = useFormFields(control, formConfig, getValues());
     const fields = getFieldsFromMap(fieldsByKey);
     const layout = useFormLayout(formConfig);
     const logic = formConfig.logic || {};

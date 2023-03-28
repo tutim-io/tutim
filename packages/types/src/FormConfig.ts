@@ -9,11 +9,11 @@ import { FormLayout } from './FormLayout';
  **/
 
 export interface FormConfig {
+  meta?: FormMeta;
   fields: FieldConfig[];
   layout?: FormLayout;
-  wizard?: Wizard;
   logic?: FormLogic;
-  meta?: FormMeta;
+  wizard?: Wizard;
   id?: string;
 }
 
@@ -26,11 +26,11 @@ export type PartialFieldConfig = Partial<FieldConfig> & Pick<FieldConfig, 'key'>
  * [API](https://docs.tutim.io/) • [Builder](https://tutim.io/)
  **/
 export interface PartialFormConfig {
+  meta?: FormMeta;
   fields: PartialFieldConfig[];
   layout?: FormLayout;
-  wizard?: Wizard;
   logic?: FormLogic;
-  meta?: FormMeta;
+  wizard?: Wizard;
   id?: string;
 }
 
@@ -50,6 +50,24 @@ export interface WizardStep {
   fields: string[];
 }
 
+interface BasicLogic {
+  field: string;
+  operator: string;
+  value: any;
+}
+export interface FieldLogic {
+  displayIf?: BasicLogic;
+}
+
+export enum Operators {
+  EQUAL = 'equal',
+  IN = 'in',
+}
+
+export type FieldsLogic = Record<string, FieldLogic>;
+
 export interface FormLogic {
   submissionPage?: { allowResubmit?: boolean };
+  fieldsLogic?: FieldsLogic;
+  arrayFieldsLogic?: { [arrayKey: string]: FieldsLogic };
 }

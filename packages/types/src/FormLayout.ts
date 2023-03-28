@@ -24,7 +24,7 @@ export interface LayoutArrayConfig {
 export interface FormLayout {
   style?: any;
   groupConfigs?: LayoutGroupConfigs;
-  arrayConfigs?: LayoutArrayConfig;
+  arrayConfigs?: { [arrayKey: string]: Pick<FormLayout, 'groupConfigs' | 'fieldsPerRow'> };
   fieldsPerRow?: FieldsPerRow;
   submit?: { label?: string; display?: boolean };
 }

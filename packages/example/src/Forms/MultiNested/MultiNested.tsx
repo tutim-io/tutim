@@ -31,6 +31,13 @@ const config: FormConfig = {
       },
     },
   },
+  logic: {
+    fieldsLogic: {
+      hobbies: {
+        displayIf: { field: 'app', operator: 'equal', value: 'admin' },
+      },
+    },
+  },
   fields: [
     {
       key: 'app',
@@ -43,9 +50,6 @@ const config: FormConfig = {
       label: 'Hobbies',
       type: 'multi-text',
       isRequired: true,
-      logic: {
-        displayIf: { field: 'app', operator: 'equal', value: 'admin' },
-      },
     },
     {
       key: 'kids',
@@ -64,17 +68,11 @@ const config: FormConfig = {
             key: 'lastName',
             label: 'Last Name',
             type: 'text',
-            logic: {
-              displayIf: { field: '$.firstName', operator: 'equal', value: 'nameo' },
-            },
           },
           {
             key: 'favColor',
             label: 'Favourite Color',
             type: 'text',
-            logic: {
-              displayIf: { field: 'app', operator: 'equal', value: 'admin' },
-            },
           },
           {
             key: 'kidAddress',
@@ -117,9 +115,6 @@ const config: FormConfig = {
             key: 'city',
             label: 'City',
             type: 'text',
-            logic: {
-              displayIf: { field: 'address.country', operator: 'equal', value: 'israel' },
-            },
           },
         ],
       },
