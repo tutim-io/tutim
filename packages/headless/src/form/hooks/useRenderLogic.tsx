@@ -1,5 +1,5 @@
 import * as RHF from 'react-hook-form';
-import { FormConfig, FieldConfig, Operators, FieldLogic } from '@tutim/types';
+import { FormConfig, FieldConfig, Operators, FieldLogic, InputType } from '@tutim/types';
 
 export const useDisplayIfLogic = (watch: RHF.UseFormWatch<Record<string, any>>, formConfig: FormConfig) => {
   const { fieldsLogic = {} } = formConfig.logic || {};
@@ -14,7 +14,7 @@ export const useDisplayIfLogic = (watch: RHF.UseFormWatch<Record<string, any>>, 
 };
 
 export const computeRenderedConfigs = (values: Record<string, any>) => {
-  return (formConfig: Pick<FormConfig, 'logic' | 'fields'>): FieldConfig[] => {
+  const getFilteredFields = (formConfig: Pick<FormConfig, 'logic' | 'fields'>): FieldConfig[] => {
     const displayFilter = predicateDisplayIf(values);
 
     const filterConfigChilds = (config: FieldConfig, parentKey?: string): FieldConfig | null => {
@@ -27,6 +27,16 @@ export const computeRenderedConfigs = (values: Record<string, any>) => {
 
       if (!config.children) {
         return config;
+      }
+
+      if (config.type === InputType.Array) {
+        const fieldsLogicArr = formConfig.logic?.arrayFieldsLogic?.[key];
+        const arrayChildFields = getFilteredFields({
+          fields: config.children.fields,
+          logic: { fieldsLogic: fieldsLogicArr },
+        });
+        const children = { ...config.children, fields: arrayChildFields };
+        return { ...config, children };
       }
 
       const children = {
@@ -45,6 +55,8 @@ export const computeRenderedConfigs = (values: Record<string, any>) => {
 
     return fields;
   };
+
+  return getFilteredFields;
 };
 
 export const predicateDisplayIf = (values: Record<string, any>) => {

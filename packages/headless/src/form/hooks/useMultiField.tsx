@@ -1,8 +1,8 @@
-import { FieldConfig, FieldLogic, FieldsByKey, FieldsLogic, FormLayout, FormLogic } from '@tutim/types';
+import { FieldConfig, FieldsByKey, FieldsLogic, FormLayout } from '@tutim/types';
 import { Control, useFieldArray, useWatch } from 'react-hook-form';
 import { getDefaults } from './useFormConfig';
 import { useFormLayout } from './useFormLayout';
-import { computeRenderedConfigs, predicateDisplayIf } from './useRenderLogic';
+import { computeRenderedConfigs } from './useRenderLogic';
 
 const getRelativeKey = (key: string): string | undefined => {
   const [key1, key2] = key.split('.');
