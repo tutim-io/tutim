@@ -50,6 +50,23 @@ export interface WizardStep {
   fields: string[];
 }
 
+interface BasicLogic {
+  field: string;
+  operator: string;
+  value: any;
+}
+export interface FieldLogic {
+  displayIf?: BasicLogic;
+}
+
+export enum Operators {
+  EQUAL = 'equal',
+  IN = 'in',
+}
+
+type FieldsLogic = Record<string, FieldLogic>;
+
 export interface FormLogic {
   submissionPage?: { allowResubmit?: boolean };
+  fieldsLogic?: FieldsLogic;
 }

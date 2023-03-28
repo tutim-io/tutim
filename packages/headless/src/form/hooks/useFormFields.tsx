@@ -22,7 +22,7 @@ const configToFlatConfigs = (configs: FieldConfig[]): FieldConfig[] => {
 
 export const useFormFields = (
   control: RHF.Control,
-  { fields, layout }: FormConfig,
+  formConfig: FormConfig,
   formValue: Record<string, any>
 ): FieldsByKey => {
   const fieldComponents = useFieldComponents();
@@ -42,7 +42,7 @@ export const useFormFields = (
     if (config.type === InputType.Array) {
       const UiFieldArray = fieldComponents[InputType.Array];
       const key = getFieldRelativeKeys(config.key).join('.');
-      const layoutConfig = layout?.arrayConfigs?.[key];
+      const layoutConfig = formConfig.layout?.arrayConfigs?.[key];
       const field = FieldArray({ parentConfig: config, configsToMap, control, layoutConfig, UiFieldArray });
       return field;
     }
@@ -50,7 +50,7 @@ export const useFormFields = (
     return Field(config);
   };
 
-  const fieldConfigs = computeRenderedConfigs(formValue)(fields);
+  const fieldConfigs = computeRenderedConfigs(formValue)(formConfig);
   const fieldsByKey = configsToMap(fieldConfigs);
   return fieldsByKey;
 };

@@ -21,7 +21,6 @@ export interface FieldConfig {
   defaultValue?: any;
   custom?: Record<string, any>;
   validations?: Record<string, Validation | undefined>;
-  logic?: FieldLogic;
   Field?: Field;
   children?: Pick<FormConfig, 'fields'>;
 }
@@ -61,18 +60,4 @@ export interface Option {
 export interface Validation {
   value?: number | boolean | string;
   message?: string;
-}
-
-interface BasicLogic {
-  field: string;
-  operator: string;
-  value: any;
-}
-export interface FieldLogic {
-  displayIf?: BasicLogic;
-}
-
-export enum Operators {
-  EQUAL = 'equal',
-  IN = 'in',
 }

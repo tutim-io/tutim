@@ -21,7 +21,7 @@ import {
   SchemaServe,
   FormMeta,
   BasicWizard,
-  BuilderWizard,
+  LogicWizard,
 } from './Forms';
 import formConfig from './basic.json';
 
@@ -50,7 +50,7 @@ const examples: Record<string, () => JSX.Element> = {
   SchemaServe: SchemaServe,
   FormMeta: FormMeta,
   BasicWizard: BasicWizard,
-  BuilderWizard: BuilderWizard,
+  LogicWizard: LogicWizard,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
