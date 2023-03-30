@@ -1,197 +1,4 @@
 {
-  "wizard": {
-    "orientation": "vertical",
-    "steps": [
-      {
-        "label": "Meta",
-        "fields": ["meta"]
-      },
-      {
-        "label": "Fields",
-        "fields": ["generator", "fields"]
-      },
-      {
-        "label": "Wizard",
-        "fields": ["wizard"]
-      }
-    ]
-  },
-  "layout": {
-    "arrayConfigs": {
-      "fields": {
-        "groupConfigs": {
-          "groups": [
-            {
-              "key": "name",
-              "fieldKeys": ["type", "key", "label"],
-              "layout": {
-                "fieldsPerRow": 3
-              }
-            },
-            {
-              "key": "helpers",
-              "fieldKeys": ["helperText", "tooltip", "placeholder"],
-              "layout": {
-                "fieldsPerRow": 3
-              }
-            },
-            {
-              "key": "vals",
-              "fieldKeys": ["defaultValue", "isRequired", "validate"],
-              "layout": {
-                "fieldsPerRow": 3
-              }
-            }
-          ],
-          "layout": {
-            "validations": {
-              "fieldsPerRow": 1
-            },
-            "validations.minLength": {
-              "fieldsPerRow": 2
-            },
-            "validations.maxLength": {
-              "fieldsPerRow": 2
-            },
-            "validations.pattern": {
-              "fieldsPerRow": 2
-            }
-          }
-        }
-      },
-      "fields.$.children.fields": {
-        "groupConfigs": {
-          "groups": [
-            {
-              "key": "name",
-              "fieldKeys": ["type", "key", "label"],
-              "layout": {
-                "fieldsPerRow": 3
-              }
-            },
-            {
-              "key": "helpers",
-              "fieldKeys": ["helperText", "tooltip", "placeholder"],
-              "layout": {
-                "fieldsPerRow": 3
-              }
-            },
-            {
-              "key": "vals",
-              "fieldKeys": ["defaultValue", "isRequired", "validate"],
-              "layout": {
-                "fieldsPerRow": 3
-              }
-            }
-          ],
-          "layout": {
-            "validations": {
-              "fieldsPerRow": 1
-            },
-            "validations.minLength": {
-              "fieldsPerRow": 2
-            },
-            "validations.maxLength": {
-              "fieldsPerRow": 2
-            },
-            "validations.pattern": {
-              "fieldsPerRow": 2
-            }
-          }
-        }
-      },
-      "fields.$.options": {
-        "groupConfigs": {
-          "groups": [
-            {
-              "key": "name",
-              "fieldKeys": ["value", "label"],
-              "layout": {
-                "fieldsPerRow": 2
-              }
-            }
-          ]
-        }
-      },
-      "fields.$.children.fields.$.options": {
-        "groupConfigs": {
-          "groups": [
-            {
-              "key": "name",
-              "fieldKeys": ["value", "label"],
-              "layout": {
-                "fieldsPerRow": 2
-              }
-            }
-          ]
-        }
-      }
-    }
-  },
-  "logic": {
-    "arrayFieldsLogic": {
-      "fields": {
-        "options": {
-          "displayIf": {
-            "field": "$.type",
-            "operator": "in",
-            "value": ["select", "radio", "multi-checkbox", "multi-select"]
-          }
-        },
-        "defaultValue": {
-          "displayIf": {
-            "field": "$.type",
-            "operator": "in",
-            "value": ["text", "text-area", "select", "radio"]
-          }
-        },
-        "validations": {
-          "displayIf": {
-            "field": "$.validate",
-            "operator": "equal",
-            "value": true
-          }
-        },
-        "children": {
-          "displayIf": {
-            "field": "$.type",
-            "operator": "in",
-            "value": ["object", "array"]
-          }
-        }
-      },
-      "fields.$.children.fields": {
-        "options": {
-          "displayIf": {
-            "field": "$.type",
-            "operator": "in",
-            "value": ["select", "radio", "multi-checkbox", "multi-select"]
-          }
-        },
-        "defaultValue": {
-          "displayIf": {
-            "field": "$.type",
-            "operator": "in",
-            "value": ["text", "text-area", "select", "radio"]
-          }
-        },
-        "validations": {
-          "displayIf": {
-            "field": "$.validate",
-            "operator": "equal",
-            "value": true
-          }
-        },
-        "children": {
-          "displayIf": {
-            "field": "$.type",
-            "operator": "in",
-            "value": ["object", "array"]
-          }
-        }
-      }
-    }
-  },
   "fields": [
     {
       "key": "meta",
@@ -220,7 +27,7 @@
     {
       "key": "generator",
       "label": "Fields AI Generator",
-      "type": "text"
+      "type": "json"
     },
     {
       "key": "fields",
@@ -400,44 +207,6 @@
             "children": {
               "fields": [
                 {
-                  "key": "minLength",
-                  "label": "Min Length",
-                  "type": "object",
-                  "children": {
-                    "fields": [
-                      {
-                        "key": "value",
-                        "label": "Value",
-                        "type": "number"
-                      },
-                      {
-                        "key": "message",
-                        "label": "Error Message",
-                        "type": "text"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "key": "maxLength",
-                  "label": "Max Length",
-                  "type": "object",
-                  "children": {
-                    "fields": [
-                      {
-                        "key": "value",
-                        "label": "Value",
-                        "type": "number"
-                      },
-                      {
-                        "key": "message",
-                        "label": "Error Message",
-                        "type": "text"
-                      }
-                    ]
-                  }
-                },
-                {
                   "key": "pattern",
                   "label": "Regex Pattern",
                   "type": "object",
@@ -447,12 +216,14 @@
                       {
                         "key": "value",
                         "label": "Value",
-                        "type": "text"
+                        "type": "text",
+                        "isRequired": true
                       },
                       {
                         "key": "message",
                         "label": "Error Message",
-                        "type": "text"
+                        "type": "text",
+                        "isRequired": true
                       }
                     ]
                   }
@@ -643,44 +414,6 @@
                         "children": {
                           "fields": [
                             {
-                              "key": "minLength",
-                              "label": "Min Length",
-                              "type": "object",
-                              "children": {
-                                "fields": [
-                                  {
-                                    "key": "value",
-                                    "label": "Value",
-                                    "type": "number"
-                                  },
-                                  {
-                                    "key": "message",
-                                    "label": "Error Message",
-                                    "type": "text"
-                                  }
-                                ]
-                              }
-                            },
-                            {
-                              "key": "maxLength",
-                              "label": "Max Length",
-                              "type": "object",
-                              "children": {
-                                "fields": [
-                                  {
-                                    "key": "value",
-                                    "label": "Value",
-                                    "type": "number"
-                                  },
-                                  {
-                                    "key": "message",
-                                    "label": "Error Message",
-                                    "type": "text"
-                                  }
-                                ]
-                              }
-                            },
-                            {
                               "key": "pattern",
                               "label": "Regex Pattern",
                               "type": "object",
@@ -690,12 +423,14 @@
                                   {
                                     "key": "value",
                                     "label": "Value",
-                                    "type": "text"
+                                    "type": "text",
+                                    "isRequired": true
                                   },
                                   {
                                     "key": "message",
                                     "label": "Error Message",
-                                    "type": "text"
+                                    "type": "text",
+                                    "isRequired": true
                                   }
                                 ]
                               }
@@ -710,6 +445,99 @@
               ]
             },
             "isRequired": true
+          }
+        ]
+      }
+    },
+    {
+      "key": "logic",
+      "label": "Wizard Logic",
+      "type": "object",
+      "children": {
+        "fields": [
+          {
+            "key": "fieldsLogic",
+            "label": "Fields Logic Array",
+            "type": "json",
+            "isRequired": true
+          }
+        ]
+      }
+    },
+    {
+      "key": "layout",
+      "label": "Wizard Layout",
+      "type": "object",
+      "children": {
+        "fields": [
+          {
+            "key": "groupConfigs",
+            "label": "Group Configurations",
+            "type": "object",
+            "isRequired": true,
+            "children": {
+              "fields": [
+                {
+                  "key": "groups",
+                  "label": "Groups",
+                  "type": "array",
+                  "isRequired": true,
+                  "children": {
+                    "fields": [
+                      {
+                        "key": "key",
+                        "label": "Group Key",
+                        "type": "text",
+                        "isRequired": true
+                      },
+                      {
+                        "key": "title",
+                        "label": "Group Title",
+                        "type": "text"
+                      },
+                      {
+                        "key": "fieldKeys",
+                        "label": "Group Fields",
+                        "type": "multi-text",
+                        "isRequired": true,
+                        "options": []
+                      },
+                      {
+                        "key": "layout",
+                        "label": "Group Layout",
+                        "type": "object",
+                        "isRequired": true,
+                        "children": {
+                          "fields": [
+                            {
+                              "key": "fieldsPerRow",
+                              "label": "Fields Per Row",
+                              "type": "select",
+                              "isRequired": true,
+                              "defaultValue": 1,
+                              "options": [
+                                {
+                                  "label": "One",
+                                  "value": 1
+                                },
+                                {
+                                  "label": "Two",
+                                  "value": 2
+                                },
+                                {
+                                  "label": "Three",
+                                  "value": 3
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
           }
         ]
       }
@@ -740,7 +568,7 @@
           },
           {
             "key": "steps",
-            "label": "Form Steps",
+            "label": "Wizard Steps",
             "type": "array",
             "tooltip": "Add steps to your form",
             "helperText": "Add steps to your form",
@@ -758,7 +586,7 @@
                 {
                   "key": "fields",
                   "label": "Step Fields",
-                  "type": "multi-select",
+                  "type": "multi-text",
                   "isRequired": true,
                   "tooltip": "Add steps to your form",
                   "placeholder": "Add steps to your form",
@@ -770,5 +598,219 @@
         ]
       }
     }
-  ]
+  ],
+  "logic": {
+    "arrayFieldsLogic": {
+      "fields": {
+        "options": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["select", "radio", "multi-checkbox", "multi-select"]
+          }
+        },
+        "defaultValue": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["text", "text-area", "select", "radio"]
+          }
+        },
+        "validations": {
+          "displayIf": {
+            "field": "$.validate",
+            "operator": "equal",
+            "value": true
+          }
+        },
+        "children": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["object", "array"]
+          }
+        }
+      },
+      "fields.$.children.fields": {
+        "options": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["select", "radio", "multi-checkbox", "multi-select"]
+          }
+        },
+        "defaultValue": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["text", "text-area", "select", "radio"]
+          }
+        },
+        "validations": {
+          "displayIf": {
+            "field": "$.validate",
+            "operator": "equal",
+            "value": true
+          }
+        },
+        "children": {
+          "displayIf": {
+            "field": "$.type",
+            "operator": "in",
+            "value": ["object", "array"]
+          }
+        }
+      }
+    }
+  },
+  "layout": {
+    "arrayConfigs": {
+      "fields": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["type", "key", "label"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            },
+            {
+              "key": "helpers",
+              "fieldKeys": ["helperText", "tooltip", "placeholder"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            },
+            {
+              "key": "vals",
+              "fieldKeys": ["defaultValue", "isRequired", "validate"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            }
+          ],
+          "layout": {
+            "validations": {
+              "fieldsPerRow": 1
+            },
+            "validations.minLength": {
+              "fieldsPerRow": 2
+            },
+            "validations.maxLength": {
+              "fieldsPerRow": 2
+            },
+            "validations.pattern": {
+              "fieldsPerRow": 2
+            }
+          }
+        }
+      },
+      "fields.$.children.fields": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["type", "key", "label"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            },
+            {
+              "key": "helpers",
+              "fieldKeys": ["helperText", "tooltip", "placeholder"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            },
+            {
+              "key": "vals",
+              "fieldKeys": ["defaultValue", "isRequired", "validate"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            }
+          ],
+          "layout": {
+            "validations": {
+              "fieldsPerRow": 1
+            },
+            "validations.minLength": {
+              "fieldsPerRow": 2
+            },
+            "validations.maxLength": {
+              "fieldsPerRow": 2
+            },
+            "validations.pattern": {
+              "fieldsPerRow": 2
+            }
+          }
+        }
+      },
+      "fields.$.options": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["value", "label"],
+              "layout": {
+                "fieldsPerRow": 2
+              }
+            }
+          ]
+        }
+      },
+      "fields.$.children.fields.$.options": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["value", "label"],
+              "layout": {
+                "fieldsPerRow": 2
+              }
+            }
+          ]
+        }
+      },
+      "layout.groupConfigs.groups": {
+        "groupConfigs": {
+          "groups": [
+            {
+              "key": "name",
+              "fieldKeys": ["key", "fieldKeys", "title"],
+              "layout": {
+                "fieldsPerRow": 3
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "wizard": {
+    "orientation": "vertical",
+    "steps": [
+      {
+        "label": "Meta",
+        "fields": ["meta"]
+      },
+      {
+        "label": "Fields",
+        "fields": ["generator", "fields"]
+      },
+      {
+        "label": "Logic",
+        "fields": ["logic"]
+      },
+      {
+        "label": "Layout",
+        "fields": ["layout"]
+      },
+      {
+        "label": "Wizard",
+        "fields": ["wizard"]
+      }
+    ]
+  }
 }
