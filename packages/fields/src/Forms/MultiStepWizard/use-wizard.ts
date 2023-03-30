@@ -3,9 +3,10 @@ import { UseFormReturn } from 'react-hook-form';
 
 interface WizardState {
   wizardValues: Record<string, any>;
+  setWizardValues: React.Dispatch<React.SetStateAction<Record<string, any>>>;
 }
 
-const wizardContext: WizardState = { wizardValues: {} };
+const wizardContext: WizardState = { wizardValues: {}, setWizardValues: (() => null) as any };
 export const WizardContext = React.createContext<WizardState>(wizardContext);
 export const useWizardState = (): WizardState => React.useContext(WizardContext);
 

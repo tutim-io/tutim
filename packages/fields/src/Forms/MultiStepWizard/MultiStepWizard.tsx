@@ -32,7 +32,7 @@ export const MultiStepWizard = ({ onSubmit, config, initialValues = {} }: Wizard
     <div id="wizard" style={{ gap: '10px', display: 'flex', flexDirection: 'column' }}>
       {title}
       <div style={isVertical ? { gap: '30px', display: 'flex', flexDirection: 'row' } : {}}>
-        <WizardContext.Provider value={{ wizardValues }}>
+        <WizardContext.Provider value={{ wizardValues, setWizardValues }}>
           <Wiz header={<Header config={config} />}>
             {config.wizard.steps.map((step) => (
               <WizardStep key={step.label} config={config} wizardValues={wizardValues} handleSubmit={onStepSubmit} />
