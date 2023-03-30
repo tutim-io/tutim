@@ -69,7 +69,8 @@ const enrichNestedUngrouped = (fields: FieldConfig[]) => (group: LayoutGroupConf
   return group;
 };
 
-export const getLayoutGroups = ({ fields, layout: { groupConfigs } = {} }: FormConfig): LayoutGroupConfigsGroup[] => {
+export const getLayoutGroups = ({ fields, layout }: FormConfig): LayoutGroupConfigsGroup[] => {
+  const { groupConfigs } = layout || {};
   const { groups = [] } = groupConfigs || {};
   const mappedFields = groups.reduce((acc, group) => {
     group.fieldKeys.forEach((key) => (acc[key] = key));

@@ -29,6 +29,7 @@ const getStepValues = (config: FormConfig, step: number, values: Record<string, 
 };
 
 const layout = { submit: { display: false } };
+const meta = { title: undefined };
 
 export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
   const { activeStep } = useWizard();
@@ -41,7 +42,12 @@ export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
     handleSubmit(data, true);
   };
   const initialValues = getStepValues(config, activeStep, wizardValues);
-  const form = useForm({ ...config, fields, layout: { ...config.layout, ...layout } });
+  const form = useForm({
+    ...config,
+    fields,
+    layout: { ...config.layout, ...layout },
+    meta: { ...config.meta, ...meta },
+  });
   const isInitializing = form.useFormInit(async () => initialValues);
 
   const submit = form.nativeSubmit(onSubmit);
