@@ -9,19 +9,19 @@ const validationsConfig = {
         {
           key: 'minLength',
           title: 'Min Length',
-          fieldKeys: ['validations.minLength.message', 'validations.minLength.value'],
+          fields: ['validations.minLength.message', 'validations.minLength.value'],
           layout: { fieldsPerRow: FieldsPerRow.Two },
         },
         {
           key: 'maxLength',
           title: 'Max Length',
-          fieldKeys: ['validations.maxLength.message', 'validations.maxLength.value'],
+          fields: ['validations.maxLength.message', 'validations.maxLength.value'],
           layout: { fieldsPerRow: FieldsPerRow.Two },
         },
         {
           key: 'pattern',
           title: 'Pattern',
-          fieldKeys: ['validations.pattern.message', 'validations.pattern.value'],
+          fields: ['validations.pattern.message', 'validations.pattern.value'],
           layout: { fieldsPerRow: FieldsPerRow.Two },
         },
       ],
@@ -154,7 +154,7 @@ const config = {
         {
           key: 'validations',
           title: 'Validations',
-          fieldKeys: ['validations.minLength.message', 'validations.minLength.value'],
+          fields: ['validations.minLength.message', 'validations.minLength.value'],
           layout: { fieldsPerRow: FieldsPerRow.Two },
         },
       ],

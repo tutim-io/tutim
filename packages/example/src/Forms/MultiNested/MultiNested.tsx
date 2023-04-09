@@ -21,7 +21,7 @@ const config: FormConfig = {
       },
       kids: {
         groupConfigs: {
-          groups: [{ key: 'name', title: 'Name', fieldKeys: ['firstName', 'lastName', 'favColor'] }],
+          groups: [{ key: 'name', title: 'Name', fields: ['firstName', 'lastName', 'favColor'] }],
           layout: {
             address: { fieldsPerRow: 2 },
             name: { fieldsPerRow: 2 },
