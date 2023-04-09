@@ -6,7 +6,7 @@ export enum FieldsPerRow {
 
 export interface LayoutGroupConfigsGroup {
   key: string;
-  fieldKeys: string[];
+  fields: string[];
   title?: string;
   subGroups?: LayoutGroupConfigs;
   layout?: Pick<FormLayout, 'fieldsPerRow'>;

@@ -8,7 +8,7 @@ export const getGroupFields = (formLayout: FormLayout, fieldsByKey: FieldsByKey)
   const getGroupFromGroupConfig = (groupConfigs: LayoutGroupConfigs) => {
     if (!groupConfigs.groups) return [];
     return groupConfigs.groups.reduce((aggFields: React.ReactNode[], group) => {
-      const topLevelFields = group.fieldKeys.map((key: string) => fieldsByKey[key]).filter(Boolean);
+      const topLevelFields = group.fields.map((key: string) => fieldsByKey[key]).filter(Boolean);
       const subGroupFields = group.subGroups ? getGroupFromGroupConfig(group.subGroups) : [];
       const fields = [...topLevelFields, ...subGroupFields];
 

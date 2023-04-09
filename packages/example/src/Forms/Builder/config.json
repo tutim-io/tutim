@@ -496,7 +496,7 @@
                         "type": "text"
                       },
                       {
-                        "key": "fieldKeys",
+                        "key": "fields",
                         "label": "Group Fields",
                         "type": "multi-text",
                         "isRequired": true,
@@ -670,21 +670,21 @@
           "groups": [
             {
               "key": "name",
-              "fieldKeys": ["type", "key", "label"],
+              "fields": ["type", "key", "label"],
               "layout": {
                 "fieldsPerRow": 3
               }
             },
             {
               "key": "helpers",
-              "fieldKeys": ["helperText", "tooltip", "placeholder"],
+              "fields": ["helperText", "tooltip", "placeholder"],
               "layout": {
                 "fieldsPerRow": 3
               }
             },
             {
               "key": "vals",
-              "fieldKeys": ["defaultValue", "isRequired", "validate"],
+              "fields": ["defaultValue", "isRequired", "validate"],
               "layout": {
                 "fieldsPerRow": 3
               }
@@ -711,21 +711,21 @@
           "groups": [
             {
               "key": "name",
-              "fieldKeys": ["type", "key", "label"],
+              "fields": ["type", "key", "label"],
               "layout": {
                 "fieldsPerRow": 3
               }
             },
             {
               "key": "helpers",
-              "fieldKeys": ["helperText", "tooltip", "placeholder"],
+              "fields": ["helperText", "tooltip", "placeholder"],
               "layout": {
                 "fieldsPerRow": 3
               }
             },
             {
               "key": "vals",
-              "fieldKeys": ["defaultValue", "isRequired", "validate"],
+              "fields": ["defaultValue", "isRequired", "validate"],
               "layout": {
                 "fieldsPerRow": 3
               }
@@ -752,7 +752,7 @@
           "groups": [
             {
               "key": "name",
-              "fieldKeys": ["value", "label"],
+              "fields": ["value", "label"],
               "layout": {
                 "fieldsPerRow": 2
               }
@@ -765,7 +765,7 @@
           "groups": [
             {
               "key": "name",
-              "fieldKeys": ["value", "label"],
+              "fields": ["value", "label"],
               "layout": {
                 "fieldsPerRow": 2
               }
@@ -778,7 +778,7 @@
           "groups": [
             {
               "key": "name",
-              "fieldKeys": ["key", "fieldKeys", "title"],
+              "fields": ["key", "fields", "title"],
               "layout": {
                 "fieldsPerRow": 3
               }

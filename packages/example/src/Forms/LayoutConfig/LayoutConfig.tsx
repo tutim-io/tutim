@@ -10,14 +10,14 @@ const layout = {
       {
         key: 'name',
         title: 'Name',
-        fieldKeys: ['firstName', 'lastName'],
+        fields: ['firstName', 'lastName'],
         layout: { fieldsPerRow: FieldsPerRow.Two },
       },
-      { key: 'role', title: 'Role', fieldKeys: ['role'], layout: { fieldsPerRow: FieldsPerRow.One } },
+      { key: 'role', title: 'Role', fields: ['role'], layout: { fieldsPerRow: FieldsPerRow.One } },
       {
         key: 'settings',
         title: 'Settings',
-        fieldKeys: ['hosting', 'agree', 'enable'],
+        fields: ['hosting', 'agree', 'enable'],
         layout: { fieldsPerRow: FieldsPerRow.Three },
       },
     ],

@@ -11,12 +11,12 @@ const isNestedField = (config: FieldConfig) => config.type === InputType.Object;
 
 // Create a group configuration for a field.
 // If the field has children, the group will include
-// the children's keys in its `fieldKeys` array.
+// the children's keys in its `fields` array.
 const createGroupForField = ({ key, label, children, type }: FieldConfig): LayoutGroupConfigsGroup => {
-  if (!children || type === InputType.Array) return { key, fieldKeys: [key] };
+  if (!children || type === InputType.Array) return { key, fields: [key] };
 
   // Create a list of field keys for the children of the field.
-  const fieldKeys = children.fields.map((child) => `${key}.${child.key}`);
+  const fields = children.fields.map((child) => `${key}.${child.key}`);
 
   // Create a list of child configs for any children that have their own children.
   const childConfigs = children.fields
@@ -26,7 +26,7 @@ const createGroupForField = ({ key, label, children, type }: FieldConfig): Layou
   // Recursively create groups for any children that have their own children.
   const subGroups = childConfigs.length ? { groups: childConfigs.map(createGroupForField) } : undefined;
 
-  return { key, title: label, fieldKeys, subGroups };
+  return { key, title: label, fields, subGroups };
 };
 
 // Map layout information onto the group configs.
@@ -51,11 +51,11 @@ const mapLayoutToGroups = (groupConfigs: LayoutGroupConfigs): LayoutGroupConfigs
 };
 
 const enrichNestedUngrouped = (fields: FieldConfig[]) => (group: LayoutGroupConfigsGroup) => {
-  const isInvalidGroup = group.fieldKeys.find((key) => key.includes('.'));
+  const isInvalidGroup = group.fields.find((key) => key.includes('.'));
   if (isInvalidGroup) {
     throw new Error(`Invalid group: ${group.key}, top level groups can't include object field i.e '.'`);
   }
-  const childConfigs = group.fieldKeys.map((key) => fields.find((f) => f.key === key)).filter(Boolean) as FieldConfig[];
+  const childConfigs = group.fields.map((key) => fields.find((f) => f.key === key)).filter(Boolean) as FieldConfig[];
 
   if (childConfigs.length === 1) {
     return createGroupForField(childConfigs[0]);
@@ -63,7 +63,7 @@ const enrichNestedUngrouped = (fields: FieldConfig[]) => (group: LayoutGroupConf
     const groups = childConfigs.filter(isNestedField).map(createGroupForField);
     const fieldKeys = childConfigs.map((f) => f.key);
     const subGroups = groups.length ? { groups } : undefined;
-    const nestedGroup = { ...group, fieldKeys, subGroups };
+    const nestedGroup = { ...group, fields: fieldKeys, subGroups };
     return nestedGroup;
   }
   return group;
@@ -73,7 +73,7 @@ export const getLayoutGroups = ({ fields, layout }: FormConfig): LayoutGroupConf
   const { groupConfigs } = layout || {};
   const { groups = [] } = groupConfigs || {};
   const mappedFields = groups.reduce((acc, group) => {
-    group.fieldKeys.forEach((key) => (acc[key] = key));
+    group.fields.forEach((key) => (acc[key] = key));
     return acc;
   }, {});
   const ungroupedFields = fields.filter((field) => !mappedFields[field.key]);
