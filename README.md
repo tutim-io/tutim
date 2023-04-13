@@ -2,7 +2,7 @@
 
 [![Tutim.io logo](https://res.cloudinary.com/tutim/image/upload/v1671445328/logo-png_rjs63o.png)](https://tutim.io)
 
-## **Form infrastructure for product teams**
+## **Wizard Form infrastructure for product teams**
 
 Headless forms module to create web-app powerful forms in minutes.
 
@@ -67,15 +67,11 @@ const config = {
   ],
 };
 
-const TutimForm = () => {
-  return <TutimWizard onSubmit={console.log} config={config} />;
-};
-
 const App = () => {
   return (
     <div className="App">
       <FormProvider fieldComponents={defaultFields}>
-        <TutimForm />
+        <TutimWizard onSubmit={console.log} config={config} />
       </FormProvider>
     </div>
   );
@@ -87,127 +83,6 @@ export default App;
 4\. Output Example:
 
 ![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
-
-### ⭐ Implementation Types
-
-#### [TutimForm](https://docs.tutim.io/react-sdk/tutim-form)
-
-`Form` is a component that provides a simple interface for defining the fields and form behavior, while handling the infrastructure and user interface for you.
-
-```jsx
-import { FormProvider } from '@tutim/headless';
-import { TutimWizard, defaultFields } from '@tutim/fields';
-
-const config = {
-  fields: [
-    { key: 'firstName', label: 'First Name', type: 'text' },
-    { key: 'lastName', label: 'Last Name', type: 'text' },
-  ],
-};
-
-const TutimForm = () => {
-  return <TutimWizard onSubmit={console.log} config={config} />;
-};
-
-const App = () => {
-  return (
-    <div className="App">
-      <FormProvider fieldComponents={defaultFields}>
-        <TutimForm />
-      </FormProvider>
-    </div>
-  );
-};
-
-export default App;
-```
-
-#### [ControlledForm](https://docs.tutim.io/react-sdk/controlled-form)
-
-`ControlledForm` is a component with control over the form logic, while leaving the form infrastructure and user interface to be handled for you. It provides a set of tools for managing the form data and form submission, and a `FormView` component for rendering the form fields and submission button.
-
-```jsx
-import React from 'react';
-import { FormView, defaultFields } from '@tutim/fields';
-import { FormProvider, useForm } from '@tutim/headless';
-
-const config = {
-  fields: [
-    { key: 'firstName', label: 'First Name', type: 'text' },
-    { key: 'lastName', label: 'Last Name', type: 'text' },
-  ],
-};
-
-const ControlledForm = () => {
-  const form = useForm(config);
-  const { watch, setValue } = form;
-  const firstName = watch('firstName');
-
-  React.useEffect(() => {
-    if (firstName === 'John') setValue('lastName', 'Doe');
-  }, [setValue, firstName]);
-
-  return <FormView onSubmit={console.log} form={form} />;
-};
-
-const App = () => {
-  return (
-    <div className="App">
-      <FormProvider fieldComponents={defaultFields}>
-        <ControlledForm />
-      </FormProvider>
-    </div>
-  );
-};
-
-export default App;
-```
-
-#### [HeadlessForm](https://docs.tutim.io/react-sdk/headless-form)
-
-`HeadlessForm` is a component with complete control over the form logic and design. It provides a set of tools for managing the form infrastructure, such as handling form submissions and managing the form data, while leaving the form logic and design up to you.
-
-```jsx
-import { FormProvider, useForm } from '@tutim/headless';
-import { Field, FieldComponents, InputType } from '@tutim/types';
-
-const config = {
-  fields: [
-    { key: 'firstName', label: 'First Name', type: 'text', defaultValue: 'first' },
-    { key: 'lastName', label: 'Last Name', type: 'text' },
-  ],
-};
-
-const HeadlessForm = () => {
-  const { fieldsByKey, watch, handleSubmit } = useForm(config);
-  const name = watch('firstName');
-  const style = { display: 'flex', flexDirection: 'column', gap: '5px' };
-
-  return (
-    <form onSubmit={handleSubmit(console.log)} style={style}>
-      {fieldsByKey['firstName']}
-      {name === 'first' && fieldsByKey['lastName']}
-      <input type="submit" />
-    </form>
-  );
-};
-
-const fieldComponents = {
-  [InputType.Text]: ({ inputProps }) => <input {...inputProps} />,
-};
-
-const App = () => {
-  return (
-    <div className="App">
-      <FormProvider fieldComponents={fieldComponents}>
-        <HeadlessForm />
-      </FormProvider>
-    </div>
-  );
-};
-
-export default App;
-```
 
 #### [CustomField](https://docs.tutim.io/react-sdk/customfield)
 
@@ -293,21 +168,22 @@ Tutim provides all forms solutions. Through code or drag & drop interface.
 
 - [x] Simple form layout (one pager)
 - [x] Layout and grouping control
-- [ ] Wizard multi steps (coming soon)
+- [x] Wizard multi steps (coming soon)
 - [ ] DnD rich builder
 
 **😊 Portal**
 
+- [x] Generative builder (build wizard from text with AI)
 - [x] Simple form builder
+- [x] Conditional branching
 - [ ] Drag & Drop form builder
 - [ ] Templates library
-- [ ] Conditional branching
 
 **☁️ Cloud (**[**closed beta, request early access**](https://discord.tutim.io)**)**
 
 - [x] Manage and serve schemas
 - [x] Hosted forms
-- [ ] Backend support
+- [x] Backend support
 - [ ] 3rd Party integrations
 
 ### 🤵 Need Help?
