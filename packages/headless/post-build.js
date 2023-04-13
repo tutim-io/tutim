@@ -13,5 +13,5 @@ fs.readFile(pkgPath, 'utf-8').then(async (f) => {
   await fs.writeFile(`dist/${pkgPath}`, JSON.stringify(pkgJson, null, 2))
   delete json.exports;
   delete json.types;
-  await fs.writeFile(pkgPath, JSON.stringify(json, null, 2))
+  await fs.writeFile(pkgPath, JSON.stringify(json, null, 2) + '\n')
 });
