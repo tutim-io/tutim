@@ -9,6 +9,7 @@ export interface FormProps {
   formId?: string;
   config?: PartialFormConfig;
   initialValues?: Record<string, any>;
+  wizardContext?: any;
 }
 interface FormViewProps {
   formId?: string;

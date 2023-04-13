@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormConfig } from '@tutim/headless';
-import { MultiStepWizard } from './MultiStepWizard';
+import { ControlledWizard, MultiStepWizard } from './MultiStepWizard';
 import { FormProps, SinglePageForm } from './Form';
 
 /**
@@ -37,9 +37,12 @@ import { FormProps, SinglePageForm } from './Form';
  * ```
  */
 
-export const TutimWizard = ({ formId, config, onSubmit, initialValues }: FormProps): JSX.Element => {
+export const TutimWizard = ({ formId, config, onSubmit, initialValues, wizardContext }: FormProps): JSX.Element => {
   const configOrRemoteConfig = useFormConfig(config || formId || '');
   const isWizard = configOrRemoteConfig.wizard?.steps?.length;
+
+  if (wizardContext)
+    return <ControlledWizard onSubmit={onSubmit} config={configOrRemoteConfig} wizardContext={wizardContext} />;
 
   if (isWizard)
     return <MultiStepWizard onSubmit={onSubmit} config={configOrRemoteConfig} initialValues={initialValues} />;

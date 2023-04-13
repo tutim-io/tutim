@@ -5,7 +5,7 @@ import { FormView } from '../Form';
 import React from 'react';
 import { Footer } from './Footer';
 import { Box } from '@mui/system';
-import { WizardCurrentFormContext } from './use-wizard';
+import { WizardCurrentFormContext, useWizardState } from './use-wizard';
 
 const getStepConfig = (config: FormConfig, step: number): FieldConfig[] => {
   const { wizard } = config;
@@ -31,8 +31,9 @@ const getStepValues = (config: FormConfig, step: number, values: Record<string, 
 const layout = { submit: { display: false } };
 const meta = { title: undefined };
 
-export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
+export const WizardStep = ({ handleSubmit, config }) => {
   const { activeStep } = useWizard();
+  const wizardState = useWizardState();
   const stepKey = `page${activeStep}`;
   const fields = getStepConfig(config, activeStep);
   const onSubmit: OnSubmit = ({ data }) => {
@@ -41,13 +42,16 @@ export const WizardStep = ({ handleSubmit, config, wizardValues }) => {
   const onFinalSubmit: OnSubmit = ({ data }) => {
     handleSubmit(data, true);
   };
-  const initialValues = getStepValues(config, activeStep, wizardValues);
+  const initialValues = getStepValues(config, activeStep, wizardState.wizardValues);
   const form = useForm({
     ...config,
     fields,
     layout: { ...config.layout, ...layout },
     meta: { ...config.meta, ...meta },
   });
+  React.useEffect(() => {
+    wizardState.setCurrentForm(form);
+  }, []);
   const isInitializing = form.useFormInit(async () => initialValues);
 
   const submit = form.nativeSubmit(onSubmit);
