@@ -4,7 +4,7 @@
 
 ## **Wizard Form infrastructure for product teams**
 
-Headless forms module to create web-app powerful forms in minutes.
+Headless forms module to create powerful wizards in your web application.
 
 [![MIT License](https://img.shields.io/github/license/tutim-io/tutim)](https://github.com/tutim-io/tutim/blob/main/LICENSE) [![Number of GitHub stars](https://img.shields.io/github/stars/tutim-io/tutim?logo=github)](https://github.com/tutim-io/tutim/stargazers) [![Discord is Live](https://img.shields.io/badge/Discord-Live-green?logo=discord&logoColor=%23fff)](https://discord.tutim.io) [![Docs are updated](https://img.shields.io/badge/docs-updated-green?color=blue)](https://docs.tutim.io) [![Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launch%20soon-orange?logo=producthunt&logoColor=%23fff)](https://www.producthunt.com/@leetwito)
 
@@ -12,22 +12,22 @@ Headless forms module to create web-app powerful forms in minutes.
 
 ### 🍓 Why Tutim?
 
-Building forms in apps is complicated.
+Building multi-step forms in apps is complicated.
 
 At first, it seems like just throwing a few input fields, but in reality, it's just the beginning.
 
-Tutim gives you your own in-house form builder that's fully integrated with your component library and design system. Everybody on your team can create, edit, and publish forms and surveys in your app regardless of their technical background.
+Tutim gives you your own in-house multi-step form builder that's fully integrated with your component library and design system. Everybody on your team can create, edit, and publish wizards and surveys in your app regardless of their technical background.
 
 This repo is 100% free, and will always remain.
 
 ### ✨ Features
 
 - 🌈 **Headless:** Default design system that can be replaced with yours
-- 💅 **Rich form:** Save draft, wizard, conditional branching, and more are available out-of-the-box
+- 💅 **Rich form:** Multi-step, conditional branching, validations, and more are available out-of-the-box
 - 🚀 **Performant:** Best practices are implemented. Never worry about delays
-- 🛠️ **No-Code Builder:** Let PMs and designers create and change forms. Stick with React for styling and embedding
+- 🛠️ **No-Code Builder:** Let PMs and designers create and change in-app wizards. Stick with React for styling and embedding
 - 👨‍💻 **Built-in Analytics:** Opening rate, drop-offs, conversions. privacy-first `(coming soon)`
-- 📦 **Templates:** Onboarding, personal details, feedback from our gallery`(coming soon)`
+- 📦 **Templates:** Onboarding, personal details, feedback and more`(coming soon)`
 
 ---
 
@@ -39,7 +39,7 @@ This repo is 100% free, and will always remain.
 
 [**Admin Portal & Builder »**](https://app.tutim.io/)
 
-Create your first form in 2 minutes, by following these steps:
+Create your first wizard in 2 minutes, by following these steps:
 
 1\. Install tutim React package:
 
@@ -51,9 +51,9 @@ yarn add @tutim/headless @tutim/fields @tutim/types
 npm install @tutim/headless @tutim/fields @tutim/types
 ```
 
-2\. Create your first form schema with [Tutim Form Builder](https://app.tutim.io/), or by creating the form JSON schema yourself
+2\. Create your first form schema with [Tutim Form Builder](https://app.tutim.io/), or by creating the wizard JSON schema yourself
 
-3\. Render the form:
+3\. Render the wizard:
 
 ```jsx
 import { TutimWizard, defaultFields } from '@tutim/fields';
@@ -153,7 +153,7 @@ const App = (): JSX.Element => {
 export default App;
 ```
 
-### 📜 Forms
+### 📜 Wizards
 
 Tutim provides all forms solutions. Through code or drag & drop interface.
 
@@ -168,7 +168,7 @@ Tutim provides all forms solutions. Through code or drag & drop interface.
 
 - [x] Simple form layout (one pager)
 - [x] Layout and grouping control
-- [x] Wizard multi steps (coming soon)
+- [x] Wizard multi steps
 - [ ] DnD rich builder
 
 **😊 Portal**
@@ -176,7 +176,6 @@ Tutim provides all forms solutions. Through code or drag & drop interface.
 - [x] Generative builder (build wizard from text with AI)
 - [x] Simple form builder
 - [x] Conditional branching
-- [ ] Drag & Drop form builder
 - [ ] Templates library
 
 **☁️ Cloud (**[**closed beta, request early access**](https://discord.tutim.io)**)**
