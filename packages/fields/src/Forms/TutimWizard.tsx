@@ -41,6 +41,8 @@ export const TutimWizard = ({ formId, config, onSubmit, initialValues, wizardCon
   const configOrRemoteConfig = useFormConfig(config || formId || '');
   const isWizard = configOrRemoteConfig.wizard?.steps?.length;
 
+  if (!configOrRemoteConfig.fields.length) return <p>No Fields</p>;
+
   if (wizardContext)
     return <ControlledWizard onSubmit={onSubmit} config={configOrRemoteConfig} wizardContext={wizardContext} />;
 

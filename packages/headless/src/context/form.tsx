@@ -11,7 +11,8 @@ export const useTutimOptions = (): TutimOptionsProviderValue => React.useContext
 
 const mergeTutimOptions = (options: Partial<TutimOptions>, newOptions: TutimOptions): TutimOptions => {
   const newForms = { ...options.forms, ...newOptions.forms };
-  return { ...options, forms: newForms };
+  const newClientId = newOptions.clientId || options.clientId;
+  return { ...options, forms: newForms, clientId: newClientId };
 };
 
 /**
@@ -57,6 +58,10 @@ export const FormProvider = ({
   const setOptions = (newOptions: TutimOptions) => setStateOptions(mergeTutimOptions(stateOptions, newOptions));
   const configContextValue = { options: { ...optionsContext.options, ...stateOptions }, setOptions };
   useRemoteSchemas(configContextValue);
+
+  React.useEffect(() => {
+    setOptions({ clientId: options.clientId } as TutimOptions);
+  }, [options.clientId]);
 
   return (
     <FieldComponentsContext.Provider value={fieldComponents}>
