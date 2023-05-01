@@ -4,7 +4,7 @@
 
 ## **Wizard Form infrastructure for product teams**
 
-Headless forms module to create powerful wizards in your web application.
+Headless forms module to create powerful wizards in your web application with ease.
 
 [**Sandbox Example »**](https://codesandbox.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx)
 
@@ -84,7 +84,7 @@ export default App;
 
 4\. Output Example:
 
-![Form output example](https://res.cloudinary.com/tutim/image/upload/v1671445339/example-signup-form_zh0af4.png)
+![Wizard output example](https://res.cloudinary.com/tutim/image/upload/v1682950119/output_xmopce.png)
 
 #### [CustomField](https://docs.tutim.io/react-sdk/customfield)
 
