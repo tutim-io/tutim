@@ -6,13 +6,15 @@
 
 Headless forms module to create powerful wizards in your web application.
 
+[**Sandbox Example »**](https://codesandbox.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx)
+
 [![MIT License](https://img.shields.io/github/license/tutim-io/tutim)](https://github.com/tutim-io/tutim/blob/main/LICENSE) [![Number of GitHub stars](https://img.shields.io/github/stars/tutim-io/tutim?logo=github)](https://github.com/tutim-io/tutim/stargazers) [![Discord is Live](https://img.shields.io/badge/Discord-Live-green?logo=discord&logoColor=%23fff)](https://discord.tutim.io) [![Docs are updated](https://img.shields.io/badge/docs-updated-green?color=blue)](https://docs.tutim.io) [![Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launch%20soon-orange?logo=producthunt&logoColor=%23fff)](https://www.producthunt.com/@leetwito)
  
-[![Demo](https://res.cloudinary.com/tutim/image/upload/v1682860914/code_demo_pazmte.gif)](https://tutim.io)
+[![Demo](https://res.cloudinary.com/tutim/image/upload/v1682860914/code_demo_pazmte.gif)](https://www.tutim.io/developers)
 
 ---
 
-### 🍓 Why Tutim?
+### 🍓 Open source & headless alternative to TypeForm
 
 Building multi-step forms in apps is complicated.
 
@@ -29,15 +31,13 @@ This repo is 100% free, and will always remain.
 - 🚀 **Performant:** Best practices are implemented. Never worry about delays
 - 🛠️ **No-Code Builder:** Let PMs and designers create and change in-app wizards. Stick with React for styling and embedding
 - 👨‍💻 **Built-in Analytics:** Opening rate, drop-offs, conversions. privacy-first `(coming soon)`
-- 📦 **Templates:** Onboarding, personal details, feedback and more`(coming soon)`
+- 📦 **Templates:** Onboarding, personal details, feedback and more
 
 ---
 
 ### 🚀 Getting Started
 
 [**Explore the docs »**](https://docs.tutim.io)
-
-[**Sandbox Example »**](https://codesandbox.io/s/tutim-examples-5ny73h?file=/src/App.tsx)
 
 [**Admin Portal & Builder »**](https://app.tutim.io/)
 
@@ -53,7 +53,7 @@ yarn add @tutim/headless @tutim/fields @tutim/types
 npm install @tutim/headless @tutim/fields @tutim/types
 ```
 
-2\. Create your first form schema with [Tutim Form Builder](https://app.tutim.io/), or by creating the wizard JSON schema yourself
+2\. Optional: Create your form schema with [Tutim Form Builder](https://app.tutim.io/)
 
 3\. Render the wizard:
 
@@ -62,7 +62,7 @@ import { TutimWizard, defaultFields } from '@tutim/fields';
 import { FormProvider } from '@tutim/headless';
 
 const config = {
-  // Use https://tutim.io to create and manage rich schemas with no-code
+  // Use https://app.tutim.io to create and manage rich schemas with no-code
   fields: [
     { key: 'firstName', label: 'First Name', type: 'text' },
     { key: 'lastName', label: 'Last Name', type: 'text' },
@@ -171,7 +171,7 @@ Tutim provides all forms solutions. Through code or drag & drop interface.
 - [x] Simple form layout (one pager)
 - [x] Layout and grouping control
 - [x] Wizard multi steps
-- [ ] DnD rich builder
+- [ ] DnD builder
 
 **😊 Portal**
 
@@ -193,7 +193,7 @@ We are more than happy to help you.
 
 If you are getting any errors, facing problems, or need a new feature while working on this project -
 
-[Open an issue](https://github.com/tutim-io/tutim/issues/new/choose) or join our [Discord server](https://discord.tutim.io) and ask for help.
+Join our [Discord server](https://discord.tutim.io) and ask for help, or [Open an issue](https://github.com/tutim-io/tutim/issues/new/choose)
 
 ### 🔗 Links
 
@@ -209,4 +209,4 @@ If you are getting any errors, facing problems, or need a new feature while work
 
 ![](https://contrib.rocks/image?repo=tutim-io/tutim)
 
-Powered by [Tutim.io](https://tutim.io)
+Powered by [tutim.io](https://tutim.io)
