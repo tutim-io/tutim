@@ -10,7 +10,7 @@ Headless forms module to create powerful wizards in your web application with ea
  
  [**Sandbox Example »**](https://codesandbo.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx)
  
-[![Demo](https://res.cloudinary.com/tutim/image/upload/v1682860914/code_demo_pazmte.gif)](https://www.tutim.io/developers)
+[![Demo](https://res.cloudinary.com/tutim/image/upload/v1682951365/code_demo_2_s0jsjh.gif)](https://www.tutim.io/developers)
 
 ---
 
