@@ -1,6 +1,12 @@
 # 🍓 README
 
-[![Tutim.io logo](https://res.cloudinary.com/tutim/image/upload/v1671445328/logo-png_rjs63o.png)](https://tutim.io)
+<div align="center">
+  <a href="https://tutim.io/developers" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/29614540/235614391-38e44c1f-047f-4a7f-aa32-c914fbc1725b.png">
+    <img src="https://user-images.githubusercontent.com/29614540/235613969-cb3aeb2b-ba4a-4468-a2af-81c036eb66cf.png" width="320" alt="Logo"/>
+  </picture>
+</a>
 
 ## **Wizard Form infrastructure for product teams**
 
@@ -11,6 +17,9 @@ Headless forms module to create powerful wizards in your web application with ea
  [**Sandbox Example »**](https://codesandbox.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx)
  
 [![Demo](https://res.cloudinary.com/tutim/image/upload/v1682951365/code_demo_2_s0jsjh.gif)](https://www.tutim.io/developers)
+
+  
+</div>
 
 ---
 
