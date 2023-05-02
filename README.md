@@ -93,7 +93,10 @@ export default App;
 
 4\. Output Example:
 
-![Wizard output example](https://res.cloudinary.com/tutim/image/upload/v1682950119/output_xmopce.png)
+<a href="https://tutim.io/developers" target="_blank">
+<img src="https://res.cloudinary.com/tutim/image/upload/v1682950119/output_xmopce.png" width="640" alt="Output example"/>
+</a>
+
 
 #### [CustomField](https://docs.tutim.io/react-sdk/customfield)
 
