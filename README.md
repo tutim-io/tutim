@@ -222,3 +222,10 @@ Join our [Discord server](https://discord.tutim.io) and ask for help, or [Open a
 ![](https://contrib.rocks/image?repo=tutim-io/tutim)
 
 Powered by [tutim.io](https://tutim.io)
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=tutim-io/tutim&type=Date)](https://tutim.io/developers)
+
