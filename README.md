@@ -36,7 +36,7 @@
 
 ### 🍓 Open source & headless alternative to TypeForm
 
-Build beauiful and complex forms effortlessly.
+Build beautiful and complex forms effortlessly.
 
 Tutim gives you your own in-house multi-step form builder that's fully integrated with your component library and design system. Everybody on your team can create, edit, and publish wizards and surveys in your app regardless of their technical background.
 
