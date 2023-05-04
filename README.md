@@ -1,20 +1,31 @@
 # 🍓 README
-
 <div align="center">
-  <a href="https://tutim.io/developers" target="_blank">
+  <a href="https://tutim.io" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/29614540/235614391-38e44c1f-047f-4a7f-aa32-c914fbc1725b.png">
     <img src="https://user-images.githubusercontent.com/29614540/235613969-cb3aeb2b-ba4a-4468-a2af-81c036eb66cf.png" width="320" alt="Logo"/>
   </picture>
-</a>
 
-## **Wizard Form infrastructure for product teams**
+  <h3 align="center">tutim.io</h3>
 
-Headless forms module to create powerful wizards in your web application with ease.
+  <p align="center">
+    The open-source Typeform alternative.
+    <br />
+    <a href="https://tutim.io"><strong>Learn more »</strong></a>
+    <br />
+    <br />
+    <a href="https://tutim.io">Website</a>
+    ·
+    <a href="https://discord.tutim.io">Discord</a>
+    ·
+    <a href="https://app.tutim.io">Admin Portal</a>
+    ·
+    <a href="https://codesandbox.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx">Sandbox Example</a>
+  </p>
+</p>
 
 [![MIT License](https://img.shields.io/github/license/tutim-io/tutim)](https://github.com/tutim-io/tutim/blob/main/LICENSE) [![Number of GitHub stars](https://img.shields.io/github/stars/tutim-io/tutim?logo=github)](https://github.com/tutim-io/tutim/stargazers) [![Discord is Live](https://img.shields.io/badge/Discord-Live-green?logo=discord&logoColor=%23fff)](https://discord.tutim.io) [![Docs are updated](https://img.shields.io/badge/docs-updated-green?color=blue)](https://docs.tutim.io) [![Product Hunt](https://img.shields.io/badge/Product%20Hunt-Launch%20soon-orange?logo=producthunt&logoColor=%23fff)](https://www.producthunt.com/@leetwito)
  
- [**Sandbox Example »**](https://codesandbox.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx)
  
 [![Demo](https://res.cloudinary.com/tutim/image/upload/v1682951365/code_demo_2_s0jsjh.gif)](https://www.tutim.io/developers)
 
@@ -25,9 +36,7 @@ Headless forms module to create powerful wizards in your web application with ea
 
 ### 🍓 Open source & headless alternative to TypeForm
 
-Building multi-step forms in apps is complicated.
-
-At first, it seems like just throwing a few input fields, but in reality, it's just the beginning.
+Build beauiful and complex forms effortlessly.
 
 Tutim gives you your own in-house multi-step form builder that's fully integrated with your component library and design system. Everybody on your team can create, edit, and publish wizards and surveys in your app regardless of their technical background.
 
@@ -36,6 +45,7 @@ This repo is 100% free, and will always remain.
 ### ✨ Features
 
 - 🌈 **Headless:** Default design system that can be replaced with yours
+- 💌 **API first:** Build, manage and serve forms with our API
 - 💅 **Rich form:** Multi-step, conditional branching, validations, and more are available out-of-the-box
 - 🚀 **Performant:** Best practices are implemented. Never worry about delays
 - 🛠️ **No-Code Builder:** Let PMs and designers create and change in-app wizards. Stick with React for styling and embedding
