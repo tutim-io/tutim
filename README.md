@@ -1,15 +1,14 @@
 # 🍓 README
 <div align="center">
-  <a href="https://tutim.io" target="_blank">
+  <a href="https://tutim.io/developers" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/29614540/235614391-38e44c1f-047f-4a7f-aa32-c914fbc1725b.png">
     <img src="https://user-images.githubusercontent.com/29614540/235613969-cb3aeb2b-ba4a-4468-a2af-81c036eb66cf.png" width="320" alt="Logo"/>
   </picture>
 
-  <h3 align="center">tutim.io</h3>
 
   <p align="center">
-    The open-source Typeform alternative.
+    <h3>The headless infrastructure for multi-step forms</h3>
     <br />
     <a href="https://tutim.io"><strong>Learn more »</strong></a>
     <br />
@@ -18,7 +17,7 @@
     ·
     <a href="https://discord.tutim.io">Discord</a>
     ·
-    <a href="https://app.tutim.io">Admin Portal</a>
+    <a href="https://app.tutim.io">Cloud (app)</a>
     ·
     <a href="https://codesandbox.io/s/tutim-example-config-custom-field-vo64ym?file=/src/App.tsx">Sandbox Example</a>
   </p>
@@ -54,15 +53,19 @@ This repo is 100% free, and will always remain.
 
 ---
 
-### 🚀 Getting Started
+## 🚀 Getting Started
 
 [**Explore the docs »**](https://docs.tutim.io)
 
 [**Admin Portal & Builder »**](https://app.tutim.io/)
 
-Create your first wizard in 2 minutes, by following these steps:
+Create your first wizard in 2 minutes with Tutim default components
 
-1\. Install tutim React package:
+<a href="https://tutim.io/developers" target="_blank">
+<img src="https://res.cloudinary.com/tutim/image/upload/v1682950119/output_xmopce.png" width="640" alt="Output example"/>
+</a>
+
+### 1\. Install tutim React package:
 
 ```bash
 yarn add @tutim/headless @tutim/fields @tutim/types
@@ -72,9 +75,7 @@ yarn add @tutim/headless @tutim/fields @tutim/types
 npm install @tutim/headless @tutim/fields @tutim/types
 ```
 
-2\. Optional: Create your form schema with [Tutim Form Builder](https://app.tutim.io/)
-
-3\. Render the wizard:
+### 2\. Render the wizard:
 
 ```jsx
 import { TutimWizard, defaultFields } from '@tutim/fields';
@@ -101,13 +102,16 @@ const App = () => {
 export default App;
 ```
 
-4\. Output Example:
+### 3\. Output Example:
 
 <a href="https://tutim.io/developers" target="_blank">
-<img src="https://res.cloudinary.com/tutim/image/upload/v1682950119/output_xmopce.png" width="640" alt="Output example"/>
+<img src="https://res.cloudinary.com/tutim/image/upload/v1682950119/output_xmopce.png" width="320" alt="Output example"/>
 </a>
 
+### 4\. Customize schema
+Build your form schema with [Tutim Form Builder](https://app.tutim.io/) or follow [Form Config Docs](https://docs.tutim.io/api-reference/form-config)
 
+### 5\. Customize components
 #### [CustomField](https://docs.tutim.io/react-sdk/customfield)
 
 BYOF - Bring Your Own Field. Use `Field` type to register any type of field. Can be used on `FormProvider` level for global inputs or withing `FieldConfig` for local use cases
@@ -179,7 +183,7 @@ export default App;
 
 ### 📜 Wizards
 
-Tutim provides all forms solutions. Through code or drag & drop interface.
+Tutim provides all forms features, through code or drag & drop interface.
 
 **💌 Inputs**
 
