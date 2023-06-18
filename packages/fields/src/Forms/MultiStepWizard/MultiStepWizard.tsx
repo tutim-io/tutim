@@ -61,6 +61,17 @@ export const ControlledWizard = ({ config, wizardContext }: WizardProps) => {
   );
 };
 
+const callWebhook = async (endpoint: string, body: any) => {
+  return await fetch(endpoint, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(body),
+  });
+};
+
 export const useTutimWizard = ({ initialValues = {}, onSubmit, config }) => {
   const [wizardValues, setWizardValues] = React.useState(initialValues);
   const [currentForm, setCurrentForm] = React.useState<any>({});
@@ -69,7 +80,12 @@ export const useTutimWizard = ({ initialValues = {}, onSubmit, config }) => {
     setWizardValues((prevWizardValues) => {
       const values = { ...prevWizardValues, ...stepValues };
       if (isFinalSubmit) {
-        onSubmit({ data: values, schema: config });
+        const webhookEndpoint = config.logic?.webhook?.endpoint;
+        const body = { data: values, schema: config };
+        onSubmit(body);
+        if (webhookEndpoint) {
+          callWebhook(webhookEndpoint, body);
+        }
       }
       return values;
     });
