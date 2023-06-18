@@ -67,6 +67,9 @@ export enum Operators {
 export type FieldsLogic = Record<string, FieldLogic>;
 
 export interface FormLogic {
+  webhook?: {
+    endpoint?: string;
+  };
   submissionPage?: { allowResubmit?: boolean };
   fieldsLogic?: FieldsLogic;
   arrayFieldsLogic?: { [arrayKey: string]: FieldsLogic };

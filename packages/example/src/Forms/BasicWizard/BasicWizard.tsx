@@ -3,6 +3,11 @@ import { FormConfig } from '@tutim/types';
 import { TutimWizard, useTutimWizard } from '@tutim/fields';
 
 const config: FormConfig = {
+  logic: {
+    webhook: {
+      endpoint: 'lala',
+    },
+  },
   fields: [
     {
       key: 'firstName',
