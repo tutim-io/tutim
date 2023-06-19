@@ -1,5 +1,5 @@
 import React from 'react';
-import { WizardProvider, useStep, useWizard, useWizardContext } from '@tutim/headless';
+import { WizardProvider, useStep, useWizardContext } from '@tutim/headless';
 import { FormConfig } from '@tutim/types';
 
 const config: FormConfig = {
@@ -53,7 +53,7 @@ const config: FormConfig = {
 export const HeadlessWizard = (): JSX.Element => {
   return (
     <div>
-      <WizardProvider config={config}>
+      <WizardProvider config={config} onSubmit={console.log} initialValues={{ email: 'one' }}>
         <ContextedWizard />
       </WizardProvider>
       {/* <WizardProvider config={config}>

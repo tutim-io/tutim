@@ -1,6 +1,14 @@
-import { FormConfig } from '@tutim/types';
+import { FormConfig, OnSubmit, PartialFormConfig } from '@tutim/types';
 import React from 'react';
 import { UseFormReturn } from '@tutim/types';
+
+export interface WizardProps {
+  onSubmit: OnSubmit;
+  formId?: string;
+  config?: PartialFormConfig;
+  initialValues?: Record<string, any>;
+  // wizardContext?: any;
+}
 
 interface WizardContext {
   config: FormConfig;
@@ -25,9 +33,9 @@ const wizardContext: WizardContext = {
 export const WizardContext = React.createContext<WizardContext>(wizardContext);
 export const useWizardContext = (): WizardContext => React.useContext(WizardContext);
 
-export const useWizard = (config: FormConfig) => {
+export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
   const [currentStep, setCurrentStep] = React.useState(0);
-  const [wizardValues, setWizardValues] = React.useState<any>({});
+  const [wizardValues, setWizardValues] = React.useState<any>(initialValues);
   const [currentForm, setCurrentForm] = React.useState<UseFormReturn>({} as any);
   const stepCount = config.wizard?.steps?.length || 0;
 
@@ -37,7 +45,7 @@ export const useWizard = (config: FormConfig) => {
       if (isFinalStep) {
         // const webhookEndpoint = config.logic?.webhook?.endpoint;
         const body = { data: values, schema: config };
-        console.log(body);
+        onSubmit(body);
         // if (webhookEndpoint) {
         //   callWebhook(webhookEndpoint, body);
         // }
@@ -65,8 +73,8 @@ export const useWizard = (config: FormConfig) => {
   };
 };
 
-export const WizardProvider = ({ children, config }: { config: FormConfig; children: React.ReactNode }) => {
-  const wizard = useWizard(config);
+export const WizardProvider = ({ children, ...rest }: WizardProps & { children: React.ReactNode }) => {
+  const wizard = useWizard(rest as any); //TODO: fix this;
 
   return <WizardContext.Provider value={wizard}>{children}</WizardContext.Provider>;
 };
