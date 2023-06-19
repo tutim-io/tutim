@@ -44,12 +44,9 @@ export const useWizard = (config: FormConfig) => {
   };
 
   const goToStep = (stepIndex: number) => {
-    const shouldValidateStep = false;
     if (stepIndex < 0 || stepIndex > stepCount - 1) return;
-    if (!shouldValidateStep || currentForm.formState?.isValid) {
-      setCurrentStep(stepIndex);
-      onStepSubmit(currentForm.getValues?.());
-    }
+    setCurrentStep(stepIndex);
+    onStepSubmit(currentForm.getValues?.());
   };
 
   return {

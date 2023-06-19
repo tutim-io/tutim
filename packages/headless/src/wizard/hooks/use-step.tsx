@@ -27,52 +27,11 @@ const getStepValues = (config: FormConfig, step: number, values: Record<string, 
 const layout = { submit: { display: false } };
 const meta = { title: undefined };
 
-// export const WizardStep = ({ handleSubmit, config }) => {
-//   const { activeStep } = useWizard();
-//   const wizardState = useWizardState();
-//   const stepKey = `page${activeStep}`;
-//   const fields = getStepConfig(config, activeStep);
-//   const onSubmit: OnSubmit = ({ data }) => {
-//     handleSubmit(data, false);
-//   };
-//   const onFinalSubmit: OnSubmit = ({ data }) => {
-//     handleSubmit(data, true);
-//   };
-//   const initialValues = getStepValues(config, activeStep, wizardState.wizardValues);
-//   const form = useForm({
-//     ...config,
-//     fields,
-//     layout: { ...config.layout, ...layout },
-//     meta: { ...config.meta, ...meta },
-//   });
-//   React.useEffect(() => {
-//     wizardState.setCurrentForm(form);
-//   }, []);
-//   const isInitializing = form.useFormInit(async () => initialValues);
-
-//   const submit = form.nativeSubmit(onSubmit);
-
-//   React.useEffect(() => {
-//     return submit;
-//   }, []);
-
-//   if (!isInitializing) return <div>Loading</div>;
-//   return (
-//     <WizardCurrentFormContext.Provider value={form}>
-//       <Box style={{ padding: '0px 10px', width: 'calc(100% - 24px)' }}>
-//         <FormView formId={stepKey} form={form} onSubmit={onSubmit} />
-//         <Footer onFinalSubmit={form.nativeSubmit(onFinalSubmit)} />
-//       </Box>
-//     </WizardCurrentFormContext.Provider>
-//   );
-// };
-
 export const useStep = () => {
   const { config, currentStep, wizardValues, setCurrentForm, goToStep } = useWizardContext();
 
   const fields = getStepConfig(config, currentStep);
   const initialValues = getStepValues(config, currentStep, wizardValues);
-  console.log('🚀 ~ file: use-step.tsx:75 ~ useStep ~ initialValues:', initialValues);
   const stepConfig = {
     ...config,
     fields,
@@ -84,12 +43,17 @@ export const useStep = () => {
 
   React.useEffect(() => {
     setCurrentForm(form);
-    Object.entries(initialValues).forEach(([key, value]) => form.setValue(key, value));
+    form.reset(initialValues);
   }, [currentStep]);
 
   return {
     form,
-    goBack: () => goToStep(currentStep - 1),
-    goNext: () => goToStep(currentStep + 1),
+    goBack: () => {
+      if (form.formState.isValid) goToStep(currentStep - 1);
+    },
+    goNext: () => {
+      if (form.formState.isValid) goToStep(currentStep + 1);
+    },
+    isLastStep: currentStep + 1 === config?.wizard?.steps.length,
   };
 };

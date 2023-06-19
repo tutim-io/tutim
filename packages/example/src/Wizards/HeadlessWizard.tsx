@@ -65,15 +65,10 @@ export const HeadlessWizard = (): JSX.Element => {
 
 const ContextedWizard = () => {
   const wizard = useWizardContext();
-  React.useEffect(() => {
-    setTimeout(() => {
-      wizard.goToStep(Math.round(Math.random() * 3));
-    }, 1000);
-  }, []);
 
   return (
     <div>
-      <ContextedStep />
+      <ContextedStep key={`step${wizard.currentStep}`} />
       <div>hey</div>
     </div>
   );
@@ -86,8 +81,12 @@ const ContextedStep = () => {
     <div>
       <p>my step is {context.currentStep}</p>
       {step.form.fields}
-      <button onClick={step.goBack}>Go Back</button>
-      <button onClick={step.goNext}>Go Next</button>
+      <button onClick={step.goBack} disabled={!step.form.formState.isValid}>
+        Go Back
+      </button>
+      <button onClick={step.goNext} disabled={!step.form.formState.isValid}>
+        {step.isLastStep ? 'Submit' : 'Go Next'}
+      </button>
     </div>
   );
 };
