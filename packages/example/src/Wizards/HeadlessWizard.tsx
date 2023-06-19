@@ -56,9 +56,9 @@ export const HeadlessWizard = (): JSX.Element => {
       <WizardProvider config={config}>
         <ContextedWizard />
       </WizardProvider>
-      <WizardProvider config={config}>
+      {/* <WizardProvider config={config}>
         <ContextedWizard />
-      </WizardProvider>
+      </WizardProvider> */}
     </div>
   );
 };

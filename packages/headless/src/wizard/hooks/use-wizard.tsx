@@ -27,7 +27,7 @@ export const useWizardContext = (): WizardContext => React.useContext(WizardCont
 
 export const useWizard = (config: FormConfig) => {
   const [currentStep, setCurrentStep] = React.useState(0);
-  const [wizardValues, setWizardValues] = React.useState<any>({});
+  const [wizardValues, setWizardValues] = React.useState<any>({ firstName: 'lala' });
   const [stepsState, setStepsState] = React.useState<any>({});
   const [currentForm, setCurrentForm] = React.useState<UseFormReturn>({} as any);
   const stepCount = config.wizard?.steps?.length || 0;
@@ -44,15 +44,11 @@ export const useWizard = (config: FormConfig) => {
   };
 
   const goToStep = (stepIndex: number) => {
-    console.log('🚀 ~ file: use-wizard.tsx:42 ~ goToStep ~ stepIndex:', {
-      stepIndex,
-      isValid: currentForm.formState,
-    });
     const shouldValidateStep = false;
     if (stepIndex < 0 || stepIndex > stepCount - 1) return;
     if (!shouldValidateStep || currentForm.formState?.isValid) {
       setCurrentStep(stepIndex);
-      onStepSubmit(currentForm?.getValues());
+      onStepSubmit(currentForm.getValues?.());
     }
   };
 

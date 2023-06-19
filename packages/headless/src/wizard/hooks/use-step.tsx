@@ -72,6 +72,7 @@ export const useStep = () => {
 
   const fields = getStepConfig(config, currentStep);
   const initialValues = getStepValues(config, currentStep, wizardValues);
+  console.log('🚀 ~ file: use-step.tsx:75 ~ useStep ~ initialValues:', initialValues);
   const stepConfig = {
     ...config,
     fields,
@@ -80,15 +81,14 @@ export const useStep = () => {
   };
 
   const form = useForm(stepConfig);
-  const isInitializing = form.useFormInit(async () => initialValues);
 
   React.useEffect(() => {
     setCurrentForm(form);
-  }, []);
+    Object.entries(initialValues).forEach(([key, value]) => form.setValue(key, value));
+  }, [currentStep]);
 
   return {
     form,
-    isInitializing,
     goBack: () => goToStep(currentStep - 1),
     goNext: () => goToStep(currentStep + 1),
   };
