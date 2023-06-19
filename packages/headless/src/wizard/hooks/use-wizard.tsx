@@ -27,26 +27,30 @@ export const useWizardContext = (): WizardContext => React.useContext(WizardCont
 
 export const useWizard = (config: FormConfig) => {
   const [currentStep, setCurrentStep] = React.useState(0);
-  const [wizardValues, setWizardValues] = React.useState<any>({ firstName: 'lala' });
-  const [stepsState, setStepsState] = React.useState<any>({});
+  const [wizardValues, setWizardValues] = React.useState<any>({});
   const [currentForm, setCurrentForm] = React.useState<UseFormReturn>({} as any);
   const stepCount = config.wizard?.steps?.length || 0;
 
-  const onStepSubmit = (stepValues: any) => {
+  const onStepSubmit = (stepValues: any, isFinalStep = false) => {
     setWizardValues((prevWizardValues) => {
       const values = { ...prevWizardValues, ...stepValues };
-      return values;
-    });
-    setStepsState((stepsState) => {
-      const values = { ...stepsState, [currentStep]: currentForm.formState?.isValid };
+      if (isFinalStep) {
+        // const webhookEndpoint = config.logic?.webhook?.endpoint;
+        const body = { data: values, schema: config };
+        console.log(body);
+        // if (webhookEndpoint) {
+        //   callWebhook(webhookEndpoint, body);
+        // }
+      }
       return values;
     });
   };
 
-  const goToStep = (stepIndex: number) => {
-    if (stepIndex < 0 || stepIndex > stepCount - 1) return;
-    setCurrentStep(stepIndex);
-    onStepSubmit(currentForm.getValues?.());
+  const goToStep = (nextStepIndex: number) => {
+    if (nextStepIndex < 0 || nextStepIndex > stepCount) return;
+    const isFinalStep = stepCount === nextStepIndex;
+    if (!isFinalStep) setCurrentStep(nextStepIndex);
+    onStepSubmit(currentForm.getValues?.(), isFinalStep);
   };
 
   return {
