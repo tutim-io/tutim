@@ -1,13 +1,5 @@
-import { FormConfig, OnSubmit, PartialFormConfig } from '@tutim/types';
+import { FormConfig } from '@tutim/types';
 import React from 'react';
-
-export interface WizardProps {
-  onSubmit: OnSubmit;
-  formId?: string;
-  config?: PartialFormConfig;
-  initialValues?: Record<string, any>;
-  // wizardContext?: any;
-}
 
 interface WizardContext {
   config: FormConfig;

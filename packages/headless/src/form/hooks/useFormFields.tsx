@@ -28,7 +28,7 @@ export const useFormFields = (
   const fieldComponents = useFieldComponents();
 
   const Field = getField(control, fieldComponents);
-  if (!Field) throw new Error('fieldComponents is required, use `<FormProvider fieldComponents={...}`');
+  if (!Field) throw new Error('fieldComponents is required, use `<TutimProvider fieldComponents={...}`');
 
   const configsToMap = (configs: FieldConfig[]) => {
     const flatConfigs = configToFlatConfigs(configs);

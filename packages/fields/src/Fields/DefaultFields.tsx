@@ -1,4 +1,4 @@
-import { FieldComponents, InputType } from '@tutim/types';
+import { FieldComponents, InputType, WrapperType } from '@tutim/types';
 import { SelectField } from './SelectField';
 import { TextField } from './TextField';
 import { RadioField } from './RadioField';
@@ -13,6 +13,8 @@ import { NumberField } from './NumberField';
 import { PasswordField } from './PasswordField';
 import { TextAreaField } from './TextAreaField';
 import { MultiCheckboxField } from './MultiChecboxField';
+import { MuiTutimWizard } from '../Wizards';
+import { SinglePageForm } from '../Forms';
 
 export const defaultFields: FieldComponents = {
   [InputType.Select]: SelectField,
@@ -29,4 +31,6 @@ export const defaultFields: FieldComponents = {
   [InputType.MultiSelect]: MultiSelectField,
   [InputType.MultiCheckbox]: MultiCheckboxField,
   [InputType.Array]: FieldArray,
+  [WrapperType.MultiStepWizard]: MuiTutimWizard as any, //TODO: fix this hack,
+  [WrapperType.SingleStepForm]: SinglePageForm as any, //TODO: fix this hack,
 };
