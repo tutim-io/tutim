@@ -24,6 +24,7 @@ import {
   LogicWizard,
 } from './Forms';
 import formConfig from './basic.json';
+import { HeadlessWizard } from './Wizards/HeadlessWizard';
 
 const contextOptions = {
   clientId: '2',
@@ -51,12 +52,13 @@ const examples: Record<string, () => JSX.Element> = {
   FormMeta: FormMeta,
   BasicWizard: BasicWizard,
   LogicWizard: LogicWizard,
+  HeadlessWizard,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
 
 function App(): React.ReactNode {
-  const [exampleKey, setExample] = React.useState(options[18].value);
+  const [exampleKey, setExample] = React.useState(options[options.length - 1].value);
   const Example = examples[exampleKey];
 
   return (
