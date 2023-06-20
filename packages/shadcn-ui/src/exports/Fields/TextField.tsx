@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from '@tutim/types';
 import { TextField as MuiTextField } from '@mui/material';
-import { FieldWrapper } from './utils';
+import { FieldWrapper } from './FieldWrapper';
 
 export const TextField: Field = ({ fieldConfig, inputProps: { value, onChange }, fieldState }) => {
   const { key, isRequired, isDisabled, placeholder } = fieldConfig;

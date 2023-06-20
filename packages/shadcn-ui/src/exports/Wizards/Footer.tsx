@@ -1,4 +1,4 @@
-import Button from '@mui/material/Button';
+import { Button } from '../../components';
 
 const Footer = ({ step }) => {
   const { goBack, goNext, form, isFirstStep, isLastStep } = step;

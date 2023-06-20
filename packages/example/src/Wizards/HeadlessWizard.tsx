@@ -20,7 +20,7 @@ const config: FormConfig = {
       type: 'text',
     },
     { key: 'email', isRequired: true, label: 'Email', type: 'text' },
-    { key: 'phone', label: 'Phone', type: 'number' },
+    { key: 'phone', label: 'Phone', type: 'text' },
     { key: 'additional', label: 'additional', type: 'text', isRequired: true },
   ],
   wizard: {

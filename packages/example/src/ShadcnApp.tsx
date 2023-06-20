@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { defaultFields, SelectField } from '@tutim/fields';
+import { SelectField } from '@tutim/fields';
 import { TutimProvider } from '@tutim/headless';
 import '@tutim/shadcn-ui/dist/output.css';
 import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { TutimWizardExample } from './Wizards/TutimWizardExample';
+import { defaultFields } from '@tutim/shadcn-ui';
 
 const contextOptions = {
   clientId: '2',
