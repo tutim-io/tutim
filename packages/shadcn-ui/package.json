@@ -106,7 +106,7 @@
     "ts-jest": "latest",
     "ts-node": "latest",
     "typescript": "^4.9.4",
-    "vite": "^4.0.3",
+    "vite": "^4.0.5",
     "vite-plugin-dts": "^1.7.1",
     "yarn-upgrade-all": "^0.7.1"
   },
