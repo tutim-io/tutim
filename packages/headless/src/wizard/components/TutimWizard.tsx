@@ -13,8 +13,8 @@ import { useFormConfig } from '../../form';
  *
  * @example
  * ```tsx
- * import { TutimProvider } from '@tutim/headless';
- * import { TutimWizard, defaultFields } from '@tutim/fields';
+ * import { TutimProvider, TutimWizard } from '@tutim/headless';
+ * import { defaultFields } from '@tutim/fields';
  *
  * const config = {
  *   fields: [
@@ -48,9 +48,14 @@ export const TutimWizard = ({ formId, config, onSubmit, initialValues, wizardCon
     ? fieldComponents[WrapperType.MultiStepWizard]
     : fieldComponents[WrapperType.SingleStepForm];
 
-  // if (wizardContext)
-  //   return <ControlledWizard onSubmit={onSubmit} config={configOrRemoteConfig} wizardContext={wizardContext} />;
-
-  if (isWizard) return <Wrapper onSubmit={onSubmit} config={configOrRemoteConfig} initialValues={initialValues} />;
+  if (isWizard)
+    return (
+      <Wrapper
+        onSubmit={onSubmit}
+        config={configOrRemoteConfig}
+        initialValues={initialValues}
+        wizardContext={wizardContext}
+      />
+    );
   return <Wrapper onSubmit={onSubmit} formId={formId} config={configOrRemoteConfig} initialValues={initialValues} />;
 };

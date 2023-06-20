@@ -78,8 +78,8 @@ npm install @tutim/headless @tutim/fields @tutim/types
 ### 2\. Render the wizard:
 
 ```jsx
-import { TutimWizard, defaultFields } from '@tutim/fields';
-import { TutimProvider } from '@tutim/headless';
+import { defaultFields } from '@tutim/fields';
+import { TutimWizard, TutimProvider } from '@tutim/headless';
 
 const config = {
   // Use https://app.tutim.io to create and manage rich schemas with no-code
@@ -147,8 +147,8 @@ export const customFieldConfig: FieldConfig = {
 `TutimProvider` is a component that allows you to define the form fields that you want to use in your react application. It provides a way to specify the field components that will be used to render the form fields, and allows you to use either the default field components provided by the `@tutim/fields` library, or your own custom field components.
 
 ```tsx
-import { TutimProvider } from '@tutim/headless';
-import { defaultFields, TutimWizard } from '@tutim/fields';
+import { TutimWizard, TutimProvider } from '@tutim/headless';
+import { defaultFields } from '@tutim/fields';
 import { Field, FieldComponents, InputType } from '@tutim/types';
 
 export const CustomField: Field = ({ inputProps, fieldConfig }) => {
