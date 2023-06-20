@@ -1,12 +1,11 @@
-import React from 'react';
+import { TutimWizard } from '@tutim/headless';
 import { FormConfig } from '@tutim/types';
-import { TutimWizard, useTutimWizard } from '@tutim/fields';
 
 const config: FormConfig = {
   logic: {
-    webhook: {
-      endpoint: 'lala',
-    },
+    // webhook: {
+    //   endpoint: 'lala',
+    // },
   },
   fields: [
     {
@@ -50,10 +49,6 @@ const config: FormConfig = {
   },
 };
 
-export const BasicWizard = (): JSX.Element => {
-  const initialValues = { lastName: 'Doe' };
-  const wizardContext = useTutimWizard({ initialValues, onSubmit: console.log, config });
-  return (
-    <TutimWizard onSubmit={console.log} config={config} initialValues={initialValues} wizardContext={wizardContext} />
-  );
+export const TutimWizardExample = (): JSX.Element => {
+  return <TutimWizard config={config} onSubmit={console.log} initialValues={{ email: 'one' }} />;
 };

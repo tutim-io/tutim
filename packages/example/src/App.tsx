@@ -1,29 +1,31 @@
 import { defaultFields, SelectField } from '@tutim/fields';
-import { FormProvider } from '@tutim/headless';
+import { TutimProvider } from '@tutim/headless';
 import React from 'react';
-import {
-  BasicFieldsScheme,
-  BasicFieldsValues,
-  InitialFields,
-  FieldValidations,
-  DynamicState,
-  FieldLogicRender,
-  DesignSystem,
-  TutimForm,
-  LayoutConfig,
-  FormWizard,
-  ConfigProvider,
-  SimpleForm,
-  MultiNested,
-  DeepNested,
-  Builder,
-  ControlledForm,
-  SchemaServe,
-  FormMeta,
-  BasicWizard,
-  LogicWizard,
-} from './Forms';
+// import {
+//   BasicFieldsScheme,
+//   BasicFieldsValues,
+//   InitialFields,
+//   FieldValidations,
+//   DynamicState,
+//   FieldLogicRender,
+//   DesignSystem,
+//   TutimForm,
+//   LayoutConfig,
+//   FormWizard,
+//   ConfigProvider,
+//   SimpleForm,
+//   MultiNested,
+//   DeepNested,
+//   Builder,
+//   ControlledForm,
+//   SchemaServe,
+//   FormMeta,
+//   BasicWizard,
+//   LogicWizard,
+// } from './Forms';
 import formConfig from './basic.json';
+import { HeadlessWizard } from './Wizards/HeadlessWizard';
+import { TutimWizardExample } from './Wizards/TutimWizardExample';
 
 const contextOptions = {
   clientId: '2',
@@ -31,32 +33,34 @@ const contextOptions = {
 };
 
 const examples: Record<string, () => JSX.Element> = {
-  TutimForm: TutimForm,
-  BasicFieldsScheme: BasicFieldsScheme,
-  BasicFieldsValues: BasicFieldsValues,
-  InitialFields: InitialFields,
-  FieldValidations: FieldValidations,
-  DynamicState: DynamicState,
-  FieldLogicRender: FieldLogicRender,
-  DesignSystem: DesignSystem,
-  LayoutConfig: LayoutConfig,
-  FormWizard: FormWizard,
-  ConfigProvider: ConfigProvider,
-  SimpleForm: SimpleForm,
-  MultiNested: MultiNested,
-  DeepNested: DeepNested,
-  Builder: Builder,
-  ControlledForm: ControlledForm,
-  SchemaServe: SchemaServe,
-  FormMeta: FormMeta,
-  BasicWizard: BasicWizard,
-  LogicWizard: LogicWizard,
+  // TutimForm,
+  // BasicFieldsScheme,
+  // BasicFieldsValues,
+  // InitialFields,
+  // FieldValidations,
+  // DynamicState,
+  // FieldLogicRender,
+  // DesignSystem,
+  // LayoutConfig,
+  // FormWizard,
+  // ConfigProvider,
+  // SimpleForm,
+  // MultiNested,
+  // DeepNested,
+  // Builder,
+  // ControlledForm,
+  // SchemaServe,
+  // FormMeta,
+  // BasicWizard,
+  // LogicWizard,
+  HeadlessWizard,
+  TutimWizardExample,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
 
 function App(): React.ReactNode {
-  const [exampleKey, setExample] = React.useState(options[18].value);
+  const [exampleKey, setExample] = React.useState(options[options.length - 1].value);
   const Example = examples[exampleKey];
 
   return (
@@ -71,9 +75,9 @@ function App(): React.ReactNode {
           }}
         />
       </div>
-      <FormProvider fieldComponents={defaultFields} options={contextOptions}>
+      <TutimProvider fieldComponents={defaultFields} options={contextOptions}>
         {<Example />}
-      </FormProvider>
+      </TutimProvider>
     </div>
   );
 }

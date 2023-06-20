@@ -78,8 +78,8 @@ npm install @tutim/headless @tutim/fields @tutim/types
 ### 2\. Render the wizard:
 
 ```jsx
-import { TutimWizard, defaultFields } from '@tutim/fields';
-import { FormProvider } from '@tutim/headless';
+import { defaultFields } from '@tutim/fields';
+import { TutimWizard, TutimProvider } from '@tutim/headless';
 
 const config = {
   // Use https://app.tutim.io to create and manage rich schemas with no-code
@@ -92,9 +92,9 @@ const config = {
 const App = () => {
   return (
     <div className="App">
-      <FormProvider fieldComponents={defaultFields}>
+      <TutimProvider fieldComponents={defaultFields}>
         <TutimWizard onSubmit={console.log} config={config} />
-      </FormProvider>
+      </TutimProvider>
     </div>
   );
 };
@@ -114,11 +114,11 @@ Build your form schema with [Tutim Form Builder](https://app.tutim.io/) or follo
 ### 5\. Customize components
 #### [CustomField](https://docs.tutim.io/react-sdk/customfield)
 
-BYOF - Bring Your Own Field. Use `Field` type to register any type of field. Can be used on `FormProvider` level for global inputs or withing `FieldConfig` for local use cases
+BYOF - Bring Your Own Field. Use `Field` type to register any type of field. Can be used on `TutimProvider` level for global inputs or withing `FieldConfig` for local use cases
 
 `CustomField` is a component that allows you to define custom form fields that can be used in your react application. You can use it to render any type of form field that you want, based on the `type` specified in the field configuration.
 
-`CustomField` can be used either globally, by specifying it in the `fieldComponents` object passed to the `FormProvider` component, or locally, by specifying the `Field` prop in the field configuration when creating a form.
+`CustomField` can be used either globally, by specifying it in the `fieldComponents` object passed to the `TutimProvider` component, or locally, by specifying the `Field` prop in the field configuration when creating a form.
 
 ```tsx
 import { Field, FieldConfig } from '@tutim/types';
@@ -142,13 +142,13 @@ export const customFieldConfig: FieldConfig = {
 };
 ```
 
-#### [FormProvider](https://docs.tutim.io/react-sdk/formprovider)
+#### [TutimProvider](https://docs.tutim.io/react-sdk/formprovider)
 
-`FormProvider` is a component that allows you to define the form fields that you want to use in your react application. It provides a way to specify the field components that will be used to render the form fields, and allows you to use either the default field components provided by the `@tutim/fields` library, or your own custom field components.
+`TutimProvider` is a component that allows you to define the form fields that you want to use in your react application. It provides a way to specify the field components that will be used to render the form fields, and allows you to use either the default field components provided by the `@tutim/fields` library, or your own custom field components.
 
 ```tsx
-import { FormProvider } from '@tutim/headless';
-import { defaultFields, TutimWizard } from '@tutim/fields';
+import { TutimWizard, TutimProvider } from '@tutim/headless';
+import { defaultFields } from '@tutim/fields';
 import { Field, FieldComponents, InputType } from '@tutim/types';
 
 export const CustomField: Field = ({ inputProps, fieldConfig }) => {
@@ -171,9 +171,9 @@ const fieldComponents: FieldComponents = {
 const App = (): JSX.Element => {
   return (
     <div className="App">
-      <FormProvider fieldComponents={fieldComponents}>
+      <TutimProvider fieldComponents={fieldComponents}>
         <TutimWizard onSubmit={console.log} config={{ fields: [{ key: 'field1' }] }} />
-      </FormProvider>
+      </TutimProvider>
     </div>
   );
 };
@@ -236,10 +236,4 @@ Join our [Discord server](https://discord.tutim.io) and ask for help, or [Open a
 ![](https://contrib.rocks/image?repo=tutim-io/tutim)
 
 Powered by [tutim.io](https://tutim.io)
-
----
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=tutim-io/tutim&type=Date)](https://tutim.io/developers)
 

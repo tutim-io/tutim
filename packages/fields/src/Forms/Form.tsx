@@ -4,13 +4,6 @@ import { OnSubmit, PartialFormConfig, UseFormReturn } from '@tutim/types';
 import { FormElement } from './FormElement';
 import { Button } from '../Buttons';
 
-export interface FormProps {
-  onSubmit: OnSubmit;
-  formId?: string;
-  config?: PartialFormConfig;
-  initialValues?: Record<string, any>;
-  wizardContext?: any;
-}
 interface FormViewProps {
   formId?: string;
   form: UseFormReturn;
