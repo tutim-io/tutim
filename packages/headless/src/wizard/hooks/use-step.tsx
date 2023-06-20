@@ -28,7 +28,7 @@ const layout = { submit: { display: false } };
 const meta = { title: undefined };
 
 export const useStep = () => {
-  const { config, currentStep, wizardValues, setCurrentForm, goToStep } = useWizardContext();
+  const { config, currentStep, wizardValues, goToStep, onStepSubmit } = useWizardContext();
 
   const fields = getStepConfig(config, currentStep);
   const initialValues = getStepValues(config, currentStep, wizardValues);
@@ -42,17 +42,22 @@ export const useStep = () => {
   const form = useForm(stepConfig);
 
   React.useEffect(() => {
-    setCurrentForm(form);
     form.reset(initialValues);
   }, [currentStep]);
 
+  const isLastStep = currentStep + 1 === config?.wizard?.steps.length;
   const goBack = () => {
-    if (form.formState.isValid) goToStep(currentStep - 1);
+    if (form.formState.isValid) {
+      onStepSubmit(form.getValues(), false);
+    }
+    goToStep(currentStep - 1);
   };
   const goNext = () => {
-    if (form.formState.isValid) goToStep(currentStep + 1);
+    if (form.formState.isValid) {
+      onStepSubmit(form.getValues(), isLastStep);
+    }
+    goToStep(currentStep + 1);
   };
-  const isLastStep = currentStep + 1 === config?.wizard?.steps.length;
 
   return { form, goBack, goNext, isLastStep };
 };

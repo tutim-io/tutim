@@ -4,9 +4,9 @@ import { FormConfig } from '@tutim/types';
 
 const config: FormConfig = {
   logic: {
-    webhook: {
-      endpoint: 'lala',
-    },
+    // webhook: {
+    //   endpoint: 'lala',
+    // },
   },
   fields: [
     {

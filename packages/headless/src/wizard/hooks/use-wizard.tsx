@@ -1,6 +1,5 @@
 import { FormConfig, OnSubmit, PartialFormConfig } from '@tutim/types';
 import React from 'react';
-import { UseFormReturn } from '@tutim/types';
 
 export interface WizardProps {
   onSubmit: OnSubmit;
@@ -16,8 +15,7 @@ interface WizardContext {
   goToStep: (stepIndex: number) => void;
   wizardValues: Record<string, any>;
   setWizardValues: React.Dispatch<React.SetStateAction<Record<string, any>>>;
-  currentForm: UseFormReturn;
-  setCurrentForm: React.Dispatch<React.SetStateAction<UseFormReturn>>;
+  onStepSubmit: (stepValues: any, isFinalStep?: boolean) => void;
 }
 
 const wizardContext: WizardContext = {
@@ -26,8 +24,7 @@ const wizardContext: WizardContext = {
   goToStep: () => null,
   wizardValues: {},
   setWizardValues: () => null,
-  currentForm: {} as UseFormReturn,
-  setCurrentForm: () => null,
+  onStepSubmit: () => null,
 };
 
 export const WizardContext = React.createContext<WizardContext>(wizardContext);
@@ -36,7 +33,6 @@ export const useWizardContext = (): WizardContext => React.useContext(WizardCont
 export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [wizardValues, setWizardValues] = React.useState<any>(initialValues);
-  const [currentForm, setCurrentForm] = React.useState<UseFormReturn>({} as any);
   const stepCount = config.wizard?.steps?.length || 0;
 
   const onStepSubmit = (stepValues: any, isFinalStep = false) => {
@@ -58,18 +54,16 @@ export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
     if (nextStepIndex < 0 || nextStepIndex > stepCount) return;
     const isFinalStep = stepCount === nextStepIndex;
     if (!isFinalStep) setCurrentStep(nextStepIndex);
-    onStepSubmit(currentForm.getValues?.(), isFinalStep);
   };
 
   return {
     config,
     stepCount,
     currentStep,
-    goToStep,
     wizardValues,
+    goToStep,
     setWizardValues,
-    currentForm,
-    setCurrentForm,
+    onStepSubmit,
   };
 };
 
