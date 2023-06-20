@@ -1,6 +1,7 @@
 import React from 'react';
 import { WizardProvider, useStep, useWizardContext } from '@tutim/headless';
 import { FormConfig } from '@tutim/types';
+import { MuiTutimWizard, MultiStepWizard } from '@tutim/fields';
 
 const config: FormConfig = {
   logic: {
@@ -51,11 +52,12 @@ const config: FormConfig = {
 };
 
 export const HeadlessWizard = (): JSX.Element => {
+  return <MuiTutimWizard config={config} onSubmit={console.log} initialValues={{ email: 'one' }} />;
   return (
     <div>
-      <WizardProvider config={config} onSubmit={console.log} initialValues={{ email: 'one' }}>
+      {/* <WizardProvider config={config} onSubmit={console.log} initialValues={{ email: 'one' }}>
         <ContextedWizard />
-      </WizardProvider>
+      </WizardProvider> */}
       {/* <WizardProvider config={config}>
         <ContextedWizard />
       </WizardProvider> */}
@@ -68,7 +70,7 @@ const ContextedWizard = () => {
 
   return (
     <div>
-      <ContextedStep key={`step${wizard.currentStep}`} />
+      <ContextedStep key={`step${wizard.activeStep}`} />
       <div>hey</div>
     </div>
   );
@@ -79,7 +81,7 @@ const ContextedStep = () => {
   const step = useStep();
   return (
     <div>
-      <p>my step is {context.currentStep}</p>
+      <p>my step is {context.activeStep}</p>
       {step.form.fields}
       <button onClick={step.goBack} disabled={!step.form.formState.isValid}>
         Go Back

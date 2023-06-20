@@ -11,7 +11,7 @@ export interface WizardProps {
 
 interface WizardContext {
   config: FormConfig;
-  currentStep: number;
+  activeStep: number;
   goToStep: (stepIndex: number) => void;
   wizardValues: Record<string, any>;
   setWizardValues: React.Dispatch<React.SetStateAction<Record<string, any>>>;
@@ -20,7 +20,7 @@ interface WizardContext {
 
 const wizardContext: WizardContext = {
   config: { fields: [] },
-  currentStep: 0,
+  activeStep: 0,
   goToStep: () => null,
   wizardValues: {},
   setWizardValues: () => null,
@@ -30,8 +30,9 @@ const wizardContext: WizardContext = {
 export const WizardContext = React.createContext<WizardContext>(wizardContext);
 export const useWizardContext = (): WizardContext => React.useContext(WizardContext);
 
-export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
-  const [currentStep, setCurrentStep] = React.useState(0);
+export const useWizard = ({ initialValues = {}, onSubmit, config, wizardContext = undefined }) => {
+  if (wizardContext) return wizardContext;
+  const [activeStep, setCurrentStep] = React.useState(0);
   const [wizardValues, setWizardValues] = React.useState<any>(initialValues);
   const stepCount = config.wizard?.steps?.length || 0;
 
@@ -59,7 +60,7 @@ export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
   return {
     config,
     stepCount,
-    currentStep,
+    activeStep,
     wizardValues,
     goToStep,
     setWizardValues,
@@ -67,8 +68,10 @@ export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
   };
 };
 
-export const WizardProvider = ({ children, ...rest }: WizardProps & { children: React.ReactNode }) => {
-  const wizard = useWizard(rest as any); //TODO: fix this;
+type WizardProvder = (props: { wizardContext: WizardContext } & { children: React.ReactNode }) => any;
+
+export const WizardProvider: WizardProvder = ({ children, ...rest }) => {
+  const wizard = useWizard(rest.wizardContext ? { wizardContext: rest.wizardContext } : (rest as any)); //TODO: fix this;
 
   return <WizardContext.Provider value={wizard}>{children}</WizardContext.Provider>;
 };
