@@ -1,14 +1,8 @@
 import React from 'react';
-import { WizardProvider, useStep, useWizardContext } from '@tutim/headless';
+import { WizardProvider, useStep, useWizard, useWizardContext } from '@tutim/headless';
 import { FormConfig } from '@tutim/types';
-import { MuiTutimWizard, MultiStepWizard } from '@tutim/fields';
 
 const config: FormConfig = {
-  logic: {
-    // webhook: {
-    //   endpoint: 'lala',
-    // },
-  },
   fields: [
     {
       key: 'firstName',
@@ -52,28 +46,19 @@ const config: FormConfig = {
 };
 
 export const HeadlessWizard = (): JSX.Element => {
-  return <MuiTutimWizard config={config} onSubmit={console.log} initialValues={{ email: 'one' }} />;
+  const wizardContext = useWizard({ initialValues: { email: 'one' }, onSubmit: console.log, config });
+
   return (
-    <div>
-      {/* <WizardProvider config={config} onSubmit={console.log} initialValues={{ email: 'one' }}>
-        <ContextedWizard />
-      </WizardProvider> */}
-      {/* <WizardProvider config={config}>
-        <ContextedWizard />
-      </WizardProvider> */}
-    </div>
+    <WizardProvider wizardContext={wizardContext}>
+      <ContextedWizard />
+    </WizardProvider>
   );
 };
 
 const ContextedWizard = () => {
   const wizard = useWizardContext();
 
-  return (
-    <div>
-      <ContextedStep key={`step${wizard.activeStep}`} />
-      <div>hey</div>
-    </div>
-  );
+  return <ContextedStep key={`step${wizard.activeStep}`} />;
 };
 
 const ContextedStep = () => {
@@ -83,7 +68,7 @@ const ContextedStep = () => {
     <div>
       <p>my step is {context.activeStep}</p>
       {step.form.fields}
-      <button onClick={step.goBack} disabled={!step.form.formState.isValid}>
+      <button onClick={step.goBack} disabled={!step.form.formState.isValid || step.isFirstStep}>
         Go Back
       </button>
       <button onClick={step.goNext} disabled={!step.form.formState.isValid}>

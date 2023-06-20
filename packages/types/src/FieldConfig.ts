@@ -51,6 +51,11 @@ export enum InputType {
   Custom = 'custom',
 }
 
+export enum WrapperType {
+  MultiStepWizard = 'multi-step-wizard',
+  SingleStepForm = 'single-step-form',
+}
+
 export interface Option {
   value: string | number;
   label: string;

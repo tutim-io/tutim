@@ -1,7 +1,7 @@
 import React from 'react';
-import { useFormConfig } from '@tutim/headless';
-import { ControlledWizard, MultiStepWizard } from './MultiStepWizard';
-import { FormProps, SinglePageForm } from './Form';
+import { WizardProps, WrapperType } from '@tutim/types';
+import { useFieldComponents } from '../../context';
+import { useFormConfig } from '../../form';
 
 /**
  * fully managed TutimWizard.
@@ -37,18 +37,20 @@ import { FormProps, SinglePageForm } from './Form';
  * ```
  */
 
-export const TutimWizard = ({ formId, config, onSubmit, initialValues, wizardContext }: FormProps): JSX.Element => {
+export const TutimWizard = ({ formId, config, onSubmit, initialValues, wizardContext }: WizardProps): JSX.Element => {
   const configOrRemoteConfig = useFormConfig(config || formId || '');
   const isWizard = configOrRemoteConfig.wizard?.steps?.length;
 
   if (!configOrRemoteConfig.fields.length) return <p>No Fields</p>;
+  const fieldComponents = useFieldComponents();
 
-  if (wizardContext)
-    return <ControlledWizard onSubmit={onSubmit} config={configOrRemoteConfig} wizardContext={wizardContext} />;
+  const Wrapper: any = isWizard
+    ? fieldComponents[WrapperType.MultiStepWizard]
+    : fieldComponents[WrapperType.SingleStepForm];
 
-  if (isWizard)
-    return <MultiStepWizard onSubmit={onSubmit} config={configOrRemoteConfig} initialValues={initialValues} />;
-  return (
-    <SinglePageForm onSubmit={onSubmit} formId={formId} config={configOrRemoteConfig} initialValues={initialValues} />
-  );
+  // if (wizardContext)
+  //   return <ControlledWizard onSubmit={onSubmit} config={configOrRemoteConfig} wizardContext={wizardContext} />;
+
+  if (isWizard) return <Wrapper onSubmit={onSubmit} config={configOrRemoteConfig} initialValues={initialValues} />;
+  return <Wrapper onSubmit={onSubmit} formId={formId} config={configOrRemoteConfig} initialValues={initialValues} />;
 };
