@@ -43,12 +43,12 @@ export const useWizard = ({ initialValues = {}, onSubmit, config }) => {
     setWizardValues((prevWizardValues) => {
       const values = { ...prevWizardValues, ...stepValues };
       if (isFinalStep) {
-        // const webhookEndpoint = config.logic?.webhook?.endpoint;
+        const webhookEndpoint = config.logic?.webhook?.endpoint;
         const body = { data: values, schema: config };
         onSubmit(body);
-        // if (webhookEndpoint) {
-        //   callWebhook(webhookEndpoint, body);
-        // }
+        if (webhookEndpoint) {
+          callWebhook(webhookEndpoint, body);
+        }
       }
       return values;
     });
@@ -77,4 +77,15 @@ export const WizardProvider = ({ children, ...rest }: WizardProps & { children: 
   const wizard = useWizard(rest as any); //TODO: fix this;
 
   return <WizardContext.Provider value={wizard}>{children}</WizardContext.Provider>;
+};
+
+const callWebhook = async (endpoint: string, body: any) => {
+  return await fetch(endpoint, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify(body),
+  });
 };

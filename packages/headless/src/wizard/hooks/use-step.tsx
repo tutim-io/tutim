@@ -46,14 +46,13 @@ export const useStep = () => {
     form.reset(initialValues);
   }, [currentStep]);
 
-  return {
-    form,
-    goBack: () => {
-      if (form.formState.isValid) goToStep(currentStep - 1);
-    },
-    goNext: () => {
-      if (form.formState.isValid) goToStep(currentStep + 1);
-    },
-    isLastStep: currentStep + 1 === config?.wizard?.steps.length,
+  const goBack = () => {
+    if (form.formState.isValid) goToStep(currentStep - 1);
   };
+  const goNext = () => {
+    if (form.formState.isValid) goToStep(currentStep + 1);
+  };
+  const isLastStep = currentStep + 1 === config?.wizard?.steps.length;
+
+  return { form, goBack, goNext, isLastStep };
 };
