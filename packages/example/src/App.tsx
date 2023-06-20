@@ -1,5 +1,5 @@
 import { defaultFields, SelectField } from '@tutim/fields';
-import { FormProvider } from '@tutim/headless';
+import { TutimProvider } from '@tutim/headless';
 import React from 'react';
 import {
   BasicFieldsScheme,
@@ -73,9 +73,9 @@ function App(): React.ReactNode {
           }}
         />
       </div>
-      <FormProvider fieldComponents={defaultFields} options={contextOptions}>
+      <TutimProvider fieldComponents={defaultFields} options={contextOptions}>
         {<Example />}
-      </FormProvider>
+      </TutimProvider>
     </div>
   );
 }

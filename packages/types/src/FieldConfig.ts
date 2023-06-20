@@ -26,7 +26,7 @@ export interface FieldConfig {
 }
 
 /**
- * input field types, can add any input that you want and register with `FormProvider` or use with `Custom` `type` and `Field` prop.
+ * input field types, can add any input that you want and register with `TutimProvider` or use with `Custom` `type` and `Field` prop.
  *
  * @remarks
  * [API](https://docs.tutim.io/) • [Builder](https://tutim.io/)

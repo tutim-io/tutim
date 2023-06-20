@@ -13,7 +13,7 @@ import { FormProps, SinglePageForm } from './Form';
  *
  * @example
  * ```tsx
- * import { FormProvider } from '@tutim/headless';
+ * import { TutimProvider } from '@tutim/headless';
  * import { TutimWizard, defaultFields } from '@tutim/fields';
  *
  * const config = {
@@ -26,9 +26,9 @@ import { FormProps, SinglePageForm } from './Form';
  * const App = (): JSX.Element => {
  *   return (
  *     <div className="App">
- *       <FormProvider fieldComponents={defaultFields}>
+ *       <TutimProvider fieldComponents={defaultFields}>
  *         <TutimWizard onSubmit={console.log} config={config} />
- *       </FormProvider>
+ *       </TutimProvider>
  *     </div>
  *   );
  * };

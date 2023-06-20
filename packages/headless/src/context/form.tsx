@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldComponents, TutimOptions, FormProviderProps, TutimOptionsProviderValue } from '@tutim/types';
+import { FieldComponents, TutimOptions, TutimProviderProps, TutimOptionsProviderValue } from '@tutim/types';
 import { useRemoteSchemas } from './useRemoteSchemas';
 
 export const FieldComponentsContext = React.createContext<FieldComponents>({});
@@ -25,7 +25,7 @@ const mergeTutimOptions = (options: Partial<TutimOptions>, newOptions: TutimOpti
  *
  * @example
  * ```tsx
- * import { FormProvider } from '@tutim/headless';
+ * import { TutimProvider } from '@tutim/headless';
  * import { defaultFields } from '@tutim/fields';
  * import { FieldComponents } from '@tutim/types';
  * import { SimpleForm } from './SimpleForm';
@@ -41,19 +41,19 @@ const mergeTutimOptions = (options: Partial<TutimOptions>, newOptions: TutimOpti
  * export const App = (): JSX.Element => {
  *   return (
  *     <div className="App">
- *       <FormProvider fieldComponents={fieldComponents}>
+ *       <TutimProvider fieldComponents={fieldComponents}>
  *         <SimpleForm />
- *       </FormProvider>
+ *       </TutimProvider>
  *     </div>
  *   );
  * };
  * ```
  */
-export const FormProvider = ({
+export const TutimProvider = ({
   fieldComponents = {},
   options = optionsContext.options,
   children,
-}: FormProviderProps): JSX.Element => {
+}: TutimProviderProps): JSX.Element => {
   const [stateOptions, setStateOptions] = React.useState(options);
   const setOptions = (newOptions: TutimOptions) => setStateOptions(mergeTutimOptions(stateOptions, newOptions));
   const configContextValue = { options: { ...optionsContext.options, ...stateOptions }, setOptions };
