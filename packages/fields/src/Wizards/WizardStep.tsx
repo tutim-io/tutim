@@ -11,7 +11,7 @@ export const WizardStep = () => {
   return (
     <Box style={{ padding: '0px 10px', width: 'calc(100% - 24px)' }}>
       <FormView formId={stepKey} form={step.form} onSubmit={() => null} />
-      <Footer />
+      <Footer step={step} />
     </Box>
   );
 };

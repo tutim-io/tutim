@@ -13,7 +13,7 @@ export const Header = ({ config }: { config: PartialFormConfig }) => {
     : { overflow: 'auto', width: '100%', height: '80px', padding: '10px' };
 
   return (
-    <Stepper nonLinear activeStep={activeStep} orientation={config.wizard.orientation} id="wizard-header" sx={styling}>
+    <Stepper activeStep={activeStep} orientation={config.wizard.orientation} id="wizard-header" sx={styling}>
       {Object.values(config.wizard.steps).map(({ label }, index) => (
         <Step key={label}>
           <StepButton

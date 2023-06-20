@@ -1,8 +1,7 @@
 import Button from '@mui/material/Button';
-import { useStep } from '@tutim/headless';
 
-const Footer = () => {
-  const { goBack, goNext, form, isFirstStep, isLastStep } = useStep();
+const Footer = ({ step }) => {
+  const { goBack, goNext, form, isFirstStep, isLastStep } = step;
 
   return (
     <div>
