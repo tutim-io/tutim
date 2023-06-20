@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from '@tutim/headless';
 import { OnSubmit, PartialFormConfig, UseFormReturn } from '@tutim/types';
 import { FormElement } from './FormElement';
-import { Button } from '../components';
+import { Button } from '../../components';
 
 interface FormViewProps {
   formId?: string;
