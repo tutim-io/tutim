@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { SelectField } from '@tutim/fields';
+import { SelectField } from '@tutim/fields'; //material-ui
 import { TutimProvider } from '@tutim/headless';
 import '@tutim/shadcn-ui/dist/output.css';
 import formConfig from './basic.json';
@@ -28,7 +28,7 @@ function App(): React.ReactNode {
     <BrowserRouter>
       <div>
         <div style={{ padding: '10px', borderBottom: '4px solid green', marginBottom: '30px' }}>
-          <h3>Pick any wizard example</h3>
+          <h3>Pick any wizard example - Shadcn UI</h3>
           <SelectField
             fieldConfig={{ key: 'select', label: 'Example', type: 'select', options }}
             inputProps={{
