@@ -8,7 +8,7 @@
 
 
   <p align="center">
-    <h3>The headless infrastructure for multi-step forms</h3>
+    <h3>The headless infrastructure for wizard forms</h3>
     <br />
     <a href="https://tutim.io"><strong>Learn more »</strong></a>
     <br />
