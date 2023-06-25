@@ -28,7 +28,7 @@ export function FieldCollapse({ children, error, title }) {
   return (
     <Card>
       <Collapsible open={open} onOpenChange={setOpen}>
-        <div className="flex items-center justify-between px-4 space-x-4" onClick={() => setOpen(!open)}>
+        <div className="flex items-center justify-between" onClick={() => setOpen(!open)}>
           <CardHeader className='cursor-pointer'>
             <CardTitle>{title ?? 'Field'}</CardTitle>
           </CardHeader>
