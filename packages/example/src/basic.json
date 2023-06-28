@@ -14,7 +14,7 @@
       "isDisabled": false,
       "type": "text",
       "isRequired": true
-    },
+    },  
     {
       "key": "role",
       "label": "Role",

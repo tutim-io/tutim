@@ -1,51 +1,51 @@
 import React from 'react';
 import { FormConfig, Operators } from '@tutim/types';
-import { TutimWizard } from '@tutim/fields';
+import { TutimWizard } from '@tutim/headless';
 
 const config: FormConfig = {
-  logic: {
-    fieldsLogic: {
-      lastName: {
-        displayIf: {
-          field: 'firstName',
-          operator: Operators.EQUAL,
-          value: 'display',
-        },
-      },
-      'meta.description': {
-        displayIf: {
-          field: 'meta.title',
-          operator: 'equal',
-          value: 'display',
-        },
-      },
-      'nested-meta.nested.description': {
-        displayIf: {
-          field: 'nested-meta.nested.title',
-          operator: 'equal',
-          value: 'display',
-        },
-      },
-    },
-    arrayFieldsLogic: {
-      kids: {
-        age: {
-          displayIf: {
-            field: 'firstName',
-            operator: Operators.EQUAL,
-            value: 'display',
-          },
-        },
-        job: {
-          displayIf: {
-            field: '$.name',
-            operator: Operators.EQUAL,
-            value: 'display',
-          },
-        },
-      },
-    },
-  },
+  // logic: {
+  //   fieldsLogic: {
+  //     lastName: {
+  //       displayIf: {
+  //         field: 'firstName',
+  //         operator: Operators.EQUAL,
+  //         value: 'display',
+  //       },
+  //     },
+  //     'meta.description': {
+  //       displayIf: {
+  //         field: 'meta.title',
+  //         operator: 'equal',
+  //         value: 'display',
+  //       },
+  //     },
+  //     'nested-meta.nested.description': {
+  //       displayIf: {
+  //         field: 'nested-meta.nested.title',
+  //         operator: 'equal',
+  //         value: 'display',
+  //       },
+  //     },
+  //   },
+  //   arrayFieldsLogic: {
+  //     kids: {
+  //       age: {
+  //         displayIf: {
+  //           field: 'firstName',
+  //           operator: Operators.EQUAL,
+  //           value: 'display',
+  //         },
+  //       },
+  //       job: {
+  //         displayIf: {
+  //           field: '$.name',
+  //           operator: Operators.EQUAL,
+  //           value: 'display',
+  //         },
+  //       },
+  //     },
+  //   },
+  // },
   fields: [
     {
       key: 'nested-meta',
