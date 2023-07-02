@@ -7,7 +7,8 @@ import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { TutimWizardExample } from './Wizards/TutimWizardExample';
 import { LogicWizard } from './Wizards/LogicWizard';
-// import { TutimForm } from './Wizards/TutimForm';
+import { TutimForm } from './Wizards/TutimForm';
+import { AllOfExamples } from './Wizards/AllOfExamples';
 
 import { defaultFields } from '@tutim/shadcn-ui';
 
@@ -20,7 +21,8 @@ const examples: Record<string, () => JSX.Element> = {
   HeadlessWizard,
   TutimWizardExample,
   LogicWizard,
-  // TutimForm,
+  TutimForm,
+  AllOfExamples
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));

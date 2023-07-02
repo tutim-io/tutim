@@ -1,5 +1,5 @@
 import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from '../../components/ui/tooltip'
-import { Plus, Edit, Trash, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash } from "lucide-react"
 import { Button } from "../../components/ui/button"
 
 export const AddButton = ({ onClick }) => {

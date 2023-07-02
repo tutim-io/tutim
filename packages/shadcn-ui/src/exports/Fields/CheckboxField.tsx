@@ -1,13 +1,17 @@
 import { Field } from '@tutim/types';
-import { Checkbox, FormControlLabel } from '@mui/material';
 import { FieldWrapper } from './FieldWrapper';
+import { Checkbox } from '../../components/ui/checkbox'
 
 export const CheckboxField: Field = ({ fieldConfig, inputProps: { value = false, onChange }, fieldState }) => {
   const { key, helperText } = fieldConfig;
 
   return (
     <FieldWrapper fieldConfig={{ ...fieldConfig, helperText: undefined }} fieldState={fieldState}>
-      <FormControlLabel label={helperText} control={<Checkbox key={key} checked={value} onChange={onChange} />} />
+      <Checkbox checked={value} onCheckedChange={onChange} id="terms" key={key}/>
+      <label htmlFor="terms">
+        {helperText}
+      </label>
+    
     </FieldWrapper>
   );
 };
