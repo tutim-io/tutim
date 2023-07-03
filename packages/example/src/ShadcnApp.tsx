@@ -1,16 +1,21 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { SelectField } from '@tutim/fields'; //material-ui
 import { TutimProvider } from '@tutim/headless';
 import '@tutim/shadcn-ui/dist/output.css';
 import formConfig from './basic.json';
+
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { TutimWizardExample } from './Wizards/TutimWizardExample';
-import { LogicWizard } from './Wizards/LogicWizard';
-import { TutimForm } from './Wizards/TutimForm';
 import { AllOfExamples } from './Wizards/AllOfExamples';
+import { BasicFieldsValues } from './Wizards/BasicFieldsValues'
+import { ConfigProvider } from './Wizards/ConfigProvider'
+import { ControlledForm } from './Wizards/ControlledForm'
+import { DesignSystem } from './Wizards/DesignSystem'
+import { DynamicState } from './Wizards/DynamicState'
+import { FieldLogicRender } from './Wizards/FieldLogicRender'
+import { InitialFields } from './Wizards/InitialFields'
 
-import { defaultFields } from '@tutim/shadcn-ui';
+import { defaultFields, SelectField } from '@tutim/shadcn-ui';
 
 const contextOptions = {
   clientId: '2',
@@ -20,8 +25,13 @@ const contextOptions = {
 const examples: Record<string, () => JSX.Element> = {
   HeadlessWizard,
   TutimWizardExample,
-  LogicWizard,
-  TutimForm,
+  BasicFieldsValues,
+  ConfigProvider,
+  ControlledForm,
+  DesignSystem,
+  DynamicState,
+  FieldLogicRender,
+  InitialFields,
   AllOfExamples
 };
 
@@ -44,7 +54,7 @@ function App(): React.ReactNode {
             }}
           />
         </div>
-        <div style={{width: '95%', margin: 'auto'}}>
+        <div style={{ width: '95%', margin: 'auto' }}>
           <TutimProvider fieldComponents={defaultFields} options={contextOptions}>
             {<Example />}
           </TutimProvider>

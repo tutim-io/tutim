@@ -28,8 +28,15 @@ import React from 'react';
 import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { TutimWizardExample } from './Wizards/TutimWizardExample';
-import { LogicWizard } from './Wizards/LogicWizard';
-// import { TutimForm } from './Wizards/TutimForm';
+import { BasicFieldsValues } from './Wizards/BasicFieldsValues'
+import { ConfigProvider } from './Wizards/ConfigProvider'
+import { ControlledForm } from './Wizards/ControlledForm'
+import { DesignSystem } from './Wizards/DesignSystem'
+import { DynamicState } from './Wizards/DynamicState'
+import { FieldLogicRender } from './Wizards/FieldLogicRender'
+import { InitialFields } from './Wizards/InitialFields'
+
+import { AllOfExamples } from './Wizards/AllOfExamples';
 
 const contextOptions = {
   clientId: '2',
@@ -57,8 +64,15 @@ const examples: Record<string, () => JSX.Element> = {
   // BasicWizard,
   HeadlessWizard,
   TutimWizardExample,
-  LogicWizard,
-  // TutimForm,
+  BasicFieldsValues,
+  ConfigProvider,
+  ControlledForm,
+  DesignSystem,
+  DynamicState,
+  FieldLogicRender,
+  InitialFields,
+
+  AllOfExamples,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));

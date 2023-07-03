@@ -19,14 +19,15 @@ import {
 } from './Fields';
 
 export const defaultFields: FieldComponents = {
-  // [InputType.MultiText]: MultiTextField,
-  // [InputType.MultiSelect]: MultiSelectField,
-  // [InputType.MultiCheckbox]: MultiCheckboxField,
-  // [InputType.Password]: PasswordField,
-  // [InputType.TextArea]: TextAreaField,
-  // [InputType.Select]: SelectField,
-  // [InputType.Radio]: RadioField,
-  // [InputType.Switch]: SwitchField,
+  [InputType.MultiText]: MultiTextField,
+  [InputType.MultiSelect]: MultiSelectField,
+  [InputType.MultiCheckbox]: MultiCheckboxField,
+  [InputType.Password]: PasswordField,
+  [InputType.TextArea]: TextAreaField,
+  [InputType.Select]: SelectField,
+  [InputType.Radio]: RadioField,
+  [InputType.Switch]: SwitchField,
+
   [InputType.Json]: JsonField,
   [InputType.Checkbox]: CheckboxField,
   [InputType.Date]: DateField,

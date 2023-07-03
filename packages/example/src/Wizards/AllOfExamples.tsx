@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormConfig, Field } from '@tutim/types';
 import { TutimWizard } from '@tutim/headless';
-
+import { SimpleButton } from '@tutim/shadcn-ui'
 const config: FormConfig = {
     fields: [
         {
@@ -39,19 +39,38 @@ const config: FormConfig = {
             "type": "json",
             "isRequired": false
         },
-        // {
-        //     "key": "role",
-        //     "label": "Select",
-        //     "isDisabled": false,
-        //     "type": "select",
-        //     "options": [
-        //         { "value": "admin", "label": "Administrator" },
-        //         { "value": "viewer", "label": "Viewer", "disabled": true },
-        //         { "value": "editor", "label": "Editor" }
-        //     ],
-        //     "isRequired": false,
-        //     "defaultValue": "editor"
-        // },
+        {
+            "key": "hosting",
+            "label": "RadioField",
+            "isDisabled": false,
+            "type": "radio",
+            "options": [
+                { "value": "self", "label": "Self-Host" },
+                { "value": "cloud", "label": "Cloud", "disabled": true }
+            ],
+            "isRequired": false,
+            "defaultValue": "self"
+        },
+        {
+            "key": "enable",
+            "label": "SwitchField",
+            "isDisabled": false,
+            "type": "switch",
+            "isRequired": false
+        },
+        {
+            "key": "role",
+            "label": "SelectField",
+            "isDisabled": false,
+            "type": "select",
+            "options": [
+                { "value": "admin", "label": "Administrator" },
+                { "value": "viewer", "label": "Viewer", "disabled": true },
+                { "value": "editor", "label": "Editor" }
+            ],
+            "isRequired": false,
+            "defaultValue": "editor"
+        },
         {
             key: 'kids',
             label: 'FieldArray + Collapse + NumberField + textField',
@@ -154,15 +173,28 @@ const config: FormConfig = {
         steps: [
             {
                 label: 'Basic',
-                fields: ['firstName', 'lastName', 'dataPicker', 'agree', 'settings', 'role', 'clicker', 'kids', 'meta', 'nested-meta'],
+                fields: [
+                    'firstName',
+                    'lastName',
+                    'dataPicker',
+                    'agree',
+                    'settings',
+                    'hosting',
+                    'enable',
+                    'role',
+                    'clicker',
+                    'kids',
+                    'nested-meta',
+                    'meta',
+                ],
             },
             {
                 label: 'Contact',
-                fields: ['email', 'phone'],
+                fields: [],
             },
             {
                 label: 'Additional',
-                fields: ['additional'],
+                fields: [],
             },
         ],
         orientation: 'vertical',
@@ -176,9 +208,7 @@ const CustomField: Field = ({ inputProps }) => {
     const { value, onChange } = inputProps;
     const onClick = () => onChange(value + 2);
     return (
-        <button type="button" onClick={onClick}>
-            Click Me: {value}
-        </button>
+        <SimpleButton label={`Click Me: ${value}`} onClick={onClick} />
     );
 };
 
