@@ -12,7 +12,7 @@ interface LabelProps {
 export const Label: React.FC<LabelProps> = ({ label, tooltip }) => {
   return (
     <div className='text-gray-600'>
-      {label} *
+      {label}
       {tooltip && (
 
         <TooltipProvider>

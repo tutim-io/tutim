@@ -1,6 +1,5 @@
 import { Header } from './Header';
 import { WizardStep } from './WizardStep';
-import { Typography } from '@mui/material';
 import { OnSubmit, PartialFormConfig } from '@tutim/types';
 import { WizardProvider, useWizard } from '@tutim/headless';
 
@@ -15,7 +14,7 @@ export const MuiTutimWizard = ({ onSubmit, config, initialValues = {}, wizardCon
   if (!config.wizard) throw new Error('Wizard config is missing');
 
   const wizardContextMerged = useWizard({ initialValues, onSubmit, config, wizardContext });
-  const title = config.meta?.title && <Typography variant="h5">{config.meta.title}</Typography>;
+  const title = config.meta?.title && <h5>{config.meta.title}</h5>;
   const isVertical = config.wizard.orientation === 'vertical';
 
   return (

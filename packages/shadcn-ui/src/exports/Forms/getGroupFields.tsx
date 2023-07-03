@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box } from '@mui/material';
 import { FieldsByKey, FormLayout, LayoutGroupConfigs } from '@tutim/types';
 import { FieldGroup } from './FieldGroup';
 import { FieldCollapse } from './Collapse';
@@ -27,12 +26,12 @@ export const getGroupFields = (formLayout: FormLayout, fieldsByKey: FieldsByKey)
             error={undefined}
             title={<span style={{ fontSize: '16px' }}>{group.title} </span>}
           >
-            <Box
+            <div
               key={group.key}
-              sx={{ p: 1, border: '1px dashed rgba(0, 0, 0, 0.1)', display: 'block', paddingTop: '16px' }}
+              className='block p-1 pt-16 border-black border-dashed border-opacity-10'
             >
               {fieldGroup}
-            </Box>
+            </div>
           </FieldCollapse>
         );
       } else {
