@@ -1,5 +1,4 @@
 import React from 'react';
-import MuiGrid from '@mui/material/Grid';
 import { FieldsPerRow } from '@tutim/types';
 
 interface GridProps {
@@ -8,25 +7,22 @@ interface GridProps {
 }
 
 export const ROW_SIZE = {
-  [FieldsPerRow.One]: 12,
-  [FieldsPerRow.Two]: 6,
-  [FieldsPerRow.Three]: 4,
+  [FieldsPerRow.One]: 1,
+  [FieldsPerRow.Two]: 2,
+  [FieldsPerRow.Three]: 3,
 };
 
 export const FormGrid = ({ children, fieldsPerRow = FieldsPerRow.One }: GridProps): JSX.Element => {
   return (
-    <MuiGrid
-      container
-      sx={{ marginTop: '0px' }}
-      spacing={{ xs: 2, md: 3 }}
-      rowSpacing={1}
-      columns={{ xs: 4, sm: 8, md: 12 }}
-    >
+
+    <div className={`grid grid-cols-1 gap-2 row-gap-1 mt-0 md:gap-3
+                    sm:grid-cols-${fieldsPerRow-1 === 0? ROW_SIZE[fieldsPerRow]: ROW_SIZE[fieldsPerRow-1]} 
+                    md:grid-cols-${ROW_SIZE[fieldsPerRow]}`}>
       {children.map((child, index) => (
-        <MuiGrid item xs={ROW_SIZE[fieldsPerRow]} key={index}>
+        <div key={index} className="w-full">
           {child}
-        </MuiGrid>
+        </div>
       ))}
-    </MuiGrid>
+    </div>
   );
 };

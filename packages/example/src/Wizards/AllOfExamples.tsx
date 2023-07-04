@@ -2,6 +2,7 @@ import React from 'react';
 import { FormConfig, Field } from '@tutim/types';
 import { TutimWizard } from '@tutim/headless';
 import { SimpleButton } from '@tutim/shadcn-ui'
+
 const config: FormConfig = {
     fields: [
         {

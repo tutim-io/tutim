@@ -7,7 +7,6 @@ import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { AllOfExamples } from './Wizards/AllOfExamples';
 
-
 import { defaultFields, SelectField } from '@tutim/shadcn-ui';
 
 const contextOptions = {

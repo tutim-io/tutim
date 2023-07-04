@@ -33,7 +33,7 @@ export function FieldCollapse({ children, error, title }) {
             <CardTitle>{title ?? 'Field'}</CardTitle>
           </CardHeader>
           <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="sm" className="p-0 w-9">
+            <Button variant="ghost" className="p-0 mr-4 w-9">
               {open ? <LucideArrowUpCircle className="w-5 h-5" /> : <LucideArrowDownCircle className="w-5 h-5" />}
               <span className="sr-only">Toggle</span>
             </Button>
