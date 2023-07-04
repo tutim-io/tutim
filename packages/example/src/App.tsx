@@ -1,8 +1,8 @@
 import { defaultFields, SelectField } from '@tutim/fields';
 import { TutimProvider } from '@tutim/headless';
 import React from 'react';
-// import {
-//   BasicFieldsScheme,
+import {
+BasicFieldsScheme,
 //   BasicFieldsValues,
 //   InitialFields,
 //   FieldValidations,
@@ -22,7 +22,7 @@ import React from 'react';
 //   FormMeta,
 //   BasicWizard,
 //   LogicWizard,
-// } from './Forms';
+} from './Forms';
 import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { TutimWizardExample } from './Wizards/TutimWizardExample';
@@ -34,7 +34,7 @@ const contextOptions = {
 
 const examples: Record<string, () => JSX.Element> = {
   // TutimForm,
-  // BasicFieldsScheme,
+  BasicFieldsScheme,
   // BasicFieldsValues,
   // InitialFields,
   // FieldValidations,
