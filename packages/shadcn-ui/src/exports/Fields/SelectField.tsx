@@ -1,35 +1,28 @@
-import { Option, Field } from '@tutim/types';
-import { TextField as MuiTextField, MenuItem as MuiMenuItem } from '@mui/material';
+import { Field } from '@tutim/types';
 import { FieldWrapper } from './FieldWrapper';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '../../components/ui/select';
 
-export const SelectField: Field = ({ fieldConfig, inputProps: { value, onChange }, fieldState }) => {
-  const { key, isRequired, isDisabled, options = [], placeholder } = fieldConfig;
 
-  const childOptions = options.map((option: Option) => (
-    <MuiMenuItem disabled={option.disabled} key={option.value} value={option.value}>
-      {option.label}
-    </MuiMenuItem>
-  ));
-
+export const SelectField: Field = ({ fieldConfig, inputProps: fieldState }) => { 
+  fieldConfig;
   return (
     <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
-      <MuiTextField
-        select
-        onChange={onChange}
-        value={value || ''}
-        InputLabelProps={{ shrink: true }}
-        InputProps={{
-          placeholder: placeholder,
-        }}
-        SelectProps={{ native: false }}
-        fullWidth
-        size="small"
-        key={key}
-        required={isRequired}
-        disabled={isDisabled}
-      >
-        {childOptions}
-      </MuiTextField>
+      <Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Editor" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="Administrator">Administrator</SelectItem>
+    <SelectItem value="Viewer" disabled>Viewer</SelectItem>
+    <SelectItem value="Editor">Editor</SelectItem>
+  </SelectContent>
+</Select>
     </FieldWrapper>
   );
 };
