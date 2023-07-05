@@ -15,9 +15,11 @@ export const ROW_SIZE = {
 export const FormGrid = ({ children, fieldsPerRow = FieldsPerRow.One }: GridProps): JSX.Element => {
   return (
 
-    <div className={`w-full grid grid-cols-1 gap-2 row-gap-1 mt-0 md:gap-3
-                    sm:grid-cols-${fieldsPerRow-1 === 0? ROW_SIZE[fieldsPerRow]: ROW_SIZE[fieldsPerRow-1]} 
-                    md:grid-cols-${ROW_SIZE[fieldsPerRow]}`}>
+    <div className={`grid 
+                     grid-cols-1 
+                     sm:grid-cols-${fieldsPerRow - 1 === 0 ? ROW_SIZE[fieldsPerRow] : ROW_SIZE[fieldsPerRow - 1]} 
+                     md:grid-cols-${ROW_SIZE[fieldsPerRow]}
+                     gap-2 mt-0 mx-2 md:mx-3`}>
       {children.map((child, index) => (
         <div key={index} className="w-full">
           {child}
