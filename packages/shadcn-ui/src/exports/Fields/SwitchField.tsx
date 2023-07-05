@@ -17,7 +17,7 @@ export const SwitchField: Field = ({ fieldConfig, inputProps: { value = false, o
       <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}  >
 
         
-        <Switch id= 'Switch field' />
+        <Switch id= 'Switch field' onChange={onChange}/>
           <Label htmlFor='Switch field' > Switch field </Label>
 
       
