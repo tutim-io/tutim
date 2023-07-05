@@ -1,31 +1,12 @@
-import { defaultFields, SelectField } from '@tutim/fields';
+import { defaultFields, SelectField } from '@tutim/fields'; //material-ui
 import { TutimProvider } from '@tutim/headless';
 import React from 'react';
-import {
-BasicFieldsScheme,
-//   BasicFieldsValues,
-//   InitialFields,
-//   FieldValidations,
-//   DynamicState,
-//   FieldLogicRender,
-//   DesignSystem,
-//   TutimForm,
-//   LayoutConfig,
-//   FormWizard,
-//   ConfigProvider,
-//   SimpleForm,
-//   MultiNested,
-//   DeepNested,
-//   Builder,
-//   ControlledForm,
-//   SchemaServe,
-//   FormMeta,
-//   BasicWizard,
-//   LogicWizard,
-} from './Forms';
+
 import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
-import { TutimWizardExample } from './Wizards/TutimWizardExample';
+
+
+import { AllOfExamples } from './Wizards/AllOfExamples';
 
 const contextOptions = {
   clientId: '2',
@@ -33,28 +14,8 @@ const contextOptions = {
 };
 
 const examples: Record<string, () => JSX.Element> = {
-  // TutimForm,
-  BasicFieldsScheme,
-  // BasicFieldsValues,
-  // InitialFields,
-  // FieldValidations,
-  // DynamicState,
-  // FieldLogicRender,
-  // DesignSystem,
-  // LayoutConfig,
-  // FormWizard,
-  // ConfigProvider,
-  // SimpleForm,
-  // MultiNested,
-  // DeepNested,
-  // Builder,
-  // ControlledForm,
-  // SchemaServe,
-  // FormMeta,
-  // BasicWizard,
-  // LogicWizard,
   HeadlessWizard,
-  TutimWizardExample,
+  AllOfExamples,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
@@ -66,7 +27,7 @@ function App(): React.ReactNode {
   return (
     <div>
       <div style={{ padding: '10px', borderBottom: '4px solid green', marginBottom: '30px' }}>
-        <h3>Pick any form example</h3>
+        <h3>Pick any form example - Material UI</h3>
         <SelectField
           fieldConfig={{ key: 'select', label: 'Example', type: 'select', options }}
           inputProps={{

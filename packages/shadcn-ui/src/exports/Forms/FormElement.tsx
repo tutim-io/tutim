@@ -3,8 +3,7 @@ import { FieldsByKey, FormLayout, FormMeta } from '@tutim/types';
 import { FormGrid } from './FormGrid';
 import { getFieldsFromMap } from '@tutim/headless';
 import { getGroupFields } from './getGroupFields';
-import { Typography } from '@mui/material';
-import { SubmitButton } from './SubmitButton';
+import { SubmitButton } from '../Buttons/SubmitButton';
 
 interface FormProps {
   formId?: string;
@@ -28,7 +27,7 @@ export const getFieldsLayout = ({
 };
 
 export const FormElement = ({ onSubmit, layout = {}, meta = {}, fieldsByKey, formId }: FormProps) => {
-  const title = meta.title && <Typography variant="h5">{meta.title}</Typography>;
+  const title = meta.title && <h5>{meta.title}</h5>;
 
   const fields = <FormGrid>{fieldsLayout({ layout, fieldsByKey })}</FormGrid>;
 

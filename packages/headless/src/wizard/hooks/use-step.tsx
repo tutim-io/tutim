@@ -1,7 +1,7 @@
 import { FieldConfig, FormConfig } from '@tutim/types';
-import { useForm } from '@tutim/headless';
 import React from 'react';
 import { useWizardContext } from './use-wizard';
+import { useForm } from '../../form';
 
 const getStepConfig = (config: FormConfig, step: number): FieldConfig[] => {
   const { wizard } = config;
