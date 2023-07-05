@@ -40,7 +40,7 @@ export function FieldCollapse({ children, error, title }) {
           </CollapsibleTrigger>
         </div>
         <CollapsibleContent>
-          <CardContent>{children}</CardContent>
+          <CardContent style={{ marginTop: '-50px' }}>{children}</CardContent>
         </CollapsibleContent>
       </Collapsible>
       {errorMessage}

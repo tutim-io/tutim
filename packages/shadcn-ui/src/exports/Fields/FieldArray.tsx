@@ -37,7 +37,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
           </>
         }
       >
-        <div key={id} className='flex p-2 border border-gray-300 border-dashed'>
+        <div key={id} className='flex p-2 border border-gray-300 border-dashed' style={{marginTop:'70px'}}>
           <FieldGroup>{fieldsLayout}</FieldGroup>
           <div>
             <DeleteButton key="remove" onClick={onDelete} />
@@ -49,7 +49,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
 
   return (
     <div key={key}>
-      <div className='text-2xl'>{label}</div>
+      <div className='mb-2 text-2xl'>{label}</div>
       <FieldGroup>{arrayFieldsRender}</FieldGroup>
       <div className='mt-6'>
         <AddButton onClick={onAdd} />
