@@ -1,5 +1,7 @@
 import React from 'react';
-import { Radio, RadioGroup as MuiRadioGroup, FormControlLabel, Grid } from '@mui/material';
+import { Label } from "../../components/ui/label"
+import { RadioGroup, RadioGroupItem } from "../../components/ui/radio-group"
+ 
 
 import { Option, Field } from '@tutim/types';
 import { FieldWrapper } from './FieldWrapper';
@@ -13,18 +15,31 @@ export const RadioField: Field = (props) => {
   const isHorizontal = custom?.orientation === 'vertical' ? false : true;
 
   const childOptions = options.map((option: Option) => (
-    <Grid item key={option.value}>
-      <FormControlLabel value={option.value} disabled={option.disabled} control={<Radio />} label={option.label} />
-    </Grid>
+    <div className= 'inline-flex items-center' key={option.value}>
+      <Label property={option.label} />
+      
+    </div>
   ));
 
   return (
     <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
-      <MuiRadioGroup value={value} onChange={onChange} row={isHorizontal}>
-        <Grid container direction={isHorizontal ? 'row' : 'column'} alignItems={isHorizontal ? 'center' : 'flex-start'}>
-          {childOptions}
-        </Grid>
-      </MuiRadioGroup>
+      
+      <div className="flex">
+        <label className="inline-flex items-center">
+          <input type="radio" className="form-radio" name="radioGroup" value="option1" onChange={onChange}/>
+          <span className="ml-2">Self-host</span>
+        </label>
+        <label className="inline-flex items-center ml-6">
+          <input type="radio" className="form-radio" name="radioGroup" value="option2"/>
+          <span className="ml-2">Cloud</span>
+        </label>
+        
+      </div>
+     
+    
     </FieldWrapper>
   );
 };
+
+
+
