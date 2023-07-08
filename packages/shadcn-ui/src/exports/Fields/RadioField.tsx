@@ -1,7 +1,12 @@
-import React from 'react';
-import { Radio, RadioGroup as MuiRadioGroup, FormControlLabel, Grid } from '@mui/material';
+
+import React, { useState } from 'react';
+import { Label } from "../../components/ui/label"
+import { RadioGroup, RadioGroupItem } from "../../components/ui/radio-group"
+ 
+
 import { Option, Field } from '@tutim/types';
 import { FieldWrapper } from './FieldWrapper';
+
 
 export const RadioField: Field = (props) => {
   const { fieldConfig, inputProps, fieldState } = props;
@@ -11,18 +16,24 @@ export const RadioField: Field = (props) => {
   const isHorizontal = custom?.orientation === 'vertical' ? false : true;
 
   const childOptions = options.map((option: Option) => (
-    <Grid item key={option.value}>
-      <FormControlLabel value={option.value} disabled={option.disabled} control={<Radio />} label={option.label} />
-    </Grid>
+    <div className="flex items-center" key={option.value}>
+      <input 
+        type='radio' 
+        value={option.value}
+        checked={value === option.value}
+        onChange={onChange}
+        className="form-radio mr-2"/>
+      <Label >{option.label}</Label>
+    </div>
   ));
 
   return (
-    <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
-      <MuiRadioGroup value={value} onChange={onChange} row={isHorizontal}>
-        <Grid container direction={isHorizontal ? 'row' : 'column'} alignItems={isHorizontal ? 'center' : 'flex-start'}>
+    <div className="space-x-2">
+      <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState} >
+        <RadioGroup value={value} onChange={onChange} className={`flex ${isHorizontal ? 'flex-row' : 'flex-col'}`}>
           {childOptions}
-        </Grid>
-      </MuiRadioGroup>
-    </FieldWrapper>
+        </RadioGroup>
+      </FieldWrapper>
+    </div>
   );
 };

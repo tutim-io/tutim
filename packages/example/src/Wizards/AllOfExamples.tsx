@@ -213,7 +213,7 @@ const CustomField: Field = ({ inputProps }) => {
 };
 
 const customField = {
-    key: 'clicker',
+    key: 'Switch',
     label: 'Click Me',
     type: 'custom',
     defaultValue: 0,
