@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { Label } from "../../components/ui/label"
 import { RadioGroup, RadioGroupItem } from "../../components/ui/radio-group"
  
@@ -15,31 +16,24 @@ export const RadioField: Field = (props) => {
   const isHorizontal = custom?.orientation === 'vertical' ? false : true;
 
   const childOptions = options.map((option: Option) => (
-    <div className= 'inline-flex items-center' key={option.value}>
-      <Label property={option.label} />
-      
+    <div className="flex items-center" key={option.value}>
+      <input 
+        type='radio' 
+        value={option.value}
+        checked={value === option.value}
+        onChange={onChange}
+        className="form-radio mr-2"/>
+      <Label >{option.label}</Label>
     </div>
   ));
 
   return (
-    <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
-      
-      <div className="flex">
-        <label className="inline-flex items-center">
-          <input type="radio" className="form-radio" name="radioGroup" value="option1" onChange={onChange}/>
-          <span className="ml-2">Self-host</span>
-        </label>
-        <label className="inline-flex items-center ml-6">
-          <input type="radio" className="form-radio" name="radioGroup" value="option2"/>
-          <span className="ml-2">Cloud</span>
-        </label>
-        
-      </div>
-     
-    
-    </FieldWrapper>
+    <div className="space-x-2">
+      <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState} >
+        <RadioGroup value={value} onChange={onChange} className={`flex ${isHorizontal ? 'flex-row' : 'flex-col'}`}>
+          {childOptions}
+        </RadioGroup>
+      </FieldWrapper>
+    </div>
   );
 };
-
-
-
