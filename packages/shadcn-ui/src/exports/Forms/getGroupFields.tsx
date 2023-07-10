@@ -28,7 +28,7 @@ export const getGroupFields = (formLayout: FormLayout, fieldsByKey: FieldsByKey)
           >
             <div
               key={group.key}
-              className='block p-1 pt-16 border-black border-dashed border-opacity-10'
+              className='block p-1 pt-5 border-black border-dashed border-opacity-10'
             >
               {fieldGroup}
             </div>

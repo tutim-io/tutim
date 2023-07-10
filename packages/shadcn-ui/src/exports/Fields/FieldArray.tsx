@@ -49,7 +49,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
 
   return (
     <div key={key}>
-      <div className='text-2xl'>{label}</div>
+      <div className='mb-2 text-2xl'>{label}</div>
       <FieldGroup>{arrayFieldsRender}</FieldGroup>
       <div className='mt-6'>
         <AddButton onClick={onAdd} />
