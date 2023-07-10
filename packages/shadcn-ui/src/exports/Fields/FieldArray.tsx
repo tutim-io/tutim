@@ -37,7 +37,7 @@ export const FieldArray: Field = ({ fieldConfig, multiProps }) => {
           </>
         }
       >
-        <div key={id} className='flex p-2 border border-gray-300 border-dashed' style={{marginTop:'70px'}}>
+        <div key={id} className='flex p-2 border border-gray-300 border-dashed'>
           <FieldGroup>{fieldsLayout}</FieldGroup>
           <div>
             <DeleteButton key="remove" onClick={onDelete} />

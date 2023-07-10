@@ -16,7 +16,7 @@ const contextOptions = {
 
 const examples: Record<string, () => JSX.Element> = {
   HeadlessWizard,
-  AllOfExamples
+  AllOfExamples,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));

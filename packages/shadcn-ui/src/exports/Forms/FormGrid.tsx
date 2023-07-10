@@ -6,25 +6,25 @@ interface GridProps {
   fieldsPerRow?: FieldsPerRow;
 }
 
-export const ROW_SIZE = {
-  [FieldsPerRow.One]: 1,
-  [FieldsPerRow.Two]: 2,
-  [FieldsPerRow.Three]: 3,
-};
-
 export const FormGrid = ({ children, fieldsPerRow = FieldsPerRow.One }: GridProps): JSX.Element => {
-  return (
 
-    <div className={`grid 
-                     grid-cols-1 
-                     sm:grid-cols-${fieldsPerRow - 1 === 0 ? ROW_SIZE[fieldsPerRow] : ROW_SIZE[fieldsPerRow - 1]} 
-                     md:grid-cols-${ROW_SIZE[fieldsPerRow]}
-                     gap-2 mt-0 mx-2 md:mx-3`}>
-      {children.map((child, index) => (
-        <div key={index} className="w-full">
-          {child}
-        </div>
-      ))}
-    </div>
+  return (
+    <>
+      <div className="sm:grid-cols-1 md:grid-cols-2"></div>
+      <div className="sm:grid-cols-2 md:grid-cols-3"></div>
+      <div
+        className={`w-full grid 
+                     grid-cols-1
+                     sm:grid-cols-${fieldsPerRow - 1}
+                     md:grid-cols-${fieldsPerRow}
+                     gap-3 mt-0 mx-2 md:bg-white`}
+      >
+        {children.map((child, index) => (
+          <div key={index} className="w-full">
+            {child}
+          </div>
+        ))}
+      </div>
+    </>
   );
 };

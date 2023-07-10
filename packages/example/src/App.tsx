@@ -4,8 +4,6 @@ import React from 'react';
 
 import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
-
-
 import { AllOfExamples } from './Wizards/AllOfExamples';
 
 const contextOptions = {
