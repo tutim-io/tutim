@@ -15,23 +15,24 @@ export const RadioField: Field = (props) => {
 
   const isHorizontal = custom?.orientation === 'vertical' ? false : true;
 
+  
+
   const childOptions = options.map((option: Option) => (
-    <div className="flex items-center" key={option.value}>
-      <input 
-        type='radio' 
-        value={option.value}
-        checked={value === option.value}
-        onChange={onChange}
-        className="form-radio mr-2"/>
-      <Label >{option.label}</Label>
+    <div className='item' key={option.value} >
+      <RadioGroupItem value={option.value.toString()} disabled={option.disabled}/>
+      <Label htmlFor={option.label}>{option.label}</Label>  
+      
     </div>
   ));
 
   return (
     <div className="space-x-2">
       <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState} >
-        <RadioGroup value={value} onChange={onChange} className={`flex ${isHorizontal ? 'flex-row' : 'flex-col'}`}>
-          {childOptions}
+        <RadioGroup value={value} onValueChange={onChange} orientation={custom?.orientation}>
+          <div className={`container mx-auto ${isHorizontal ? 'center' : 'flex-start'} ${isHorizontal ? 'flex-row' : 'flex-col'}`}>
+            {childOptions}
+          </div>
+          
         </RadioGroup>
       </FieldWrapper>
     </div>
