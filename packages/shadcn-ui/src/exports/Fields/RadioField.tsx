@@ -18,17 +18,22 @@ export const RadioField: Field = (props) => {
   
 
   const childOptions = options.map((option: Option) => (
-    <div className='item' key={option.value} >
-      <RadioGroupItem value={option.value.toString()} disabled={option.disabled}/>
+    
+      <div className={`item`} key={option.value}>
+        <RadioGroupItem
+          value={option.value.toString()}
+          disabled={option.disabled}
+          style={option.disabled ? { opacity: '0.8' , backgroundColor: '#CBD5E0'} : {}}
+        />     
       <Label htmlFor={option.label}>{option.label}</Label>  
       
     </div>
   ));
 
   return (
-    <div className="space-x-2">
+    <div className="space-x-2 ">
       <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState} >
-        <RadioGroup value={value} onValueChange={onChange} orientation={custom?.orientation}>
+        <RadioGroup onValueChange={onChange} orientation={custom?.orientation} >
           <div className={`container mx-auto ${isHorizontal ? 'center' : 'flex-start'} ${isHorizontal ? 'flex-row' : 'flex-col'}`}>
             {childOptions}
           </div>
