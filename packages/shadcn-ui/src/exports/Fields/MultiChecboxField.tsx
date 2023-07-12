@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from '@tutim/types';
-import { Checkbox, FormControlLabel, Grid, FormGroup } from '@mui/material';
+import { Checkbox } from '../../components';
 import { FieldWrapper } from './FieldWrapper';
 
 const handleChange = (optionValue, currentValue, onChange) => {
@@ -17,27 +17,29 @@ export const MultiCheckboxField: Field = ({ fieldConfig, inputProps: { value = [
   const isHorizontal = custom?.orientation === 'vertical' ? false : true;
 
   const childOptions = options.map((option) => (
-    <Grid item key={option.value}>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={value.includes(option.value)}
-            onChange={() => handleChange(option.value, value, onChange)}
-            disabled={isDisabled || option.disabled}
-          />
-        }
-        label={option.label}
+    <div key={option.value} className="flex justify-start items-center px-2">
+      <Checkbox
+        checked={value.includes(option.value)}
+        onClick={() => handleChange(option.value, value, onChange)}
+        disabled={isDisabled || option.disabled}
+        className="m-1 border-black"
       />
-    </Grid>
+      <label
+        htmlFor="terms"
+        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+      >
+        {option.label}
+      </label>
+    </div>
   ));
 
   return (
     <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
-      <FormGroup row={isHorizontal}>
-        <Grid container direction={isHorizontal ? 'row' : 'column'} alignItems={isHorizontal ? 'center' : 'flex-start'}>
-          {childOptions}
-        </Grid>
-      </FormGroup>
+      <div
+        className={`flex ${isHorizontal ? 'flex-row' : 'flex-col'} ${isHorizontal ? 'items-center' : 'items-start'}`}
+      >
+        {childOptions}
+      </div>
     </FieldWrapper>
   );
 };
