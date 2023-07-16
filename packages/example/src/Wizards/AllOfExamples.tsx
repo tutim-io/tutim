@@ -8,7 +8,18 @@ const config: FormConfig = {
             key: 'firstName',
             label: 'TextField',
             type: 'text',
+           
+            
         },
+        {
+            key: 'description',
+            label: 'TextAreaField',
+            type: 'text-area',
+            placeholder: 'Type your text here',
+            
+        },
+
+
         {
             key: 'lastName',
             label: 'TextField',
@@ -175,6 +186,7 @@ const config: FormConfig = {
                 label: 'Basic',
                 fields: [
                     'firstName',
+                    'description',
                     'lastName',
                     'dataPicker',
                     'agree',
