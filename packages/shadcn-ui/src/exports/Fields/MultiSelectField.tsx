@@ -74,11 +74,13 @@ export const MultiSelectField: Field = ({ fieldConfig, inputProps: { value = [],
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.stopPropagation();
-    console.log(event.currentTarget.value);
 
     if (event.currentTarget.value !== '') {
+      const currLength: number = event.currentTarget.value.length;
       setOpen(true);
-      setOptions(options.filter((option) => option.label === event.currentTarget?.value));
+      setOptions(
+        options.filter((option) => option.label.substring(0, currLength).includes(event.currentTarget?.value))
+      );
     } else {
       setOpen(false);
       setOptions(options);

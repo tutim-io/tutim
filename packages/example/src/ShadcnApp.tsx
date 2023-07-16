@@ -6,17 +6,19 @@ import formConfig from './basic.json';
 
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { AllOfExamples } from './Wizards/AllOfExamples';
+import { ShaniForm } from './Wizards/ShaniForm';
 
 import { defaultFields, SelectField } from '@tutim/shadcn-ui';
 
 const contextOptions = {
-  clientId: '2',
+  clientId: '3',
   forms: { ['form-config-1337']: formConfig },
 };
 
 const examples: Record<string, () => JSX.Element> = {
   HeadlessWizard,
   AllOfExamples,
+  ShaniForm,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));

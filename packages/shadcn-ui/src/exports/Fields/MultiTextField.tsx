@@ -47,6 +47,7 @@ const OptionBtn: React.FC<{ option: string; onClick: (key: string) => void }> = 
 export const MultiTextField: Field = ({ fieldConfig, inputProps: { value = [], onChange }, fieldState }) => {
   const { isDisabled } = fieldConfig;
   const [currValue, setCurrValue] = useState<string>('');
+  const [duplicates, setDuplicate] = useState<boolean>(false);
 
   const clearOptions = (optionKey?: string | undefined) => {
     if (!optionKey) onChange(undefined);
@@ -54,12 +55,16 @@ export const MultiTextField: Field = ({ fieldConfig, inputProps: { value = [], o
   };
 
   useEffect(() => {
+    setDuplicate(false);
+
     const handleKeyPress = (event: KeyboardEvent) => {
       event.stopPropagation();
       if (event.key === 'Enter' && currValue !== '') {
         console.log('Enter', value, currValue);
-        onChange([...value, currValue]);
-        setCurrValue('');
+        if (!value.includes(currValue)) {
+          onChange([...value, currValue]);
+          setCurrValue('');
+        } else setDuplicate(true);
       }
     };
 
@@ -74,7 +79,8 @@ export const MultiTextField: Field = ({ fieldConfig, inputProps: { value = [], o
       <div
         tabIndex={0}
         className={`relative w-full min-h-6 border flex items-center gap-2 p-2 rounded-md outline-none focus:border-blue-500 focus:outline-none focus:ring focus:ring-violet-300 focus:ring-opacity-50
-        ${isDisabled && style.disabled} text-gray-400 
+        ${isDisabled && style.disabled}
+        ${duplicates ? 'text-red-600' : 'text-gray-400'}
         `}
       >
         <span className="flex-grow flex gap-2 flex-wrap items-center">
@@ -85,7 +91,7 @@ export const MultiTextField: Field = ({ fieldConfig, inputProps: { value = [], o
           )}
           <Input
             type="text"
-            className="w-1/2 border-none border-white outline-none outline-white ring-0"
+            className={`w-1/2 border-none outline-none border-white outline-white ring-0`}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               e.stopPropagation();
               setCurrValue(e.target.value);
