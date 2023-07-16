@@ -1,4 +1,4 @@
-import { TutimWizard } from '@tutim/fields';
+import { TutimWizard } from '@tutim/headless';
 import { FieldsPerRow } from '@tutim/types';
 // import config from './config.json';
 

@@ -7,7 +7,6 @@ import formConfig from './basic.json';
 import { HeadlessWizard } from './Wizards/HeadlessWizard';
 import { AllOfExamples } from './Wizards/AllOfExamples';
 
-
 import { defaultFields, SelectField } from '@tutim/shadcn-ui';
 
 const contextOptions = {
@@ -17,7 +16,7 @@ const contextOptions = {
 
 const examples: Record<string, () => JSX.Element> = {
   HeadlessWizard,
-  AllOfExamples
+  AllOfExamples,
 };
 
 const options = Object.keys(examples).map((key, ix) => ({ value: key, label: `${ix}) => ${key}` }));
