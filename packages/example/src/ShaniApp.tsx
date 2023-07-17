@@ -9,6 +9,7 @@ import { AllOfExamples } from './Wizards/AllOfExamples';
 import { ShaniForm } from './Wizards/ShaniForm';
 
 import { defaultFields, SelectField } from '@tutim/shadcn-ui';
+import { defaultFields as defaultFieldsMatirial, SelectField as SelectFieldMatirial } from '@tutim/fields'; //material-ui
 
 const contextOptions = {
   clientId: '3',
@@ -31,7 +32,7 @@ function App(): React.ReactNode {
     <BrowserRouter>
       <div>
         <div style={{ padding: '30px', borderBottom: '4px solid green', marginBottom: '30px' }}>
-          <h3>Pick any wizard example - Shadcn UI</h3>
+          <h3>left side:Shadcn UI | right side:MatiralUI</h3>
           <SelectField
             fieldConfig={{ key: 'select', label: 'Example', type: 'select', options }}
             inputProps={{
@@ -40,8 +41,12 @@ function App(): React.ReactNode {
             }}
           />
         </div>
-        <div style={{ width: '95%', margin: 'auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '20px' }}>
           <TutimProvider fieldComponents={defaultFields} options={contextOptions}>
+            {<Example />}
+          </TutimProvider>
+
+          <TutimProvider fieldComponents={defaultFieldsMatirial} options={contextOptions}>
             {<Example />}
           </TutimProvider>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from '@tutim/types';
-import { TextField as MuiTextField } from '@mui/material';
+import { Input } from '../../components/ui/input';
 import { FieldWrapper } from './FieldWrapper';
 
 export const NumberField: Field = ({ fieldConfig, inputProps: { value, onChange }, fieldState }) => {
@@ -12,19 +12,15 @@ export const NumberField: Field = ({ fieldConfig, inputProps: { value, onChange 
 
   return (
     <FieldWrapper fieldConfig={fieldConfig} fieldState={fieldState}>
-      <MuiTextField
-        type="number"
+      <Input
         onChange={onInputChange}
+        type="number"
         value={value || ''}
-        InputLabelProps={{ shrink: true }}
-        InputProps={{
-          placeholder: placeholder,
-        }}
-        fullWidth
-        size="small"
+        placeholder={placeholder}
         key={key}
         required={isRequired}
         disabled={isDisabled}
+        className="w-full mt-2 mb-1"
       />
     </FieldWrapper>
   );
