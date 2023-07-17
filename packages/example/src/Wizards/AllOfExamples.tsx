@@ -15,7 +15,7 @@ const config: FormConfig = {
             key: 'description',
             label: 'TextAreaField',
             type: 'text-area',
-            placeholder: 'Type your text here',
+             placeholder: 'Type your text here',
             
         },
 
