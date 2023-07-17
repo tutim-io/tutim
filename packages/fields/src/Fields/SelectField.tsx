@@ -4,7 +4,7 @@ import { FieldWrapper } from './utils';
 
 export const SelectField: Field = ({ fieldConfig, inputProps: { value, onChange }, fieldState }) => {
   const { key, isRequired, isDisabled, options = [], placeholder } = fieldConfig;
-
+             
   const childOptions = options.map((option: Option) => (
     <MuiMenuItem disabled={option.disabled} key={option.value} value={option.value}>
       {option.label}
